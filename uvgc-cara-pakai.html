@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cara Pakai UVGC — Ultra Voucher Gift Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --uvgc-blue: #005eb2; --uvgc-blue-deep: #003470; --uvgc-blue-deeper: #001f4a;
+  --uvgc-gold: #dfaf00; --uvgc-gold-light: #ffd876; --uvgc-gold-pale: #fffbe6;
+  --uv-green: #009a46; --uv-green-deep: #00672f; --uv-green-pale: #d2ffe7;
+  --uv-amber: #fbaa19; --uv-amber-pale: #fef1d9; --uv-amber-mid: #ec9904;
+  --text-primary: #373737; --text-secondary: #5c5c5c;
+  --neutral-100: #e6e6e6; --neutral-200: #d3d3d3; --neutral-500: #979797;
+  --base-white: #fafafa;
+  --bg-white: #ffffff; --bg-intro: #fafafa; --bg-amber-soft: #fef9ee;
+  --bg-blue-dark: #003470;
+  --F: 'Poppins', sans-serif; --FB: 'Inter', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--FB); color: var(--text-primary); background: var(--bg-white); overflow-x: hidden; line-height: 1.6; }
+
+/* ── ACCENT BAR ── */
+.accent-bar { position: fixed; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, #005eb2 0%, #dfaf00 50%, #009a46 100%); z-index: 300; opacity: 0.7; }
+
+/* ── NAV ── */
+nav { position: fixed; top: 0; left: 4px; right: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(20px); border-bottom: 2px solid var(--uvgc-gold); height: 68px; display: flex; align-items: center; padding: 0 6%; justify-content: space-between; }
+.nav-logo img { height: 40px; width: auto; display: block; }
+.nav-menu { display: flex; align-items: center; gap: 28px; list-style: none; }
+.nav-menu a { font-family: var(--F); font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color .2s; }
+.nav-menu a:hover, .nav-menu a.active { color: var(--uvgc-blue); }
+.nav-cta { background: var(--uv-green); color: #fff !important; font-weight: 600 !important; padding: 9px 20px; border-radius: 8px; transition: background .2s, transform .15s; }
+.nav-cta:hover { background: var(--uv-green-deep) !important; transform: translateY(-1px); }
+
+/* ── GOLD DIVIDER ── */
+.gold-divider { height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(223,175,0,0.12) 20%, rgba(223,175,0,0.32) 50%, rgba(223,175,0,0.12) 80%, transparent 100%); }
+
+/* ── MINI HERO ── */
+.mini-hero {
+  padding: 120px 6% 72px;
+  background: var(--bg-blue-dark);
+  position: relative; overflow: hidden;
+}
+.mini-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(0,154,70,0.06) 1.5px, transparent 1.5px); background-size: 36px 36px; pointer-events: none; }
+.mini-hero-arc { position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.05); pointer-events: none; }
+.mini-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+.mini-hero-eyebrow { font-family: var(--F); font-size: 11.5px; font-weight: 700; color: var(--uvgc-gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; display: block; }
+.mini-hero h1 { font-family: var(--F); font-weight: 800; font-size: clamp(28px,3.5vw,44px); color: #fff; line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 14px; }
+.mini-hero h1 span { color: var(--uvgc-gold); }
+.mini-hero p { font-family: var(--FB); font-size: 16px; color: rgba(255,255,255,0.65); max-width: 560px; line-height: 1.75; }
+
+/* ── SECTION BASE ── */
+.section-white { background: var(--bg-white); position: relative; overflow: hidden; padding: 88px 6%; }
+.section-intro { background: var(--bg-intro); position: relative; overflow: hidden; padding: 88px 6%; }
+.section-warm { background: var(--bg-amber-soft); position: relative; overflow: hidden; padding: 88px 6%; }
+.section-dark { background: var(--bg-blue-dark); position: relative; overflow: hidden; padding: 88px 6%; }
+.section-white::before, .section-intro::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(0,94,178,0.03) 1.5px, transparent 1.5px); background-size: 36px 36px; pointer-events: none; }
+.section-warm::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(251,170,25,0.07) 1.5px, transparent 1.5px); background-size: 36px 36px; pointer-events: none; }
+.section-dark::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(0,154,70,0.06) 1.5px, transparent 1.5px); background-size: 36px 36px; pointer-events: none; }
+.section-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+.section-header { margin-bottom: 52px; }
+
+/* ── TYPOGRAPHY ── */
+.eyebrow-blue { font-family: var(--F); font-size: 11.5px; font-weight: 700; color: var(--uvgc-blue); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; display: block; }
+.eyebrow-amber { font-family: var(--F); font-size: 11.5px; font-weight: 700; color: var(--uv-amber-mid); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; display: block; }
+.eyebrow-gold { font-family: var(--F); font-size: 11.5px; font-weight: 700; color: var(--uvgc-gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; display: block; }
+h2.sh { font-family: var(--F); font-weight: 700; font-size: clamp(24px,2.8vw,38px); line-height: 1.12; letter-spacing: -0.025em; color: var(--text-primary); margin-bottom: 12px; }
+h2.sh-light { color: #fff; }
+.sh-sub { font-size: 15.5px; color: var(--text-secondary); line-height: 1.75; max-width: 580px; font-family: var(--FB); }
+.sh-sub-light { color: rgba(255,255,255,0.6); font-family: var(--FB); font-size: 15.5px; line-height: 1.75; max-width: 580px; }
+
+/* ── STEP CARDS — OFFLINE ── */
+.step-offline { display: grid; grid-template-columns: 1fr 48px 1fr 48px 1fr; gap: 0; align-items: center; margin-top: 52px; }
+.step-offline-card { background: #fff; border: 1px solid var(--neutral-100); border-radius: 18px; overflow: hidden; transition: all .25s; }
+.step-offline-card:hover { box-shadow: 0 12px 40px rgba(0,154,70,0.1); transform: translateY(-3px); border-color: rgba(0,154,70,0.2); }
+.step-offline-img { width: 100%; height: 200px; object-fit: cover; display: block; background: #f0f0f0; }
+.step-offline-body { padding: 20px; }
+.step-offline-num { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.step-offline-n { width: 30px; height: 30px; border-radius: 50%; background: var(--uv-green); color: #fff; font-family: var(--F); font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.step-offline-label { font-family: var(--F); font-size: 12px; font-weight: 700; color: var(--uv-green); letter-spacing: 0.08em; text-transform: uppercase; }
+.step-offline-title { font-family: var(--F); font-size: 17px; font-weight: 700; color: var(--text-primary); margin-bottom: 7px; }
+.step-offline-desc { font-family: var(--FB); font-size: 13.5px; color: var(--text-secondary); line-height: 1.7; }
+.step-arrow { display: flex; align-items: center; justify-content: center; color: var(--uv-green); }
+
+/* ── BENEFIT STRIP ── */
+.benefit-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 40px; }
+.benefit-pill { display: flex; align-items: center; gap: 10px; background: var(--uv-green-pale); border: 1px solid rgba(0,154,70,0.15); border-radius: 12px; padding: 14px 16px; }
+.benefit-pill-icon { font-size: 20px; flex-shrink: 0; }
+.benefit-pill-text { font-family: var(--F); font-size: 13px; font-weight: 600; color: var(--uv-green-deep); line-height: 1.4; }
+
+/* ── VIDEO PLACEHOLDER ── */
+.video-placeholder { margin-top: 52px; border-radius: 18px; overflow: hidden; background: linear-gradient(135deg, #1a1a2e 0%, #003470 100%); aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; cursor: pointer; border: 2px dashed rgba(255,255,255,0.15); transition: border-color .2s; position: relative; }
+.video-placeholder:hover { border-color: rgba(255,255,255,0.3); }
+.video-play { width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); border: 2px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; transition: all .2s; }
+.video-placeholder:hover .video-play { background: var(--uv-green); border-color: var(--uv-green); transform: scale(1.08); }
+.video-play svg { margin-left: 4px; }
+.video-label { font-family: var(--F); font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.7); }
+.video-tag { font-family: var(--FB); font-size: 12px; color: rgba(255,255,255,0.4); }
+
+/* ── TABS (Online methods) ── */
+.method-tabs { display: flex; gap: 0; border-bottom: 1.5px solid var(--neutral-100); margin-bottom: 48px; }
+.method-tab { padding: 12px 28px; font-family: var(--F); font-size: 14px; font-weight: 600; color: var(--neutral-500); background: none; border: none; cursor: pointer; border-bottom: 2.5px solid transparent; margin-bottom: -1.5px; transition: all .2s; display: flex; align-items: center; gap: 8px; }
+.method-tab.active { color: var(--uvgc-blue); border-bottom-color: var(--uvgc-blue); }
+.method-tab:hover:not(.active) { color: var(--text-secondary); }
+.method-tab img { height: 18px; width: auto; object-fit: contain; }
+.method-panel { display: none; }
+.method-panel.active { display: block; }
+
+/* ── UV APP LAYOUT ── */
+.app-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; }
+
+/* Interactive step hover */
+.app-step { display: flex; gap: 16px; align-items: flex-start; padding: 14px 16px; border-radius: 12px; cursor: pointer; transition: background .2s; position: relative; z-index: 1; }
+.app-step:hover { background: var(--uv-green-pale); }
+.app-step.active-step { background: var(--uv-green-pale); border: 1px solid rgba(0,154,70,0.2); }
+.app-step-num { width: 36px; height: 36px; border-radius: 50%; background: var(--neutral-100); color: var(--text-secondary); font-family: var(--F); font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .2s; }
+.app-step:hover .app-step-num, .app-step.active-step .app-step-num { background: var(--uv-green); color: #fff; box-shadow: 0 4px 14px rgba(0,154,70,0.3); }
+
+/* Smaller phone mockup */
+.app-phone-mockup { position: relative; display: flex; align-items: center; justify-content: center; background: transparent; }
+.app-phone-img { width: 100%; max-height: 400px; object-fit: contain; display: none; transition: opacity .25s ease; filter: drop-shadow(0 12px 32px rgba(0,52,112,0.15)); }
+.app-phone-img.img-active { display: block; opacity: 1; }
+.app-benefits { display: flex; flex-direction: column; gap: 14px; }
+.app-benefit-item { display: flex; align-items: flex-start; gap: 10px; }
+.app-benefit-icon { width: 32px; height: 32px; border-radius: 50%; background: var(--uv-green); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.app-benefit-icon svg { color: #fff; }
+.app-benefit-text { font-family: var(--FB); font-size: 14px; color: var(--text-primary); line-height: 1.6; padding-top: 5px; }
+.app-benefit-text strong { font-family: var(--F); font-weight: 700; }
+
+.app-steps { display: flex; flex-direction: column; gap: 0; position: relative; }
+.app-steps::before { content: ''; position: absolute; left: 20px; top: 40px; bottom: 40px; width: 1.5px; background: linear-gradient(180deg, var(--uv-green) 0%, rgba(0,154,70,0.2) 100%); border-style: dashed; border-right: 1.5px dashed rgba(0,154,70,0.4); border-left: none; }
+.app-step { display: flex; gap: 16px; align-items: flex-start; padding: 12px 0; position: relative; z-index: 1; }
+.app-step-num { width: 40px; height: 40px; border-radius: 50%; background: var(--uv-green); color: #fff; font-family: var(--F); font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 14px rgba(0,154,70,0.3); }
+.app-step-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--uv-green-pale); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.app-step-content { padding-top: 6px; }
+.app-step-title { font-family: var(--F); font-size: 14.5px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+.app-step-desc { font-family: var(--FB); font-size: 12.5px; color: var(--text-secondary); line-height: 1.6; }
+
+/* Saldo info box */
+.saldo-box { margin-top: 32px; background: var(--uv-green-pale); border: 1px solid rgba(0,154,70,0.2); border-radius: 14px; padding: 18px 20px; display: flex; align-items: flex-start; gap: 12px; }
+.saldo-icon { font-size: 22px; flex-shrink: 0; }
+.saldo-title { font-family: var(--F); font-size: 14px; font-weight: 700; color: var(--uv-green-deep); margin-bottom: 3px; }
+.saldo-desc { font-family: var(--FB); font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+/* ── WEB COMMERCE LAYOUT ── */
+.web-layout { display: flex; flex-direction: column; gap: 52px; }
+.web-group-label { font-family: var(--F); font-size: 12px; font-weight: 700; color: var(--uvgc-blue); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.web-group-label::after { content: ''; flex: 1; height: 1px; background: var(--neutral-100); }
+.web-screens { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.web-screen { display: flex; flex-direction: column; gap: 10px; }
+.web-screen-mockup { background: linear-gradient(145deg, #1e1e2e 0%, #1a3a6e 100%); border-radius: 20px; aspect-ratio: 9/19; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; }
+.web-screen-mockup img { width: 100%; height: 100%; object-fit: cover; border-radius: 18px; }
+.web-screen-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+.web-screen-placeholder span { font-family: var(--F); font-size: 11px; color: rgba(255,255,255,0.3); }
+.web-screen-label { font-family: var(--F); font-size: 13px; font-weight: 600; color: var(--text-primary); text-align: center; }
+.web-screen-sub { font-family: var(--FB); font-size: 12px; color: var(--text-secondary); text-align: center; line-height: 1.5; }
+
+/* ── FAQ ── */
+.faq-list { display: flex; flex-direction: column; gap: 0; }
+.faq-item { border-bottom: 1px solid var(--neutral-100); }
+.faq-item:first-child { border-top: 1px solid var(--neutral-100); }
+.faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 0; background: none; border: none; cursor: pointer; text-align: left; font-family: var(--F); font-size: 15px; font-weight: 600; color: var(--text-primary); transition: color .2s; }
+.faq-q:hover { color: var(--uvgc-blue); }
+.faq-icon { width: 24px; height: 24px; border-radius: 50%; background: var(--neutral-100); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .25s; }
+.faq-item.open .faq-icon { background: var(--uv-green); transform: rotate(45deg); }
+.faq-icon svg { color: var(--text-secondary); transition: color .2s; }
+.faq-item.open .faq-icon svg { color: #fff; }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+.faq-a-inner { padding: 0 0 20px; font-family: var(--FB); font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
+.faq-item.open .faq-a { max-height: 300px; }
+
+/* ── CTA FORM (same as homepage) ── */
+.section-cta { background: linear-gradient(135deg, #e8f0fb 0%, #ddeeff 50%, #eaf4ff 100%); position: relative; overflow: hidden; padding: 96px 6%; }
+.section-cta::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(0,52,112,0.05) 1.5px, transparent 1.5px); background-size: 36px 36px; pointer-events: none; z-index: 0; }
+.section-cta-glow { position: absolute; top: -120px; right: -120px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(0,94,178,0.08) 0%, transparent 65%); pointer-events: none; }
+.cta-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; position: relative; z-index: 1; }
+.cta-left h2 { font-family: var(--F); font-size: clamp(26px,2.8vw,38px); font-weight: 700; color: var(--uvgc-blue-deep); line-height: 1.12; letter-spacing: -0.025em; margin-bottom: 14px; }
+.cta-left h2 span { color: var(--uvgc-blue); }
+.cta-left p { font-family: var(--FB); font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 28px; }
+.cta-trust { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.cta-trust li { display: flex; align-items: center; gap: 9px; font-family: var(--FB); font-size: 13.5px; color: var(--text-secondary); }
+.cta-trust-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--uv-green); flex-shrink: 0; }
+.cta-clients { margin-top: 28px; }
+.cta-clients-logos { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 10px; }
+.cta-clients-logos img { height: 18px; width: auto; object-fit: contain; display: block; }
+.form-box { background: #fff; border: 1px solid var(--neutral-100); border-radius: 20px; padding: 34px; box-shadow: 0 4px 24px rgba(0,52,112,0.08); }
+.form-box h3 { font-family: var(--F); font-size: 17px; font-weight: 700; color: var(--text-primary); margin-bottom: 5px; }
+.form-box > p { font-family: var(--FB); font-size: 13px; color: var(--text-secondary); margin-bottom: 22px; }
+.fg { margin-bottom: 12px; }
+.fg label { display: block; font-family: var(--F); font-size: 11.5px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; }
+.fg input, .fg select { width: 100%; padding: 10px 13px; border: 1.5px solid var(--neutral-200); border-radius: 8px; font-size: 13.5px; font-family: var(--FB); color: var(--text-primary); background: #fafafa; outline: none; transition: border .2s; -webkit-appearance: none; appearance: none; }
+.fg input::placeholder { color: #ababab; }
+.fg input:focus, .fg select:focus { border-color: var(--uvgc-blue); box-shadow: 0 0 0 3px rgba(0,94,178,0.1); }
+.fg select option { background: #fff; color: var(--text-primary); }
+.fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+.fg-req { color: #ef4444; font-size: 11px; }
+.fg-err { font-family: var(--FB); font-size: 11.5px; color: #ef4444; margin-top: 4px; display: none; }
+.fg input.invalid { border-color: #ef4444 !important; box-shadow: 0 0 0 3px rgba(239,68,68,0.1) !important; }
+.fg input.invalid + .fg-err { display: block; }
+.btn-form-green { width: 100%; padding: 0; height: 43px; margin-top: 6px; background: var(--uv-green); color: #fff; font-family: var(--F); font-weight: 600; font-size: 14.5px; border: none; border-radius: 9px; cursor: pointer; box-shadow: 0 4px 20px rgba(0,154,70,0.3); transition: all .2s; }
+.btn-form-green:hover { background: var(--uv-green-deep); transform: translateY(-1px); }
+
+/* ── FOOTER ── */
+footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
+.footer-logo img { height: 40px; display: block; margin-bottom: 10px; background: #fff; border-radius: 8px; padding: 6px 12px; }
+.footer-desc { font-family: var(--FB); font-size: 12.5px; color: rgba(255,255,255,0.65); line-height: 1.75; max-width: 240px; }
+.footer-addr { font-family: var(--FB); font-size: 11.5px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 240px; margin-top: 12px; }
+.footer-socials { display: flex; gap: 10px; margin-top: 18px; }
+.footer-social { width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.75); text-decoration: none; transition: all .2s; }
+.footer-social:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.footer-top { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 24px; }
+.f-col h4 { font-family: var(--F); font-size: 10.5px; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
+.f-links { list-style: none; }
+.f-links li { margin-bottom: 9px; }
+.f-links a { font-family: var(--FB); font-size: 12.5px; color: rgba(255,255,255,0.65); text-decoration: none; transition: color .2s; }
+.f-links a:hover { color: var(--uvgc-gold); }
+.footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-family: var(--FB); font-size: 11.5px; color: rgba(255,255,255,0.5); }
+.fb-links { display: flex; gap: 20px; }
+.fb-links a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color .2s; }
+
+@media (max-width: 960px) {
+  .step-offline { grid-template-columns: 1fr; }
+  .step-arrow { transform: rotate(90deg); }
+  .app-layout { grid-template-columns: 1fr; }
+  .web-screens { grid-template-columns: 1fr 1fr; }
+  .benefit-strip { grid-template-columns: 1fr 1fr; }
+  .cta-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── BENEFIT 2x2 GRID ── */
+.app-benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-content: center; height: 100%; }
+.app-benefit-item-lg { display: flex; align-items: center; gap: 12px; background: var(--base-white); border: 1px solid var(--neutral-100); border-radius: 12px; padding: 16px 16px; }
+.app-benefit-icon-lg { width: 32px; height: 32px; border-radius: 50%; background: var(--uv-green); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #fff; }
+.app-benefit-text-lg { font-family: var(--FB); font-size: 14px; color: var(--text-primary); line-height: 1.55; }
+.app-benefit-text-lg strong { font-family: var(--F); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="accent-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="uvgc-visual-test.html">
+    <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a72f916a777b4dd48714d03.png" alt="UVGC">
+  </a>
+  <ul class="nav-menu">
+    <li><a href="uvgc-cara-pakai.html" class="active">Cara Pakai</a></li>
+    <li><a href="uvgc-cara-order.html">Cara Order</a></li>
+    <li><a href="uvgc-merchant.html">Merchant</a></li>
+    <li><a href="uvgc-program.html">Program</a></li>
+    <li><a href="#kontak" class="nav-cta">Hubungi Kami</a></li>
+  </ul>
+</nav>
+
+<!-- MINI HERO -->
+<section class="mini-hero">
+  <div class="mini-hero-arc"></div>
+  <div class="mini-hero-arc" style="width:180px;height:180px;top:auto;bottom:-60px;left:-60px;right:auto;"></div>
+  <div class="mini-hero-inner">
+    <span class="mini-hero-eyebrow">Cara Pakai</span>
+    <h1>Panduan Lengkap<br>Penggunaan <span>Ultra Voucher Gift Card Fisik</span></h1>
+    <p>Dua cara redeem yang fleksibel: langsung di kasir toko offline, atau melalui aplikasi dan web Ultra Voucher.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     SECTION 1: REDEEM OFFLINE
+     bg: putih
+     ══════════════════════════════ -->
+<section class="section-white">
+  <div class="section-inner">
+    <div class="section-header">
+      <div style="display:inline-flex;align-items:center;gap:7px;background:var(--text-primary);color:#fff;font-family:var(--F);font-size:11px;font-weight:700;padding:5px 14px;border-radius:100px;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:12px;">Offline</div>
+      <h2 class="sh">Redeem Langsung di Merchant</h2>
+      <p class="sh-sub">Tidak perlu aplikasi. Cukup bawa kartu UVGC ke kasir merchant partner; transaksi selesai dalam hitungan detik.</p>
+    </div>
+
+    <!-- 3 Steps — floating image treatment -->
+    <div style="display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;align-items:end;margin-top:52px;gap:0;">
+
+      <!-- Step 1 -->
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7af82991fcc48ff727fbf4.png" alt="Shop" style="width:85%;object-fit:contain;display:block;margin-bottom:-20px;position:relative;z-index:2;filter:drop-shadow(0 12px 28px rgba(0,154,70,0.15));">
+        <div style="width:100%;background:rgba(255,255,255,0.6);border:1px solid transparent;border-radius:18px;padding:32px 22px 22px;box-shadow:0 2px 20px rgba(0,0,0,0.06);backdrop-filter:blur(8px);">
+          <div class="step-offline-num" style="margin-bottom:10px;">
+            <div class="step-offline-n">1</div>
+            <span class="step-offline-label">Shop</span>
+          </div>
+          <div class="step-offline-title">Transaksi di Toko</div>
+          <p class="step-offline-desc">Kumpulkan belanjaan dan bawa ke kasir. Kasir menginput item dan total tagihan.</p>
+        </div>
+      </div>
+
+      <!-- Arrow -->
+      <div class="step-arrow" style="padding-bottom:40px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+
+      <!-- Step 2 -->
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7af82991fcc48ff727fbf4.png" alt="Scan" style="width:85%;object-fit:contain;display:block;margin-bottom:-20px;position:relative;z-index:2;filter:drop-shadow(0 12px 28px rgba(0,154,70,0.15));">
+        <div style="width:100%;background:rgba(255,255,255,0.6);border:1px solid transparent;border-radius:18px;padding:32px 22px 22px;box-shadow:0 2px 20px rgba(0,0,0,0.06);backdrop-filter:blur(8px);">
+          <div class="step-offline-num" style="margin-bottom:10px;">
+            <div class="step-offline-n">2</div>
+            <span class="step-offline-label">Scan</span>
+          </div>
+          <div class="step-offline-title">Serahkan Kartu untuk Di-scan</div>
+          <p class="step-offline-desc">Serahkan kartu UVGC ke kasir. Kasir scan barcode di sisi belakang kartu menggunakan mesin EDC.</p>
+        </div>
+      </div>
+
+      <!-- Arrow -->
+      <div class="step-arrow" style="padding-bottom:40px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+
+      <!-- Step 3 -->
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7af82991fcc48ff727fbf4.png" alt="Redeemed" style="width:85%;object-fit:contain;display:block;margin-bottom:-20px;position:relative;z-index:2;filter:drop-shadow(0 12px 28px rgba(0,154,70,0.15));">
+        <div style="width:100%;background:rgba(255,255,255,0.6);border:1px solid transparent;border-radius:18px;padding:32px 22px 22px;box-shadow:0 2px 20px rgba(0,0,0,0.06);backdrop-filter:blur(8px);">
+          <div class="step-offline-num" style="margin-bottom:10px;">
+            <div class="step-offline-n">3</div>
+            <span class="step-offline-label">Redeemed</span>
+          </div>
+          <div class="step-offline-title">Transaksi Selesai</div>
+          <p class="step-offline-desc">Nilai UVGC terpakai. Voucher berhasil di-redeem dan belanjaan siap dibawa!</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:36px;text-align:center;">
+      <a href="merchant.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--uv-green);color:#fff;font-family:var(--F);font-weight:600;font-size:14px;padding:0 28px;height:43px;border-radius:8px;text-decoration:none;box-shadow:0 4px 20px rgba(0,154,70,0.28);transition:all .22s;" onmouseover="this.style.background='var(--uv-green-deep)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--uv-green)';this.style.transform='translateY(0)'">
+        Lihat Daftar Merchant Offline
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ══════════════════════════════
+     SECTION 2: REDEEM ONLINE
+     bg: fafafa
+     ══════════════════════════════ -->
+<section class="section-intro">
+  <div class="section-inner">
+    <div class="section-header">
+      <div style="display:inline-flex;align-items:center;gap:7px;background:var(--uvgc-blue);color:#fff;font-family:var(--F);font-size:11px;font-weight:700;padding:5px 14px;border-radius:100px;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:12px;">Online</div>
+      <h2 class="sh">Redeem via Aplikasi &amp; Web Commerce Ultra Voucher</h2>
+      <p class="sh-sub">Scan QR Code UVGC untuk konversi nilai kartu menjadi saldo Ultra Value, lalu gunakan untuk belanja di ratusan merchant digital.</p>
+    </div>
+
+    <!-- Method tabs -->
+    <div class="method-tabs">
+      <button class="method-tab active" onclick="switchMethod(0)">
+        <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a72f916a777b4dd48714d03.png" alt="UV App" style="height:20px;width:auto;">
+        Apps
+      </button>
+      <button class="method-tab" onclick="switchMethod(1)">
+        <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a72f916a777b4dd48714d03.png" alt="Web Commerce" style="height:20px;width:auto;">
+        Web Commerce
+      </button>
+      <button class="method-tab" onclick="switchMethod(2)">
+        <img src="https://ufood.co.id/wp-content/themes/ufood-temp/assets/img/LOGO%20UFOOD-UNGU.png" alt="UFood" style="height:20px;width:auto;object-fit:contain;">
+        UFood
+      </button>
+    </div>
+
+
+
+    <div class="method-panel active" id="method-0">
+
+      <!-- Top: steps kiri | gambar kanan -->
+      <div class="app-layout">
+        <div>
+          <p style="font-family:var(--F);font-size:12px;font-weight:700;color:var(--neutral-500);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">Langkah-langkah</p>
+          <div class="app-steps">
+            <div class="app-step active-step" id="method-0-step-0" onmouseenter="setStep('method-0',0)" onclick="setStep('method-0',0)">
+              <div class="app-step-num">1</div>
+              <div class="app-step-content">
+                <div class="app-step-title">Gosok Lapisan Pelindung QR Code</div>
+                <div class="app-step-desc">Gosok pelan lapisan pelindung di sisi belakang kartu untuk membuka QR Code yang tersembunyi di bawahnya.</div>
+              </div>
+            </div>
+            <div class="app-step" id="method-0-step-1" onmouseenter="setStep('method-0',1)" onclick="setStep('method-0',1)">
+              <div class="app-step-num">2</div>
+              <div class="app-step-content">
+                <div class="app-step-title">Buka UV App dan Pastikan Sudah Login</div>
+                <div class="app-step-desc">Unduh dan buka aplikasi Ultra Voucher. Pastikan sudah login dengan akun yang terdaftar sebelum melanjutkan.</div>
+              </div>
+            </div>
+            <div class="app-step" id="method-0-step-2" onmouseenter="setStep('method-0',2)" onclick="setStep('method-0',2)">
+              <div class="app-step-num">3</div>
+              <div class="app-step-content">
+                <div class="app-step-title">Klik Fitur Scan di Halaman Utama</div>
+                <div class="app-step-desc">Pilih ikon Scan yang tersedia di halaman utama UV App, lalu arahkan kamera ke QR Code UVGC.</div>
+              </div>
+            </div>
+            <div class="app-step" id="method-0-step-3" onmouseenter="setStep('method-0',3)" onclick="setStep('method-0',3)">
+              <div class="app-step-num">4</div>
+              <div class="app-step-content">
+                <div class="app-step-title">Saldo Masuk sebagai Ultra Value</div>
+                <div class="app-step-desc">Nilai kartu langsung dikreditkan sebagai saldo Ultra Value dan siap digunakan untuk belanja voucher digital.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="app-phone-mockup">
+          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a704e9e0153d604b1066434.png" alt="Step 1" class="app-phone-img img-active" id="method-0-img-0">
+          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7af82991fcc48ff727fbf4.png" alt="Step 2" class="app-phone-img" id="method-0-img-1">
+          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Step 3" class="app-phone-img" id="method-0-img-2">
+          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Step 4" class="app-phone-img" id="method-0-img-3">
+        </div>
+      </div>
+
+      <!-- Bottom: statement kiri | checklist kanan -->
+      <div style="margin-top:48px;padding-top:36px;border-top:1px solid var(--neutral-100);display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+        <div>
+          <p style="font-family:var(--F);font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.45;letter-spacing:-0.01em;">Satu scan di UV App, ratusan voucher digital siap digunakan.</p>
+        </div>
+        <div class="app-benefits-grid">
+          <div class="app-benefit-item-lg">
+            <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="app-benefit-text-lg">Akses <strong>ratusan voucher digital</strong></div>
+          </div>
+          <div class="app-benefit-item-lg">
+            <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="app-benefit-text-lg"><strong>Redeem instan</strong> dan aman</div>
+          </div>
+          <div class="app-benefit-item-lg">
+            <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="app-benefit-text-lg">Rekomendasi voucher <strong>personal</strong></div>
+          </div>
+          <div class="app-benefit-item-lg">
+            <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="app-benefit-text-lg">Katalog voucher <strong>terlengkap</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-placeholder" style="margin-top:48px;max-width:640px;margin-left:auto;margin-right:auto;" onclick="alert('Video akan diembed dari YouTube')">
+        <div class="video-play"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="video-label">Tutorial: Cara Redeem UVGC via UV App</div>
+        <div class="video-tag">Video akan diembed dari YouTube</div>
+      </div>
+    </div>
+
+    <div class="method-panel " id="method-1">
+
+      <!-- Top: steps kiri | gambar kanan -->
+      <div class="app-layout">
+        <div>
+          <p style="font-family:var(--F);font-size:12px;font-weight:700;color:var(--neutral-500);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">Langkah-langkah</p>
+          <div class="app-steps">
+            <div class="app-step active-step" id="method-1-step-0" onmouseenter="setStep('method-1',0)" onclick="setStep('method-1',0)">
+              <div class="app-step-num">1</div>
+              <div class="app-step-content">
+                <div class="app-step-title">Gosok Lapisan Pelindung QR Code</div>
+                <div class="app-step-desc">Gosok pelan lapisan pelindung di sisi belakang kartu untuk membuka QR Code sebelum memulai proses scan.</div>
+              </div>
+            </div>
+            <div class="app-step" id="method-1-step-1" onmouseenter="setStep('method-1',1)" onclick="setStep('method-1',1)">
+              <div class="app-step-num">2</div>
+              <div class="app-step-content">
+                <div class="app-step-title">Buka Web Commerce dan Pastikan Sudah Login</div>
+                <div class="app-step-desc">Akses ultravoucher.co.id dari browser mana saja. Login menggunakan akun Google atau nomor HP dan verifikasi OTP.</div>
+              </div>
+            </div>
+            <div class="app-step" id="method-1-step-2" onmouseenter="setStep('method-1',2)" onclick="setStep('method-1',2)">
+              <div class="app-step-num">3</div>
+              <div class="app-step-content">
+                <div class="app-step-title">Klik Fitur UVGC & Pay Scan</div>
+                <div class="app-step-desc">Di halaman utama Web Commerce, pilih fitur UVGC & Pay Scan, lalu izinkan akses kamera dan arahkan ke QR Code.</div>
+              </div>
+            </div>
+            <div class="app-step" id="method-1-step-3" onmouseenter="setStep('method-1',3)" onclick="setStep('method-1',3)">
+              <div class="app-step-num">4</div>
+              <div class="app-step-content">
+                <div class="app-step-title">Saldo Masuk sebagai Ultra Value</div>
+                <div class="app-step-desc">Saldo Ultra Value langsung diperbarui setelah scan berhasil dan siap digunakan untuk belanja di Web Commerce.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="app-phone-mockup">
+          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a704e9e0153d604b1066434.png" alt="Step 1" class="app-phone-img img-active" id="method-1-img-0">
+          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7af82991fcc48ff727fbf4.png" alt="Step 2" class="app-phone-img" id="method-1-img-1">
+          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Step 3" class="app-phone-img" id="method-1-img-2">
+          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Step 4" class="app-phone-img" id="method-1-img-3">
+        </div>
+      </div>
+
+      <!-- Bottom: statement kiri | checklist kanan -->
+      <div style="margin-top:48px;padding-top:36px;border-top:1px solid var(--neutral-100);display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+        <div>
+          <p style="font-family:var(--F);font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.45;letter-spacing:-0.01em;">Tanpa aplikasi, langsung dari browser; saldo masuk seketika setelah scan.</p>
+        </div>
+        <div class="app-benefits-grid">
+          <div class="app-benefit-item-lg">
+            <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="app-benefit-text-lg">Akses dari <strong>browser mana saja</strong></div>
+          </div>
+          <div class="app-benefit-item-lg">
+            <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="app-benefit-text-lg">Tanpa perlu <strong>install aplikasi</strong></div>
+          </div>
+          <div class="app-benefit-item-lg">
+            <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="app-benefit-text-lg">Login mudah via <strong>Google</strong> atau nomor HP</div>
+          </div>
+          <div class="app-benefit-item-lg">
+            <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="app-benefit-text-lg">Saldo <strong>langsung diperbarui</strong> setelah scan</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-placeholder" style="margin-top:48px;max-width:640px;margin-left:auto;margin-right:auto;" onclick="alert('Video akan diembed dari YouTube')">
+        <div class="video-play"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="video-label">Tutorial: Cara Redeem UVGC via Web Commerce</div>
+        <div class="video-tag">Video akan diembed dari YouTube</div>
+      </div>
+    </div>
+
+    <div class="method-panel" id="method-2">
+      <div class="app-layout">
+        <div>
+          <p style="font-family:var(--F);font-size:12px;font-weight:700;color:var(--neutral-500);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">Langkah-langkah</p>
+          <div class="app-steps">
+            <div class="app-step active-step" id="method-2-step-0" onmouseenter="setStep('method-2',0)" onclick="setStep('method-2',0)">
+              <div class="app-step-num">1</div>
+              <div class="app-step-content"><div class="app-step-title">Gosok Lapisan Pelindung QR Code</div><div class="app-step-desc">Gosok pelan lapisan pelindung di sisi belakang kartu untuk membuka QR Code sebelum memulai proses scan.</div></div>
+            </div>
+            <div class="app-step" id="method-2-step-1" onmouseenter="setStep('method-2',1)" onclick="setStep('method-2',1)">
+              <div class="app-step-num">2</div>
+              <div class="app-step-content"><div class="app-step-title">Buka UV App dan Scan QR Code UVGC</div><div class="app-step-desc">Buka aplikasi Ultra Voucher, pilih fitur Scan di halaman utama, lalu arahkan kamera ke QR Code UVGC. Saldo masuk sebagai Ultra Value.</div></div>
+            </div>
+            <div class="app-step" id="method-2-step-2" onmouseenter="setStep('method-2',2)" onclick="setStep('method-2',2)">
+              <div class="app-step-num">3</div>
+              <div class="app-step-content"><div class="app-step-title">Buka Menu UFood dan Pilih Makanan</div><div class="app-step-desc">Di halaman utama UV App, pilih menu UFood. Cari restoran atau makanan yang tersedia; pilih layanan Delivery atau Self Pick-Up sesuai kebutuhan.</div></div>
+            </div>
+            <div class="app-step" id="method-2-step-3" onmouseenter="setStep('method-2',3)" onclick="setStep('method-2',3)">
+              <div class="app-step-num">4</div>
+              <div class="app-step-content"><div class="app-step-title">Bayar Menggunakan Saldo Ultra Value</div><div class="app-step-desc">Saat checkout, pilih Ultra Value sebagai metode pembayaran. Saldo dipotong otomatis dan pesanan langsung diproses.</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="app-phone-mockup">
+          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a704e9e0153d604b1066434.png" alt="Step 1" class="app-phone-img img-active" id="method-2-img-0">
+          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7af82991fcc48ff727fbf4.png" alt="Step 2" class="app-phone-img" id="method-2-img-1">
+          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Step 3" class="app-phone-img" id="method-2-img-2">
+          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Step 4" class="app-phone-img" id="method-2-img-3">
+        </div>
+      </div>
+      <div style="margin-top:48px;padding-top:36px;border-top:1px solid var(--neutral-100);display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+        <p style="font-family:var(--F);font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.45;letter-spacing:-0.01em;">Dari kartu hadiah langsung ke meja makan; pesan makanan favorit pakai saldo Ultra Value.</p>
+        <div class="app-benefits-grid">
+          <div class="app-benefit-item-lg">
+            <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="app-benefit-text-lg">Tersedia layanan <strong>Delivery &amp; Self Pick-Up</strong></div>
+          </div>
+          <div class="app-benefit-item-lg">
+            <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="app-benefit-text-lg">Ratusan pilihan <strong>restoran dan kafe</strong></div>
+          </div>
+          <div class="app-benefit-item-lg">
+            <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="app-benefit-text-lg">Bayar langsung dengan <strong>saldo Ultra Value</strong></div>
+          </div>
+          <div class="app-benefit-item-lg">
+            <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="app-benefit-text-lg">Promo eksklusif <strong>khusus pengguna UFood</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ══════════════════════════════
+     LEADS FORM
+     ══════════════════════════════ -->
+<section class="section-cta" id="kontak">
+  <div class="section-cta-glow"></div>
+  <div class="cta-grid">
+    <div class="cta-left">
+      <span class="eyebrow-blue" style="margin-bottom:14px;display:block;">Mulai Sekarang</span>
+      <h2>Hadiah yang Tepat,<br>untuk <span>Kebutuhan yang Tepat</span></h2>
+      <p>UVGC memastikan setiap penerima mendapatkan hadiah yang benar-benar mereka inginkan: Fleksibel, mudah dipakai, dan berkesan.</p>
+      <ul class="cta-trust">
+        <li><span class="cta-trust-dot"></span>Konsultasi gratis tanpa komitmen</li>
+        <li><span class="cta-trust-dot"></span>Respons dalam 1 hari kerja</li>
+      </ul>
+      <div class="cta-clients">
+        <span style="display:block;margin-bottom:12px;font-family:var(--F);font-size:11px;font-weight:600;color:#c0c0c0;letter-spacing:0.12em;text-transform:uppercase;">Dipercaya oleh perusahaan terkemuka</span>
+        <div class="cta-clients-logos">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Samsung_old_logo_before_year_2015.svg" alt="Samsung">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Hisense.svg" alt="Hisense">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Vivo_logo_2019.svg/3840px-Vivo_logo_2019.svg.png" alt="Vivo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Smartfren_%282019%29.svg" alt="Smartfren">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Mitsubishi_logo.svg/960px-Mitsubishi_logo.svg.png" alt="Mitsubishi">
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="form-box">
+        <h3>Konsultasi Gratis &amp; Pesan UVGC</h3>
+        <p>Isi form di bawah; tim kami akan segera menghubungi Anda.</p>
+        <div class="fg-row fg">
+          <div class="fg" style="margin-bottom:0;"><label>Nama Lengkap <span class="fg-req">*</span></label><input type="text" id="f-nama" placeholder="Budi Santoso"><div class="fg-err" id="err-nama">Nama lengkap wajib diisi</div></div>
+          <div class="fg" style="margin-bottom:0;"><label>Nama Perusahaan <span class="fg-req">*</span></label><input type="text" id="f-perusahaan" placeholder="PT Maju Bersama"><div class="fg-err" id="err-perusahaan">Nama perusahaan wajib diisi</div></div>
+        </div>
+        <div class="fg"><label>Email Kantor <span class="fg-req">*</span></label><input type="email" id="f-email" placeholder="budi@perusahaan.co.id"><div class="fg-err" id="err-email">Masukkan email yang valid</div></div>
+        <div class="fg-row fg">
+          <div class="fg" style="margin-bottom:0;"><label>No. WhatsApp <span class="fg-req">*</span></label><input type="tel" id="f-wa" placeholder="08xx xxxx xxxx"><div class="fg-err" id="err-wa">Nomor WhatsApp wajib diisi</div></div>
+          <div class="fg" style="margin-bottom:0;"><label>Job Title</label><input type="text" id="f-jobtitle" placeholder="HR Manager"></div>
+        </div>
+        <div class="fg"><label>Kebutuhan</label><select id="f-kebutuhan"><option value="" disabled selected>Pilih</option><option>Reward Karyawan</option><option>Insentif Mitra</option><option>Program Loyalitas</option><option>Lainnya</option></select></div>
+        <button class="btn-form-green" onclick="submitForm()">Kirim dan Mulai Konsultasi</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ══════════════════════════════
+     FAQ
+     ══════════════════════════════ -->
+<section class="section-white" style="padding-top:72px;padding-bottom:80px;">
+  <div class="section-inner">
+    <div class="section-header" style="margin-bottom:40px;">
+      <span class="eyebrow-blue">FAQ</span>
+      <h2 class="sh">Pertanyaan yang Sering Diajukan</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Berapa lama masa berlaku Ultra Voucher Gift Card?
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">UVGC berlaku selama <strong>1 tahun</strong> sejak tanggal penerbitan. Tanggal kedaluwarsa tertera di sisi belakang kartu. Pastikan untuk menggunakannya sebelum batas waktu tersebut.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Apakah UVGC bisa digunakan sebagian (partial redemption)?
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Tergantung metode redeem. Untuk <strong>redeem online</strong> via UV App atau Web Commerce, nilai UVGC dikonversi menjadi saldo Ultra Value yang bisa digunakan bertahap. Untuk <strong>redeem offline</strong> di kasir, kebijakan partial redemption mengikuti aturan masing-masing merchant.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Bagaimana jika QR Code rusak atau tidak bisa di-scan?
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Jika QR Code tidak bisa di-scan, Anda masih bisa menggunakan <strong>Voucher ID</strong> yang tertera di sisi belakang kartu untuk proses redeem manual. Hubungi tim CS Ultra Voucher melalui live chat atau WhatsApp untuk bantuan lebih lanjut.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Apakah UVGC bisa digabungkan dengan metode pembayaran lain?
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Untuk redeem online, saldo Ultra Value yang diperoleh dari UVGC bisa dikombinasikan dengan saldo UV lainnya. Untuk redeem offline, kebijakan kombinasi pembayaran mengikuti aturan merchant masing-masing.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Apakah saldo Ultra Value bisa diuangkan kembali (cashout)?
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Saldo Ultra Value tidak dapat diuangkan kembali (non-refundable). Namun, saldo dapat digunakan untuk membeli berbagai voucher digital di ekosistem Ultra Voucher selama masih dalam masa berlaku.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Bagaimana cara mengetahui daftar merchant yang menerima UVGC?
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Daftar lengkap merchant partner tersedia di halaman <a href="index.html#merchant" style="color:var(--uvgc-blue);font-weight:600;">Merchant</a> di website ini, serta di dalam aplikasi Ultra Voucher pada menu "Around You". Merchant mencakup lebih dari 20.000 outlet di seluruh Indonesia.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo"><img src="https://img.mailinblue.com/1873598/images/content_library/original/6a72f916a777b4dd48714d03.png" alt="UVGC"></div>
+      <p class="footer-desc">Solusi gifting dan reward korporat yang fleksibel untuk berbagai macam kebutuhan.</p>
+      <p class="footer-addr">Jl. Tebet Barat IX No.35BB, RT4/RW4, Tebet Barat, Kecamatan Tebet, Kota Jakarta Selatan, DKI Jakarta 12810</p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" class="footer-social" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" class="footer-social" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" class="footer-social" aria-label="X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      </div>
+    </div>
+    <div class="f-col"><h4>Informasi</h4><ul class="f-links"><li><a href="uvgc-cara-pakai.html" class="active">Cara Pakai</a></li><li><a href="uvgc-cara-order.html">Cara Order</a></li><li><a href="uvgc-merchant.html">Merchant</a></li><li><a href="uvgc-program.html">Program</a></li><li><a href="uvgc-artikel.html">Artikel</a></li></ul></div>
+    <div class="f-col"><h4>Perusahaan</h4><ul class="f-links"><li><a href="#">Ultra Corporation</a></li><li><a href="#">Tentang Kami</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Ultra Voucher Gift Card. Bagian dari Ultra Corporation.</span>
+    <div class="fb-links"><a href="#">Kebijakan Privasi</a><a href="#">Syarat dan Ketentuan</a></div>
+  </div>
+</footer>
+
+<!-- Custom Chat Widget -->
+<style>
+.chat-bubble { position: fixed; bottom: 28px; right: 28px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.chat-greeting { background: #fff; border-radius: 16px; box-shadow: 0 8px 40px rgba(0,52,112,0.18), 0 2px 8px rgba(0,0,0,0.08); width: 300px; overflow: hidden; transform: translateY(10px) scale(0.96); opacity: 0; pointer-events: none; transition: all .3s cubic-bezier(.4,0,.2,1); transform-origin: bottom right; }
+.chat-greeting.visible { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+.chat-greeting-header { background: var(--uvgc-blue-deep); padding: 16px 18px; display: flex; align-items: center; gap: 12px; }
+.chat-agent-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--uv-green) 0%, var(--uvgc-blue) 100%); display: flex; align-items: center; justify-content: center; font-family: var(--F); font-weight: 800; font-size: 16px; color: #fff; flex-shrink: 0; border: 2px solid rgba(255,255,255,0.3); }
+.chat-agent-name { font-family: var(--F); font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+.chat-agent-status { display: flex; align-items: center; gap: 5px; font-family: var(--FB); font-size: 11px; color: rgba(255,255,255,0.65); }
+.chat-status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--uv-green); animation: pulse-dot 2s infinite; }
+@keyframes pulse-dot { 0%,100%{box-shadow:0 0 0 2px rgba(0,154,70,0.3)}50%{box-shadow:0 0 0 4px rgba(0,154,70,0.15)} }
+.chat-close-btn { background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.5); padding: 4px; display: flex; align-items: center; justify-content: center; border-radius: 6px; transition: all .2s; margin-left: auto; }
+.chat-close-btn:hover { color: #fff; background: rgba(255,255,255,0.1); }
+.chat-greeting-body { padding: 16px 18px 18px; }
+.chat-bubble-msg,.chat-bubble-msg-2 { background: #f5f7fa; border-radius: 12px 12px 12px 4px; padding: 11px 14px; margin-bottom: 10px; font-family: var(--FB); font-size: 13px; color: var(--text-primary); line-height: 1.6; }
+.chat-bubble-msg-2 { animation: slide-msg .3s .4s both; }
+@keyframes slide-msg{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.chat-start-btn { width: 100%; padding: 11px; background: var(--uv-green); color: #fff; font-family: var(--F); font-size: 13.5px; font-weight: 700; border: none; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 16px rgba(0,154,70,0.28); transition: all .2s; }
+.chat-start-btn:hover { background: var(--uv-green-deep); transform: translateY(-1px); }
+.chat-powered { text-align: center; margin-top: 10px; font-family: var(--FB); font-size: 10px; color: var(--neutral-500); }
+.chat-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--uvgc-blue-deep); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(0,52,112,0.35); transition: all .25s; position: relative; }
+.chat-btn:hover { transform: scale(1.08); }
+.chat-btn .icon-chat { display: flex; }
+.chat-btn .icon-close { display: none; }
+.chat-btn.open .icon-chat { display: none; }
+.chat-btn.open .icon-close { display: flex; }
+.chat-notif { position: absolute; top: -2px; right: -2px; width: 18px; height: 18px; border-radius: 50%; background: #ef4444; border: 2px solid #fff; display: flex; align-items: center; justify-content: center; font-family: var(--F); font-size: 10px; font-weight: 800; color: #fff; animation: bounce-in .4s 1.5s both; }
+@keyframes bounce-in{0%{transform:scale(0)}60%{transform:scale(1.2)}100%{transform:scale(1)}}
+</style>
+<div class="chat-bubble" id="chatBubble">
+  <div class="chat-greeting" id="chatGreeting">
+    <div class="chat-greeting-header">
+      <div class="chat-agent-avatar">UV</div>
+      <div><div class="chat-agent-name">Tim Ultra Voucher</div><div class="chat-agent-status"><span class="chat-status-dot"></span>Online sekarang</div></div>
+      <button class="chat-close-btn" onclick="toggleChat()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="chat-greeting-body">
+      <div class="chat-bubble-msg">👋 <strong>Halo! Selamat datang di Ultra Voucher Gift Card.</strong></div>
+      <div class="chat-bubble-msg-2">Ada pertanyaan seputar cara pakai UVGC? Tim kami siap membantu! 🎁</div>
+      <button class="chat-start-btn" onclick="startChat()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Mulai Chat dengan CS</button>
+      <div class="chat-powered">Powered by Tawk.to</div>
+    </div>
+  </div>
+  <button class="chat-btn" id="chatBtn" onclick="toggleChat()">
+    <span class="icon-chat"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+    <span class="icon-close"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+    <span class="chat-notif" id="chatNotif">1</span>
+  </button>
+</div>
+
+<script>
+// Nav scroll shadow
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.boxShadow = window.scrollY > 40 ? '0 2px 24px rgba(0,0,0,0.08)' : 'none';
+});
+
+// Smooth scroll CTA nav
+document.querySelector('.nav-cta').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('kontak').scrollIntoView({ behavior: 'smooth' });
+});
+
+// Method tabs
+function switchMethod(idx) {
+  document.querySelectorAll('.method-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+  document.querySelectorAll('.method-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
+}
+
+// FAQ accordion
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// Form validation
+function submitForm() {
+  let valid = true;
+  const fields = [
+    { id: 'f-nama', err: 'err-nama', type: 'text' },
+    { id: 'f-perusahaan', err: 'err-perusahaan', type: 'text' },
+    { id: 'f-email', err: 'err-email', type: 'email' },
+    { id: 'f-wa', err: 'err-wa', type: 'text' },
+  ];
+  fields.forEach(f => {
+    const el = document.getElementById(f.id);
+    if (!el) return;
+    const val = el.value.trim();
+    let ok = val.length > 0;
+    if (f.type === 'email') ok = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(val);
+    el.classList.toggle('invalid', !ok);
+    if (!ok) valid = false;
+  });
+  if (valid) {
+    const btn = document.querySelector('.btn-form-green');
+    btn.textContent = '✓ Pesan Terkirim!';
+    btn.style.background = 'var(--uv-green-deep)';
+    btn.disabled = true;
+  }
+}
+document.addEventListener('DOMContentLoaded', () => {
+  ['f-nama','f-perusahaan','f-email','f-wa'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('input', () => el.classList.remove('invalid'));
+      if (id === 'f-email') {
+        el.addEventListener('blur', () => {
+          const v = el.value.trim();
+          if (v.length > 0) {
+            const ok = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(v);
+            el.classList.toggle('invalid', !ok);
+          }
+        });
+      }
+    }
+  });
+});
+
+// Step hover image switch
+function setStep(panelId, stepIdx) {
+  // Update step highlight
+  for (let i = 0; i < 4; i++) {
+    const step = document.getElementById(panelId + '-step-' + i);
+    if (step) step.classList.toggle('active-step', i === stepIdx);
+  }
+  // Swap image — hide all, show only the one matching stepIdx
+  for (let i = 0; i < 4; i++) {
+    const img = document.getElementById(panelId + '-img-' + i);
+    if (!img) continue;
+    if (i === stepIdx) {
+      img.classList.add('img-active');
+    } else {
+      img.classList.remove('img-active');
+    }
+  }
+}
+
+// Chat widget
+setTimeout(() => {
+  document.getElementById('chatGreeting').classList.add('visible');
+  document.getElementById('chatBtn').classList.add('open');
+}, 4000);
+function toggleChat() {
+  const g = document.getElementById('chatGreeting');
+  const btn = document.getElementById('chatBtn');
+  const notif = document.getElementById('chatNotif');
+  const isOpen = g.classList.contains('visible');
+  g.classList.toggle('visible', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+  if (!isOpen && notif) notif.style.display = 'none';
+}
+function startChat() {
+  if (typeof Tawk_API !== 'undefined' && Tawk_API.maximize) Tawk_API.maximize();
+  document.getElementById('chatGreeting').classList.remove('visible');
+  document.getElementById('chatBtn').classList.remove('open');
+}
+</script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+Tawk_API.onLoad = function() { Tawk_API.hideWidget(); };
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true; s1.src='https://embed.tawk.to/6a7c1b55f2dd231d4b747223/1jvqclhvk';
+s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+</body>
+</html>
