@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artikel — Ultra Voucher Gift Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --uvgc-blue: #005eb2; --uvgc-blue-deep: #003470; --uvgc-blue-deeper: #001f4a;
+  --uvgc-gold: #dfaf00; --uvgc-gold-light: #ffd876;
+  --uv-green: #009a46; --uv-green-deep: #00672f; --uv-green-pale: #d2ffe7;
+  --uv-amber: #fbaa19; --uv-amber-mid: #ec9904; --uv-amber-pale: #fef1d9;
+  --text-primary: #373737; --text-secondary: #5c5c5c;
+  --neutral-100: #e6e6e6; --neutral-200: #d3d3d3; --neutral-500: #979797;
+  --base-white: #fafafa; --bg-white: #ffffff;
+  --F: 'Poppins', sans-serif; --FB: 'Inter', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--FB); color: var(--text-primary); background: var(--bg-white); overflow-x: hidden; }
+
+.accent-bar { position: fixed; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, #005eb2 0%, #dfaf00 50%, #009a46 100%); z-index: 300; opacity: 0.7; }
+
+nav { position: fixed; top: 0; left: 4px; right: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(20px); border-bottom: 2px solid var(--uvgc-gold); height: 68px; display: flex; align-items: center; padding: 0 6%; justify-content: space-between; }
+.nav-logo img { height: 40px; width: auto; display: block; }
+.nav-menu { display: flex; align-items: center; gap: 28px; list-style: none; }
+.nav-menu a { font-family: var(--F); font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color .2s; }
+.nav-menu a:hover, .nav-menu a.active { color: var(--uvgc-blue); }
+.nav-cta { background: var(--uv-green); color: #fff !important; font-weight: 600 !important; padding: 9px 20px; border-radius: 8px; transition: background .2s; }
+.nav-cta:hover { background: var(--uv-green-deep) !important; }
+
+.gold-divider { height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(223,175,0,0.12) 20%, rgba(223,175,0,0.32) 50%, rgba(223,175,0,0.12) 80%, transparent 100%); }
+
+/* MINI HERO */
+.mini-hero { padding: 120px 6% 72px; background: var(--uvgc-blue-deep); position: relative; overflow: hidden; }
+.mini-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(0,154,70,0.06) 1.5px, transparent 1.5px); background-size: 36px 36px; pointer-events: none; }
+.mini-hero-arc { position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.05); pointer-events: none; }
+.mini-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+.mini-hero-eyebrow { font-family: var(--F); font-size: 11.5px; font-weight: 700; color: var(--uvgc-gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; display: block; }
+.mini-hero h1 { font-family: var(--F); font-weight: 800; font-size: clamp(28px,3.5vw,44px); color: #fff; line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 14px; }
+.mini-hero h1 span { color: var(--uvgc-gold); }
+.mini-hero p { font-family: var(--FB); font-size: 16px; color: rgba(255,255,255,0.65); max-width: 520px; line-height: 1.75; }
+
+/* MAIN CONTENT */
+.main { max-width: 1200px; margin: 0 auto; padding: 64px 6% 80px; }
+
+/* FEATURED ARTICLE */
+.featured { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-bottom: 64px; background: var(--base-white); border: 1px solid var(--neutral-100); border-radius: 20px; overflow: hidden; text-decoration: none; color: inherit; transition: box-shadow .2s, transform .2s; }
+.featured:hover { box-shadow: 0 8px 40px rgba(0,52,112,0.1); transform: translateY(-3px); }
+.featured-img { width: 100%; aspect-ratio: 16/9; object-fit: contain; display: block; background: var(--base-white); }
+.featured-body { padding: 36px 36px 36px 0; }
+.featured-badge { display: inline-flex; align-items: center; gap: 6px; font-family: var(--F); font-size: 11px; font-weight: 700; background: rgba(0,94,178,0.08); color: var(--uvgc-blue); padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; }
+.featured-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--uvgc-blue); }
+.featured-title { font-family: var(--F); font-weight: 700; font-size: clamp(20px,2vw,28px); color: var(--text-primary); line-height: 1.3; letter-spacing: -0.02em; margin-bottom: 12px; }
+.featured-excerpt { font-family: var(--FB); font-size: 14.5px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px; }
+.featured-meta { font-family: var(--FB); font-size: 12px; color: var(--neutral-500); margin-bottom: 20px; }
+.read-more { display: inline-flex; align-items: center; gap: 6px; font-family: var(--F); font-size: 13px; font-weight: 600; color: var(--uvgc-blue); text-decoration: none; transition: gap .2s; }
+.featured:hover .read-more { gap: 10px; }
+
+/* ARTICLE GRID */
+.grid-label { font-family: var(--F); font-size: 11.5px; font-weight: 700; color: var(--neutral-500); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px; }
+.article-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 56px; }
+.article-card { background: var(--bg-white); border: 1px solid var(--neutral-100); border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: border-color .2s, transform .2s, box-shadow .2s; }
+.article-card:hover { border-color: rgba(0,94,178,0.2); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,52,112,0.08); }
+.article-card-img { width: 100%; aspect-ratio: 16/9; object-fit: contain; display: block; background: var(--base-white); }
+.article-card-body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.article-card-cat { font-family: var(--F); font-size: 10.5px; font-weight: 700; color: var(--uvgc-blue); letter-spacing: 0.08em; text-transform: uppercase; }
+.article-card-title { font-family: var(--F); font-size: 15px; font-weight: 700; color: var(--text-primary); line-height: 1.4; letter-spacing: -0.01em; }
+.article-card-excerpt { font-family: var(--FB); font-size: 13px; color: var(--text-secondary); line-height: 1.7; flex: 1; }
+.article-card-meta { font-family: var(--FB); font-size: 11.5px; color: var(--neutral-500); padding-top: 10px; border-top: 1px solid var(--neutral-100); margin-top: 4px; }
+
+/* PAGINATION */
+.pagination { display: flex; align-items: center; justify-content: center; gap: 6px; }
+.page-btn { width: 38px; height: 38px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-family: var(--F); font-size: 13px; font-weight: 600; border: 1.5px solid var(--neutral-200); background: #fff; color: var(--text-secondary); cursor: pointer; transition: all .2s; text-decoration: none; }
+.page-btn:hover { border-color: var(--uvgc-blue); color: var(--uvgc-blue); }
+.page-btn.active { background: var(--uvgc-blue); border-color: var(--uvgc-blue); color: #fff; }
+.page-btn.arrow { font-size: 16px; }
+
+/* FOOTER */
+footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
+.footer-logo img { height: 40px; display: block; margin-bottom: 10px; background: #fff; border-radius: 8px; padding: 6px 12px; }
+.footer-desc { font-family: var(--FB); font-size: 12.5px; color: rgba(255,255,255,0.65); line-height: 1.75; max-width: 240px; }
+.footer-addr { font-family: var(--FB); font-size: 11.5px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 240px; margin-top: 12px; }
+.footer-socials { display: flex; gap: 10px; margin-top: 18px; }
+.footer-social { width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.75); text-decoration: none; transition: all .2s; }
+.footer-social:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.footer-top { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 24px; }
+.f-col h4 { font-family: var(--F); font-size: 10.5px; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
+.f-links { list-style: none; }
+.f-links li { margin-bottom: 9px; }
+.f-links a { font-family: var(--FB); font-size: 12.5px; color: rgba(255,255,255,0.65); text-decoration: none; transition: color .2s; }
+.f-links a:hover { color: var(--uvgc-gold); }
+.footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-family: var(--FB); font-size: 11.5px; color: rgba(255,255,255,0.5); }
+.fb-links { display: flex; gap: 20px; }
+.fb-links a { color: rgba(255,255,255,0.5); text-decoration: none; }
+
+/* CHAT */
+.chat-bubble { position: fixed; bottom: 28px; right: 28px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.chat-greeting { background: #fff; border-radius: 16px; box-shadow: 0 8px 40px rgba(0,52,112,0.18); width: 300px; overflow: hidden; transform: translateY(10px) scale(0.96); opacity: 0; pointer-events: none; transition: all .3s cubic-bezier(.4,0,.2,1); transform-origin: bottom right; }
+.chat-greeting.visible { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+.chat-greeting-header { background: var(--uvgc-blue-deep); padding: 16px 18px; display: flex; align-items: center; gap: 12px; }
+.chat-agent-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--uv-green) 0%, var(--uvgc-blue) 100%); display: flex; align-items: center; justify-content: center; font-family: var(--F); font-weight: 800; font-size: 16px; color: #fff; flex-shrink: 0; }
+.chat-agent-name { font-family: var(--F); font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+.chat-agent-status { display: flex; align-items: center; gap: 5px; font-family: var(--FB); font-size: 11px; color: rgba(255,255,255,0.65); }
+.chat-status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--uv-green); animation: pulse-dot 2s infinite; }
+@keyframes pulse-dot { 0%,100%{box-shadow:0 0 0 2px rgba(0,154,70,0.3)}50%{box-shadow:0 0 0 4px rgba(0,154,70,0.15)} }
+.chat-close-btn { background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.5); padding: 4px; display: flex; border-radius: 6px; margin-left: auto; transition: all .2s; }
+.chat-greeting-body { padding: 16px 18px 18px; }
+.chat-bubble-msg, .chat-bubble-msg-2 { background: #f5f7fa; border-radius: 12px 12px 12px 4px; padding: 11px 14px; margin-bottom: 10px; font-family: var(--FB); font-size: 13px; color: var(--text-primary); line-height: 1.6; }
+.chat-bubble-msg-2 { animation: slide-msg .3s .4s both; }
+@keyframes slide-msg{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.chat-start-btn { width: 100%; padding: 11px; background: var(--uv-green); color: #fff; font-family: var(--F); font-size: 13.5px; font-weight: 700; border: none; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all .2s; }
+.chat-start-btn:hover { background: var(--uv-green-deep); }
+.chat-powered { text-align: center; margin-top: 10px; font-family: var(--FB); font-size: 10px; color: var(--neutral-500); }
+.chat-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--uvgc-blue-deep); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(0,52,112,0.35); transition: all .25s; position: relative; }
+.chat-btn:hover { transform: scale(1.08); }
+.chat-btn .icon-chat { display: flex; } .chat-btn .icon-close { display: none; }
+.chat-btn.open .icon-chat { display: none; } .chat-btn.open .icon-close { display: flex; }
+.chat-notif { position: absolute; top: -2px; right: -2px; width: 18px; height: 18px; border-radius: 50%; background: #ef4444; border: 2px solid #fff; display: flex; align-items: center; justify-content: center; font-family: var(--F); font-size: 10px; font-weight: 800; color: #fff; animation: bounce-in .4s 1.5s both; }
+@keyframes bounce-in{0%{transform:scale(0)}60%{transform:scale(1.2)}100%{transform:scale(1)}}
+
+@media(max-width:960px){
+  .featured { grid-template-columns: 1fr; }
+  
+  .featured-body { padding: 24px; }
+  .article-grid { grid-template-columns: 1fr 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:640px){
+  .article-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="accent-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html"><img src="https://img.mailinblue.com/1873598/images/content_library/original/6a72f916a777b4dd48714d03.png" alt="UVGC"></a>
+  <ul class="nav-menu">
+    <li><a href="uvgc-cara-pakai.html">Cara Pakai</a></li>
+    <li><a href="uvgc-cara-order.html">Cara Order</a></li>
+    <li><a href="uvgc-merchant.html">Merchant</a></li>
+    <li><a href="uvgc-program.html">Program</a></li>
+    <li><a href="uvgc-cara-order.html#kontak" class="nav-cta">Hubungi Kami</a></li>
+  </ul>
+</nav>
+
+<!-- MINI HERO -->
+<section class="mini-hero">
+  <div class="mini-hero-arc"></div>
+  <div class="mini-hero-arc" style="width:180px;height:180px;top:auto;bottom:-60px;left:-60px;right:auto;"></div>
+  <div class="mini-hero-inner">
+    <span class="mini-hero-eyebrow">Artikel</span>
+    <h1>Panduan &amp; Insight <span>Seputar Gift Card</span></h1>
+    <p>Temukan informasi seputar gifting, reward korporat, dan cara memaksimalkan Ultra Voucher Gift Card.</p>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- FEATURED -->
+  <a class="featured" href="uvgc-artikel-detail.html">
+    <img class="featured-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Kenali Apa itu Gift Card">
+    <div class="featured-body">
+      <div class="featured-title">Kenali Apa itu Gift Card: Kegunaan dan Manfaatnya</div>
+      <div class="featured-meta">14 Agustus 2026 &nbsp;·&nbsp; 5 menit baca</div>
+      <span class="read-more">Baca Selengkapnya <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </div>
+  </a>
+
+  <!-- GRID -->
+  <div class="grid-label">Artikel Lainnya</div>
+  <div class="article-grid">
+
+    <a class="article-card" href="uvgc-artikel-detail.html">
+      <img class="article-card-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Desain Gift Card">
+      <div class="article-card-body">
+        <div class="article-card-title">10 Contoh Desain Gift Card Custom untuk Berbagai Momen</div>
+        <div class="article-card-meta">12 Agustus 2026 &nbsp;·&nbsp; 4 menit baca</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="uvgc-artikel-detail.html">
+      <img class="article-card-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Cara Redeem Gift Card">
+      <div class="article-card-body">
+        <div class="article-card-title">Bagaimana Cara Redeem Gift Card? Ikuti Langkahnya di Sini!</div>
+        <div class="article-card-meta">10 Agustus 2026 &nbsp;·&nbsp; 3 menit baca</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="uvgc-artikel-detail.html">
+      <img class="article-card-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Corporate Gift Set">
+      <div class="article-card-body">
+        <div class="article-card-title">Ide Corporate Gift Set Terbaik untuk Karyawan dan Klien</div>
+        <div class="article-card-meta">8 Agustus 2026 &nbsp;·&nbsp; 5 menit baca</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="uvgc-artikel-detail.html">
+      <img class="article-card-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Virtual Gift Card">
+      <div class="article-card-body">
+        <div class="article-card-title">Mengenal Konsep Virtual Gift Card dan Cara Pakainya</div>
+        <div class="article-card-meta">6 Agustus 2026 &nbsp;·&nbsp; 4 menit baca</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="uvgc-artikel-detail.html">
+      <img class="article-card-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Corporate Gifting">
+      <div class="article-card-body">
+        <div class="article-card-title">Strategi Corporate Gifting yang Hemat dan Mudah Dikelola</div>
+        <div class="article-card-meta">4 Agustus 2026 &nbsp;·&nbsp; 6 menit baca</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="uvgc-artikel-detail.html">
+      <img class="article-card-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Maksimalkan UVGC">
+      <div class="article-card-body">
+        <div class="article-card-title">Cara Maksimalkan UVGC: Dari Belanja hingga Investasi Emas</div>
+        <div class="article-card-meta">2 Agustus 2026 &nbsp;·&nbsp; 4 menit baca</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="article-grid" id="page-2" style="display:none;">
+
+    <a class="article-card" href="uvgc-artikel-detail.html">
+      <img class="article-card-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Artikel">
+      <div class="article-card-body">
+        <div class="article-card-title">Apa Bedanya Gift Card dan Voucher? Ini Penjelasannya</div>
+        <div class="article-card-meta">30 Juli 2026 &nbsp;·&nbsp; 3 menit baca</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="uvgc-artikel-detail.html">
+      <img class="article-card-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Artikel">
+      <div class="article-card-body">
+        <div class="article-card-title">5 Alasan Karyawan Lebih Suka Gift Card daripada Bonus Tunai</div>
+        <div class="article-card-meta">28 Juli 2026 &nbsp;·&nbsp; 4 menit baca</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="uvgc-artikel-detail.html">
+      <img class="article-card-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Artikel">
+      <div class="article-card-body">
+        <div class="article-card-title">Panduan Lengkap Memilih Nominal Gift Card untuk Program Reward</div>
+        <div class="article-card-meta">26 Juli 2026 &nbsp;·&nbsp; 5 menit baca</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="uvgc-artikel-detail.html">
+      <img class="article-card-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Artikel">
+      <div class="article-card-body">
+        <div class="article-card-title">Gift Card untuk Hampers Lebaran: Praktis, Berkesan, dan Fleksibel</div>
+        <div class="article-card-meta">24 Juli 2026 &nbsp;·&nbsp; 3 menit baca</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="uvgc-artikel-detail.html">
+      <img class="article-card-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Artikel">
+      <div class="article-card-body">
+        <div class="article-card-title">Cara Distribusi Gift Card Korporat ke Ratusan Karyawan Sekaligus</div>
+        <div class="article-card-meta">22 Juli 2026 &nbsp;·&nbsp; 4 menit baca</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="uvgc-artikel-detail.html">
+      <img class="article-card-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Artikel">
+      <div class="article-card-body">
+        <div class="article-card-title">Apakah Gift Card Bisa Kedaluwarsa? Ini yang Perlu Kamu Tahu</div>
+        <div class="article-card-meta">20 Juli 2026 &nbsp;·&nbsp; 3 menit baca</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="article-grid" id="page-3" style="display:none;">
+
+    <a class="article-card" href="uvgc-artikel-detail.html">
+      <img class="article-card-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Artikel">
+      <div class="article-card-body">
+        <div class="article-card-title">Tren Corporate Gifting 2026: Apa yang Berubah?</div>
+        <div class="article-card-meta">18 Juli 2026 &nbsp;·&nbsp; 5 menit baca</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="uvgc-artikel-detail.html">
+      <img class="article-card-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Artikel">
+      <div class="article-card-body">
+        <div class="article-card-title">Kenapa UVGC Cocok untuk Program Loyalitas Pelanggan?</div>
+        <div class="article-card-meta">16 Juli 2026 &nbsp;·&nbsp; 4 menit baca</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="uvgc-artikel-detail.html">
+      <img class="article-card-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Artikel">
+      <div class="article-card-body">
+        <div class="article-card-title">Gift Card sebagai Insentif Sales: Lebih Efektif dari Komisi Tunai?</div>
+        <div class="article-card-meta">14 Juli 2026 &nbsp;·&nbsp; 4 menit baca</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="uvgc-artikel-detail.html">
+      <img class="article-card-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Artikel">
+      <div class="article-card-body">
+        <div class="article-card-title">Cara Pakai UVGC di Alfamart: Panduan Langkah demi Langkah</div>
+        <div class="article-card-meta">12 Juli 2026 &nbsp;·&nbsp; 3 menit baca</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="uvgc-artikel-detail.html">
+      <img class="article-card-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Artikel">
+      <div class="article-card-body">
+        <div class="article-card-title">ROI Program Reward: Bagaimana Mengukur Dampaknya?</div>
+        <div class="article-card-meta">10 Juli 2026 &nbsp;·&nbsp; 6 menit baca</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="uvgc-artikel-detail.html">
+      <img class="article-card-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ad4fda8a71b3296806628.png" alt="Artikel">
+      <div class="article-card-body">
+        <div class="article-card-title">Ultra Voucher Gift Card vs Gift Card Bank: Mana yang Lebih Fleksibel?</div>
+        <div class="article-card-meta">8 Juli 2026 &nbsp;·&nbsp; 5 menit baca</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- PAGINATION -->
+  <div class="pagination">
+    <button class="page-btn arrow" onclick="goPage(currentPage-1)">‹</button>
+    <button class="page-btn active" id="pg-1" onclick="goPage(1)">1</button>
+    <button class="page-btn" id="pg-2" onclick="goPage(2)">2</button>
+    <button class="page-btn" id="pg-3" onclick="goPage(3)">3</button>
+    <button class="page-btn arrow" onclick="goPage(currentPage+1)">›</button>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo"><img src="https://img.mailinblue.com/1873598/images/content_library/original/6a72f916a777b4dd48714d03.png" alt="UVGC"></div>
+      <p class="footer-desc">Solusi gifting dan reward korporat yang fleksibel untuk berbagai macam kebutuhan.</p>
+      <p class="footer-addr">Jl. Tebet Barat IX No.35BB, RT4/RW4, Tebet Barat, Kecamatan Tebet, Kota Jakarta Selatan, DKI Jakarta 12810</p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" class="footer-social"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" class="footer-social"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" class="footer-social"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      </div>
+    </div>
+    <div class="f-col"><h4>Informasi</h4><ul class="f-links"><li><a href="uvgc-cara-pakai.html">Cara Pakai</a></li><li><a href="uvgc-cara-order.html">Cara Order</a></li><li><a href="uvgc-merchant.html">Merchant</a></li><li><a href="uvgc-program.html">Program</a></li><li><a href="uvgc-artikel.html">Artikel</a></li></ul></div>
+    <div class="f-col"><h4>Perusahaan</h4><ul class="f-links"><li><a href="#">Ultra Corporation</a></li><li><a href="#">Tentang Kami</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Ultra Voucher Gift Card. Bagian dari Ultra Corporation.</span>
+    <div class="fb-links"><a href="#">Kebijakan Privasi</a><a href="#">Syarat dan Ketentuan</a></div>
+  </div>
+</footer>
+
+<!-- CHAT -->
+<div class="chat-bubble" id="chatBubble">
+  <div class="chat-greeting" id="chatGreeting">
+    <div class="chat-greeting-header">
+      <div class="chat-agent-avatar">UV</div>
+      <div><div class="chat-agent-name">Tim Ultra Voucher</div><div class="chat-agent-status"><span class="chat-status-dot"></span>Online sekarang</div></div>
+      <button class="chat-close-btn" onclick="toggleChat()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="chat-greeting-body">
+      <div class="chat-bubble-msg">👋 <strong>Halo! Selamat datang di Ultra Voucher Gift Card.</strong></div>
+      <div class="chat-bubble-msg-2">Ada pertanyaan seputar UVGC? Tim kami siap membantu! 🎁</div>
+      <button class="chat-start-btn" onclick="startChat()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Mulai Chat dengan CS</button>
+      <div class="chat-powered">Powered by Tawk.to</div>
+    </div>
+  </div>
+  <button class="chat-btn" id="chatBtn" onclick="toggleChat()">
+    <span class="icon-chat"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+    <span class="icon-close"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+    <span class="chat-notif" id="chatNotif">1</span>
+  </button>
+</div>
+
+<script>
+let currentPage = 1;
+const totalPages = 3;
+
+function goPage(n) {
+  if (n < 1 || n > totalPages) return;
+  currentPage = n;
+
+  // Toggle featured (only on page 1)
+  const featured = document.querySelector('.featured');
+  const gridLabel = document.querySelector('.grid-label');
+  if (featured) featured.style.display = n === 1 ? 'grid' : 'none';
+  if (gridLabel) gridLabel.style.display = n === 1 ? 'block' : 'none';
+
+  // Toggle page grids
+  const page1Grid = document.querySelector('.article-grid');
+  if (page1Grid) page1Grid.style.display = n === 1 ? 'grid' : 'none';
+  const p2 = document.getElementById('page-2');
+  const p3 = document.getElementById('page-3');
+  if (p2) p2.style.display = n === 2 ? 'grid' : 'none';
+  if (p3) p3.style.display = n === 3 ? 'grid' : 'none';
+
+  // Update active pill
+  [1,2,3].forEach(i => {
+    const btn = document.getElementById('pg-'+i);
+    if (btn) btn.classList.toggle('active', i === n);
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const mainEl = document.querySelector('.main');
+  if (mainEl) mainEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.boxShadow = window.scrollY > 40 ? '0 2px 24px rgba(0,0,0,0.08)' : 'none';
+});
+setTimeout(() => { document.getElementById('chatGreeting').classList.add('visible'); document.getElementById('chatBtn').classList.add('open'); }, 4000);
+function toggleChat() {
+  const g=document.getElementById('chatGreeting'), btn=document.getElementById('chatBtn'), notif=document.getElementById('chatNotif');
+  const isOpen=g.classList.contains('visible');
+  g.classList.toggle('visible',!isOpen); btn.classList.toggle('open',!isOpen);
+  if(!isOpen && notif) notif.style.display='none';
+}
+function startChat() {
+  if(typeof Tawk_API!=='undefined' && Tawk_API.maximize) Tawk_API.maximize();
+  document.getElementById('chatGreeting').classList.remove('visible');
+  document.getElementById('chatBtn').classList.remove('open');
+}
+</script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+Tawk_API.onLoad = function() { Tawk_API.hideWidget(); };
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true; s1.src='https://embed.tawk.to/6a7c1b55f2dd231d4b747223/1jvqclhvk';
+s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+</body>
+</html>

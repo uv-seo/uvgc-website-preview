@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daftar Merchant — Ultra Voucher Gift Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --uvgc-blue: #005eb2; --uvgc-blue-deep: #003470; --uvgc-blue-deeper: #001f4a;
+  --uvgc-gold: #dfaf00; --uvgc-gold-light: #ffd876;
+  --uv-green: #009a46; --uv-green-deep: #00672f; --uv-green-pale: #d2ffe7;
+  --uv-amber: #fbaa19; --uv-amber-mid: #ec9904; --uv-amber-pale: #fef1d9;
+  --text-primary: #373737; --text-secondary: #5c5c5c;
+  --neutral-100: #e6e6e6; --neutral-200: #d3d3d3; --neutral-500: #979797;
+  --base-white: #fafafa; --bg-white: #ffffff;
+  --F: 'Poppins', sans-serif; --FB: 'Inter', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--FB); color: var(--text-primary); background: var(--bg-white); overflow-x: hidden; }
+
+/* ── ACCENT BAR ── */
+.accent-bar { position: fixed; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, #005eb2 0%, #dfaf00 50%, #009a46 100%); z-index: 300; opacity: 0.7; }
+
+/* ── NAV ── */
+nav { position: fixed; top: 0; left: 4px; right: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(20px); border-bottom: 2px solid var(--uvgc-gold); height: 68px; display: flex; align-items: center; padding: 0 6%; justify-content: space-between; }
+.nav-logo img { height: 40px; width: auto; display: block; }
+.nav-menu { display: flex; align-items: center; gap: 28px; list-style: none; }
+.nav-menu a { font-family: var(--F); font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color .2s; }
+.nav-menu a:hover { color: var(--uvgc-blue); }
+.nav-cta { background: var(--uv-green); color: #fff !important; font-weight: 600 !important; padding: 9px 20px; border-radius: 8px; transition: background .2s, transform .15s; }
+.nav-cta:hover { background: var(--uv-green-deep) !important; transform: translateY(-1px); }
+
+/* ── GOLD DIVIDER ── */
+.gold-divider { height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(223,175,0,0.12) 20%, rgba(223,175,0,0.32) 50%, rgba(223,175,0,0.12) 80%, transparent 100%); }
+
+/* ── MINI HERO ── */
+.mini-hero { padding: 120px 6% 72px; background: var(--uvgc-blue-deep); position: relative; overflow: hidden; }
+.mini-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(0,154,70,0.06) 1.5px, transparent 1.5px); background-size: 36px 36px; pointer-events: none; }
+.mini-hero-arc { position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.05); pointer-events: none; }
+.mini-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+.mini-hero-eyebrow { font-family: var(--F); font-size: 11.5px; font-weight: 700; color: var(--uvgc-gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; display: block; }
+.mini-hero h1 { font-family: var(--F); font-weight: 800; font-size: clamp(28px,3.5vw,44px); color: #fff; line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 14px; }
+.mini-hero h1 span { color: var(--uvgc-gold); }
+.mini-hero p { font-family: var(--FB); font-size: 16px; color: rgba(255,255,255,0.65); max-width: 520px; line-height: 1.75; }
+
+/* ── FILTER BAR ── */
+.filter-wrap { position: sticky; top: 68px; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid var(--neutral-100); padding: 16px 6%; box-shadow: 0 2px 16px rgba(0,0,0,0.04); }
+.filter-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+.search-box { position: relative; }
+.search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--neutral-500); pointer-events: none; }
+.search-input { width: 100%; padding: 11px 14px 11px 42px; border: 1.5px solid var(--neutral-200); border-radius: 10px; font-family: var(--FB); font-size: 14px; color: var(--text-primary); background: var(--base-white); outline: none; transition: border .2s; }
+.search-input:focus { border-color: var(--uvgc-blue); box-shadow: 0 0 0 3px rgba(0,94,178,0.1); }
+.search-input::placeholder { color: #ababab; }
+.filter-pills { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.filter-pill { padding: 7px 16px; border-radius: 100px; border: 1.5px solid var(--neutral-200); background: #fff; font-family: var(--F); font-size: 12.5px; font-weight: 600; color: var(--text-secondary); cursor: pointer; transition: all .18s; white-space: nowrap; }
+.filter-pill:hover { border-color: var(--uvgc-blue); color: var(--uvgc-blue); }
+.filter-pill.active { background: var(--uvgc-blue); border-color: var(--uvgc-blue); color: #fff; }
+.filter-count { font-family: var(--FB); font-size: 12.5px; color: var(--neutral-500); margin-left: auto; white-space: nowrap; }
+
+/* ── MERCHANT SECTION ── */
+.merchant-section { max-width: 1200px; margin: 0 auto; padding: 56px 6%; }
+.cat-group { margin-bottom: 56px; }
+.cat-group:last-child { margin-bottom: 0; }
+.cat-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+.cat-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.cat-title { font-family: var(--F); font-size: 17px; font-weight: 700; color: var(--text-primary); }
+.cat-count { font-family: var(--FB); font-size: 12px; color: var(--neutral-500); margin-left: 4px; }
+.cat-line { flex: 1; height: 1px; background: var(--neutral-100); }
+
+/* ── MERCHANT CALLOUT ── */
+.merchant-callout { display: flex; gap: 12px; align-items: flex-start; background: rgba(0,94,178,0.06); border: 1px solid rgba(0,94,178,0.15); border-radius: 12px; padding: 14px 16px; margin-bottom: 36px; }
+.merchant-callout-icon { flex-shrink: 0; margin-top: 2px; color: var(--uvgc-blue); }
+.merchant-callout-title { font-family: var(--F); font-size: 13px; font-weight: 600; color: var(--uvgc-blue); margin-bottom: 10px; }
+.merchant-callout-legend { display: flex; gap: 16px; flex-wrap: wrap; }
+.merchant-legend-item { display: flex; align-items: center; gap: 7px; font-family: var(--FB); font-size: 12px; color: var(--text-secondary); }
+.mbadge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px; border-radius: 100px; font-family: var(--F); font-size: 10px; font-weight: 600; white-space: nowrap; }
+.mbadge-kasir { background: #e3f2fd; color: #0d47a1; }
+.mbadge-apps { background: #e8f5e9; color: #1b5e20; }
+.merchant-card-top { margin-bottom: 2px; }
+.merchant-badges { display: flex; gap: 4px; flex-wrap: wrap; justify-content: center; padding: 9px 12px 11px; border-top: 0.5px solid var(--neutral-100); background: var(--base-white); }
+.merchant-loc-btn { display: inline-flex; align-items: center; gap: 4px; font-family: var(--F); font-size: 11px; font-weight: 600; color: var(--text-secondary); transition: color .2s; }
+.merchant-card:hover .merchant-loc-btn { color: var(--uvgc-blue); }
+
+/* Merchant cards grid */
+.merchant-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.merchant-card { background: #fff; border: 0.5px solid var(--neutral-200); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; cursor: pointer; transition: border-color .22s, transform .22s; text-decoration: none; color: inherit; }
+.merchant-card:hover { border-color: var(--uvgc-blue); transform: translateY(-4px); }
+.merchant-card:hover .merchant-card-img { filter: grayscale(0); }
+.merchant-card:hover .merchant-loc-btn { color: var(--uvgc-blue); }
+.merchant-card:hover .merchant-card-img { width: 100%; height: 160px; object-fit: cover; display: block; filter: grayscale(0.2); transition: filter .25s; }
+.merchant-card:hover .merchant-loc-btn { color: var(--uvgc-blue); }
+.merchant-card.hidden { display: none; }
+.merchant-card-img { width: 100%; height: 160px; object-fit: cover; display: block; filter: grayscale(0.2); transition: filter .25s; }
+.merchant-card-body { padding: 11px 14px 8px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.merchant-card-footer { display: flex; align-items: center; justify-content: space-between; }
+.merchant-loc-btn { display: inline-flex; align-items: center; gap: 4px; font-family: var(--F); font-size: 11px; font-weight: 600; color: var(--text-secondary); transition: color .2s; white-space: nowrap; }
+.merchant-name { font-family: var(--F); font-size: 12.5px; font-weight: 600; color: var(--text-primary); line-height: 1.4; text-align: center; }
+.merchant-cat-pill { font-family: var(--F); font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 100px; letter-spacing: 0.05em; }
+
+/* Category pill colors */
+.pill-fnb { background: #fff3e0; color: #e65100; }
+.pill-beauty { background: #fce4ec; color: #c62828; }
+.pill-experience { background: #e8f5e9; color: #2e7d32; }
+.pill-health { background: #e3f2fd; color: #1565c0; }
+.pill-invest { background: #fff8e1; color: #f57f17; }
+.pill-retail { background: #f3e5f5; color: #6a1b9a; }
+
+/* Category icon bg colors */
+.icon-fnb { background: #fff3e0; }
+.icon-beauty { background: #fce4ec; }
+.icon-experience { background: #e8f5e9; }
+.icon-health { background: #e3f2fd; }
+.icon-invest { background: #fff8e1; }
+.icon-retail { background: #f3e5f5; }
+
+/* No results */
+.no-results { text-align: center; padding: 80px 20px; display: none; }
+.no-results.visible { display: block; }
+.no-results p { font-family: var(--F); font-size: 16px; color: var(--neutral-500); margin-top: 12px; }
+
+/* ── CTA FORM ── */
+.section-cta { background: linear-gradient(135deg, #e8f0fb 0%, #ddeeff 50%, #eaf4ff 100%); position: relative; overflow: hidden; padding: 96px 6%; }
+.section-cta::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(0,52,112,0.05) 1.5px, transparent 1.5px); background-size: 36px 36px; pointer-events: none; z-index: 0; }
+.section-cta-glow { position: absolute; top: -120px; right: -120px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(0,94,178,0.08) 0%, transparent 65%); pointer-events: none; }
+.cta-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; position: relative; z-index: 1; }
+.cta-left h2 { font-family: var(--F); font-size: clamp(26px,2.8vw,38px); font-weight: 700; color: var(--uvgc-blue-deep); line-height: 1.12; letter-spacing: -0.025em; margin-bottom: 14px; }
+.cta-left h2 span { color: var(--uvgc-blue); }
+.cta-left p { font-family: var(--FB); font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 28px; }
+.cta-trust { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.cta-trust li { display: flex; align-items: center; gap: 9px; font-family: var(--FB); font-size: 13.5px; color: var(--text-secondary); }
+.cta-trust-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--uv-green); flex-shrink: 0; }
+.cta-clients { margin-top: 28px; }
+.cta-clients-logos { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 10px; }
+.cta-clients-logos img { height: 18px; width: auto; object-fit: contain; display: block; }
+.form-box { background: #fff; border: 1px solid var(--neutral-100); border-radius: 20px; padding: 34px; box-shadow: 0 4px 24px rgba(0,52,112,0.08); }
+.form-box h3 { font-family: var(--F); font-size: 17px; font-weight: 700; color: var(--text-primary); margin-bottom: 5px; }
+.form-box > p { font-family: var(--FB); font-size: 13px; color: var(--text-secondary); margin-bottom: 22px; }
+.fg { margin-bottom: 12px; }
+.fg label { display: block; font-family: var(--F); font-size: 11.5px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; }
+.fg input, .fg select { width: 100%; padding: 10px 13px; border: 1.5px solid var(--neutral-200); border-radius: 8px; font-size: 13.5px; font-family: var(--FB); color: var(--text-primary); background: #fafafa; outline: none; transition: border .2s; -webkit-appearance: none; appearance: none; }
+.fg input::placeholder { color: #ababab; }
+.fg input:focus, .fg select:focus { border-color: var(--uvgc-blue); box-shadow: 0 0 0 3px rgba(0,94,178,0.1); }
+.fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+.fg-req { color: #ef4444; font-size: 11px; }
+.fg-err { font-family: var(--FB); font-size: 11.5px; color: #ef4444; margin-top: 4px; display: none; }
+.fg input.invalid { border-color: #ef4444 !important; box-shadow: 0 0 0 3px rgba(239,68,68,0.1) !important; }
+.fg input.invalid + .fg-err { display: block; }
+.btn-form-green { width: 100%; height: 43px; margin-top: 6px; background: var(--uv-green); color: #fff; font-family: var(--F); font-weight: 600; font-size: 14.5px; border: none; border-radius: 9px; cursor: pointer; box-shadow: 0 4px 20px rgba(0,154,70,0.3); transition: all .2s; }
+.btn-form-green:hover { background: var(--uv-green-deep); transform: translateY(-1px); }
+
+/* ── FOOTER ── */
+footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
+.footer-logo img { height: 40px; display: block; margin-bottom: 10px; background: #fff; border-radius: 8px; padding: 6px 12px; }
+.footer-desc { font-family: var(--FB); font-size: 12.5px; color: rgba(255,255,255,0.65); line-height: 1.75; max-width: 240px; }
+.footer-addr { font-family: var(--FB); font-size: 11.5px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 240px; margin-top: 12px; }
+.footer-socials { display: flex; gap: 10px; margin-top: 18px; }
+.footer-social { width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.75); text-decoration: none; transition: all .2s; }
+.footer-social:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.footer-top { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 24px; }
+.f-col h4 { font-family: var(--F); font-size: 10.5px; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
+.f-links { list-style: none; }
+.f-links li { margin-bottom: 9px; }
+.f-links a { font-family: var(--FB); font-size: 12.5px; color: rgba(255,255,255,0.65); text-decoration: none; transition: color .2s; }
+.f-links a:hover { color: var(--uvgc-gold); }
+.footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-family: var(--FB); font-size: 11.5px; color: rgba(255,255,255,0.5); }
+.fb-links { display: flex; gap: 20px; }
+.fb-links a { color: rgba(255,255,255,0.5); text-decoration: none; }
+
+/* ── CHAT WIDGET ── */
+.chat-bubble { position: fixed; bottom: 28px; right: 28px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.chat-greeting { background: #fff; border-radius: 16px; box-shadow: 0 8px 40px rgba(0,52,112,0.18), 0 2px 8px rgba(0,0,0,0.08); width: 300px; overflow: hidden; transform: translateY(10px) scale(0.96); opacity: 0; pointer-events: none; transition: all .3s cubic-bezier(.4,0,.2,1); transform-origin: bottom right; }
+.chat-greeting.visible { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+.chat-greeting-header { background: var(--uvgc-blue-deep); padding: 16px 18px; display: flex; align-items: center; gap: 12px; }
+.chat-agent-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--uv-green) 0%, var(--uvgc-blue) 100%); display: flex; align-items: center; justify-content: center; font-family: var(--F); font-weight: 800; font-size: 16px; color: #fff; flex-shrink: 0; border: 2px solid rgba(255,255,255,0.3); }
+.chat-agent-name { font-family: var(--F); font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+.chat-agent-status { display: flex; align-items: center; gap: 5px; font-family: var(--FB); font-size: 11px; color: rgba(255,255,255,0.65); }
+.chat-status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--uv-green); animation: pulse-dot 2s infinite; }
+@keyframes pulse-dot { 0%,100%{box-shadow:0 0 0 2px rgba(0,154,70,0.3)}50%{box-shadow:0 0 0 4px rgba(0,154,70,0.15)} }
+.chat-close-btn { background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.5); padding: 4px; display: flex; align-items: center; justify-content: center; border-radius: 6px; transition: all .2s; margin-left: auto; }
+.chat-close-btn:hover { color: #fff; background: rgba(255,255,255,0.1); }
+.chat-greeting-body { padding: 16px 18px 18px; }
+.chat-bubble-msg,.chat-bubble-msg-2 { background: #f5f7fa; border-radius: 12px 12px 12px 4px; padding: 11px 14px; margin-bottom: 10px; font-family: var(--FB); font-size: 13px; color: var(--text-primary); line-height: 1.6; }
+.chat-bubble-msg-2 { animation: slide-msg .3s .4s both; }
+@keyframes slide-msg{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.chat-start-btn { width: 100%; padding: 11px; background: var(--uv-green); color: #fff; font-family: var(--F); font-size: 13.5px; font-weight: 700; border: none; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 16px rgba(0,154,70,0.28); transition: all .2s; }
+.chat-start-btn:hover { background: var(--uv-green-deep); }
+.chat-powered { text-align: center; margin-top: 10px; font-family: var(--FB); font-size: 10px; color: var(--neutral-500); }
+.chat-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--uvgc-blue-deep); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(0,52,112,0.35); transition: all .25s; position: relative; }
+.chat-btn:hover { transform: scale(1.08); }
+.chat-btn .icon-chat { display: flex; }
+.chat-btn .icon-close { display: none; }
+.chat-btn.open .icon-chat { display: none; }
+.chat-btn.open .icon-close { display: flex; }
+.chat-notif { position: absolute; top: -2px; right: -2px; width: 18px; height: 18px; border-radius: 50%; background: #ef4444; border: 2px solid #fff; display: flex; align-items: center; justify-content: center; font-family: var(--F); font-size: 10px; font-weight: 800; color: #fff; animation: bounce-in .4s 1.5s both; }
+@keyframes bounce-in{0%{transform:scale(0)}60%{transform:scale(1.2)}100%{transform:scale(1)}}
+
+@media(max-width:960px){.merchant-grid{grid-template-columns:repeat(2,1fr)}.cta-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.merchant-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="accent-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a72f916a777b4dd48714d03.png" alt="UVGC">
+  </a>
+  <ul class="nav-menu">
+    <li><a href="uvgc-cara-pakai.html">Cara Pakai</a></li>
+    <li><a href="cara-order.html">Cara Order</a></li>
+    <li><a href="#" class="active">Merchant</a></li>
+    <li><a href="#">Program</a></li>
+    <li><a href="#kontak" class="nav-cta">Hubungi Kami</a></li>
+  </ul>
+</nav>
+
+<!-- MINI HERO -->
+<section class="mini-hero">
+  <div class="mini-hero-arc"></div>
+  <div class="mini-hero-arc" style="width:180px;height:180px;top:auto;bottom:-60px;left:-60px;right:auto;"></div>
+  <div class="mini-hero-inner">
+    <span class="mini-hero-eyebrow">Daftar Merchant</span>
+    <h1>Gunakan UVGC di <span>20.000+</span> Toko</h1>
+    <p>Redeem langsung di kasir merchant partner kami di seluruh Indonesia; dari restoran, klinik kecantikan, hingga toko ritel favorit.</p>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-wrap" id="filterBar">
+  <div class="filter-inner">
+    <div class="search-box">
+      <span class="search-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </span>
+      <input type="text" class="search-input" id="searchInput" placeholder="Cari nama merchant...">
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+      <div class="filter-pills">
+        <button class="filter-pill active" data-cat="all">Semua</button>
+        <button class="filter-pill" data-cat="fnb">🍽️ F&amp;B</button>
+        <button class="filter-pill" data-cat="beauty">💄 Beauty</button>
+        <button class="filter-pill" data-cat="experience">🎭 Experience</button>
+        <button class="filter-pill" data-cat="health">🏥 Health</button>
+        <button class="filter-pill" data-cat="invest">💰 Invest</button>
+        <button class="filter-pill" data-cat="retail">🛍️ Retail</button>
+        <button class="filter-pill" data-apps="true">⭐ Ada di UV Apps</button>
+      </div>
+      <span class="filter-count" id="filterCount">64 merchant</span>
+    </div>
+  </div>
+</div>
+
+<!-- MERCHANT GRID -->
+<div class="merchant-section" id="merchantSection">
+
+  <!-- Callout edukasi -->
+  <div class="merchant-callout">
+    <div class="merchant-callout-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+    </div>
+    <div class="merchant-callout-body">
+      <div class="merchant-callout-title">Semua merchant di halaman ini menerima pembayaran langsung dengan kartu UVGC Fisik di kasir.</div>
+      <div class="merchant-callout-legend">
+        <div class="merchant-legend-item"><span class="mbadge mbadge-kasir">Scan Kartu di Kasir</span><span>Bayar dengan kartu UVGC langsung di kasir</span></div>
+        <div class="merchant-legend-item"><span class="mbadge mbadge-apps">Diskon di UV Apps</span><span>Voucher diskon juga tersedia di Ultra Voucher App &amp; Web Commerce</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- F&B -->
+  <div class="cat-group" data-cat-group="fnb" id="group-fnb">
+    <div class="cat-header">
+      <div class="cat-icon icon-fnb">🍽️</div>
+      <span class="cat-title">F&amp;B</span>
+      <span class="cat-count" id="count-fnb"></span>
+      <div class="cat-line"></div>
+    </div>
+    <div class="merchant-grid" id="grid-fnb"></div>
+  </div>
+
+  <!-- Beauty -->
+  <div class="cat-group" data-cat-group="beauty" id="group-beauty">
+    <div class="cat-header">
+      <div class="cat-icon icon-beauty">💄</div>
+      <span class="cat-title">Beauty</span>
+      <span class="cat-count" id="count-beauty"></span>
+      <div class="cat-line"></div>
+    </div>
+    <div class="merchant-grid" id="grid-beauty"></div>
+  </div>
+
+  <!-- Experience -->
+  <div class="cat-group" data-cat-group="experience" id="group-experience">
+    <div class="cat-header">
+      <div class="cat-icon icon-experience">🎭</div>
+      <span class="cat-title">Experience</span>
+      <span class="cat-count" id="count-experience"></span>
+      <div class="cat-line"></div>
+    </div>
+    <div class="merchant-grid" id="grid-experience"></div>
+  </div>
+
+  <!-- Health -->
+  <div class="cat-group" data-cat-group="health" id="group-health">
+    <div class="cat-header">
+      <div class="cat-icon icon-health">🏥</div>
+      <span class="cat-title">Health</span>
+      <span class="cat-count" id="count-health"></span>
+      <div class="cat-line"></div>
+    </div>
+    <div class="merchant-grid" id="grid-health"></div>
+  </div>
+
+  <!-- Invest -->
+  <div class="cat-group" data-cat-group="invest" id="group-invest">
+    <div class="cat-header">
+      <div class="cat-icon icon-invest">💰</div>
+      <span class="cat-title">Invest</span>
+      <span class="cat-count" id="count-invest"></span>
+      <div class="cat-line"></div>
+    </div>
+    <div class="merchant-grid" id="grid-invest"></div>
+  </div>
+
+  <!-- Retail -->
+  <div class="cat-group" data-cat-group="retail" id="group-retail">
+    <div class="cat-header">
+      <div class="cat-icon icon-retail">🛍️</div>
+      <span class="cat-title">Retail</span>
+      <span class="cat-count" id="count-retail"></span>
+      <div class="cat-line"></div>
+    </div>
+    <div class="merchant-grid" id="grid-retail"></div>
+  </div>
+
+  <div class="no-results" id="noResults">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <p>Merchant tidak ditemukan.<br>Coba kata kunci lain.</p>
+  </div>
+
+</div>
+
+<div class="gold-divider"></div>
+
+<!-- LEADS FORM -->
+<section class="section-cta" id="kontak">
+  <div class="section-cta-glow"></div>
+  <div class="cta-grid">
+    <div class="cta-left">
+      <span style="font-family:var(--F);font-size:11.5px;font-weight:700;color:var(--uvgc-blue);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px;display:block;">Mulai Sekarang</span>
+      <h2>Hadiah yang Tepat,<br>untuk <span>Kebutuhan yang Tepat</span></h2>
+      <p>UVGC memastikan setiap penerima mendapatkan hadiah yang benar-benar mereka inginkan: Fleksibel, mudah dipakai, dan berkesan.</p>
+      <ul class="cta-trust">
+        <li><span class="cta-trust-dot"></span>Konsultasi gratis tanpa komitmen</li>
+        <li><span class="cta-trust-dot"></span>Respons dalam 1 hari kerja</li>
+      </ul>
+      <div class="cta-clients">
+        <span style="display:block;margin-bottom:12px;font-family:var(--F);font-size:11px;font-weight:600;color:#c0c0c0;letter-spacing:0.12em;text-transform:uppercase;">Dipercaya oleh perusahaan terkemuka</span>
+        <div class="cta-clients-logos">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Samsung_old_logo_before_year_2015.svg" alt="Samsung">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Hisense.svg" alt="Hisense">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Vivo_logo_2019.svg/3840px-Vivo_logo_2019.svg.png" alt="Vivo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Smartfren_%282019%29.svg" alt="Smartfren">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Mitsubishi_logo.svg/960px-Mitsubishi_logo.svg.png" alt="Mitsubishi">
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="form-box">
+        <h3>Konsultasi Gratis &amp; Pesan UVGC</h3>
+        <p>Isi form di bawah; tim kami akan segera menghubungi Anda.</p>
+        <div class="fg-row fg">
+          <div class="fg" style="margin-bottom:0;"><label>Nama Lengkap <span class="fg-req">*</span></label><input type="text" id="f-nama" placeholder="Budi Santoso"><div class="fg-err" id="err-nama">Nama lengkap wajib diisi</div></div>
+          <div class="fg" style="margin-bottom:0;"><label>Nama Perusahaan <span class="fg-req">*</span></label><input type="text" id="f-perusahaan" placeholder="PT Maju Bersama"><div class="fg-err" id="err-perusahaan">Nama perusahaan wajib diisi</div></div>
+        </div>
+        <div class="fg"><label>Email Kantor <span class="fg-req">*</span></label><input type="email" id="f-email" placeholder="budi@perusahaan.co.id"><div class="fg-err" id="err-email">Masukkan email yang valid</div></div>
+        <div class="fg-row fg">
+          <div class="fg" style="margin-bottom:0;"><label>No. WhatsApp <span class="fg-req">*</span></label><input type="tel" id="f-wa" placeholder="08xx xxxx xxxx"><div class="fg-err" id="err-wa">Nomor WhatsApp wajib diisi</div></div>
+          <div class="fg" style="margin-bottom:0;"><label>Job Title</label><input type="text" id="f-jobtitle" placeholder="HR Manager"></div>
+        </div>
+        <div class="fg"><label>Kebutuhan</label><select id="f-kebutuhan"><option value="" disabled selected>Pilih</option><option>Reward Karyawan</option><option>Insentif Mitra</option><option>Program Loyalitas</option><option>Lainnya</option></select></div>
+        <button class="btn-form-green" onclick="submitForm()">Kirim dan Mulai Konsultasi</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo"><img src="https://img.mailinblue.com/1873598/images/content_library/original/6a72f916a777b4dd48714d03.png" alt="UVGC"></div>
+      <p class="footer-desc">Solusi gifting dan reward korporat yang fleksibel untuk berbagai macam kebutuhan.</p>
+      <p class="footer-addr">Jl. Tebet Barat IX No.35BB, RT4/RW4, Tebet Barat, Kecamatan Tebet, Kota Jakarta Selatan, DKI Jakarta 12810</p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" class="footer-social"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" class="footer-social"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" class="footer-social"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      </div>
+    </div>
+    <div class="f-col"><h4>Informasi</h4><ul class="f-links"><li><a href="uvgc-cara-pakai.html">Cara Pakai</a></li><li><a href="#">Cara Order</a></li><li><a href="#">Merchant</a></li><li><a href="#">Program</a></li><li><a href="#">Artikel</a></li></ul></div>
+    <div class="f-col"><h4>Perusahaan</h4><ul class="f-links"><li><a href="#">Ultra Corporation</a></li><li><a href="#">Tentang Kami</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Ultra Voucher Gift Card. Bagian dari Ultra Corporation.</span>
+    <div class="fb-links"><a href="#">Kebijakan Privasi</a><a href="#">Syarat dan Ketentuan</a></div>
+  </div>
+</footer>
+
+<!-- CHAT WIDGET -->
+<div class="chat-bubble" id="chatBubble">
+  <div class="chat-greeting" id="chatGreeting">
+    <div class="chat-greeting-header">
+      <div class="chat-agent-avatar">UV</div>
+      <div><div class="chat-agent-name">Tim Ultra Voucher</div><div class="chat-agent-status"><span class="chat-status-dot"></span>Online sekarang</div></div>
+      <button class="chat-close-btn" onclick="toggleChat()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="chat-greeting-body">
+      <div class="chat-bubble-msg">👋 <strong>Halo! Selamat datang di Ultra Voucher Gift Card.</strong></div>
+      <div class="chat-bubble-msg-2">Ada pertanyaan seputar merchant UVGC? Tim kami siap membantu! 🛍️</div>
+      <button class="chat-start-btn" onclick="startChat()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Mulai Chat dengan CS</button>
+      <div class="chat-powered">Powered by Tawk.to</div>
+    </div>
+  </div>
+  <button class="chat-btn" id="chatBtn" onclick="toggleChat()">
+    <span class="icon-chat"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+    <span class="icon-close"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+    <span class="chat-notif" id="chatNotif">1</span>
+  </button>
+</div>
+
+<script>
+// ── MERCHANT DATA ──
+const uvAppsmerchants = new Set([
+  'AZKO',
+  'Alfamart',
+  'Baby Dutch Pancake by Altima Group',
+  'Bakmi GM',
+  'Bebek Klungkung',
+  'Bebek Semangat',
+  'C Bakes',
+  'Chanba',
+  'Cutt & Grill',
+  'Dentalosophy',
+  'Dermis',
+  'Diva Karaoke Family Express',
+  'Doughzen',
+  'Get Dentist',
+  'Goldmart',
+  'Haagen Dazs',
+  'Imperial Kitchen & Dimsum',
+  'Informa',
+  'Kafe Betawi',
+  'Karnivor By Altima Group',
+  'Kopi Kotak',
+  'Le Gourmet',
+  'Matahari Department Store',
+  'Misuji 9+ Japanese Steakhouse',
+  "Nanny's Pavillon By Altima Group",
+  'Ocean Dental',
+  'Panella De Chao',
+  'Penyetan Cok',
+  'Pizza Hut Indonesia',
+  'Princessa Clinic and Spa',
+  'Prossi Clinic',
+  "Raffel's Sandwich",
+  'Rumu',
+  'Sour Sally',
+  'Sour Sally Green',
+  'Suteki Sushi',
+  'Terra.eats.',
+  'The Little Things She Need',
+  'Wakai',
+]);
+
+const merchantImages = {
+  'Bakmi GM': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-23T09%3A41%3A49.948Zgroup.jpeg',
+  'Baby Dutch Pancake by Altima Group': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-24T04%3A03%3A21.295Zgroup.jpeg',
+  'Bebek Klungkung': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-28T03%3A56%3A44.312Zgroup.jpeg',
+  'C Bakes': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-28T03%3A55%3A04.292Zgroup.jpeg',
+  'Chanba': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-30T04%3A36%3A54.671Zgroup.jpeg',
+  'Cutt & Grill': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-22T04%3A51%3A38.428Zgroup.jpeg',
+  'Doughzen': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-30T04%3A32%3A42.413Zgroup.jpeg',
+  'Haagen Dazs': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-20T03%3A15%3A55.822Zgroup.jpeg',
+  'Imperial Kitchen & Dimsum': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-23T09%3A36%3A39.276Zgroup.jpeg',
+  'Kafe Betawi': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-23T09%3A49%3A11.829Zgroup.jpeg',
+  'Bebek Semangat': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-30T06%3A28%3A21.282Zgroup.jpeg',
+  'Karnivor By Altima Group': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-24T03%3A38%3A45.627Zgroup.jpeg',
+  'Kopi Kotak': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-21T04%3A39%3A49.542Zgroup.jpeg',
+  'Le Gourmet': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-31T03%3A50%3A26.498Zgroup.jpeg',
+  'Misuji 9+ Japanese Steakhouse': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-30T03%3A39%3A59.012Zgroup.jpeg',
+  "Nanny's Pavillon By Altima Group": 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-21T03%3A45%3A15.788Zgroup.jpeg',
+  'Panella De Chao': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-28T03%3A36%3A21.104Zgroup.jpeg',
+  'Penyetan Cok': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-29T04%3A38%3A39.849Zgroup.jpeg',
+  'Pizza Hut Indonesia': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-05-19T07%3A16%3A56.050Zgroup.jpeg',
+  "Raffel's Sandwich": 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-30T03%3A44%3A05.597Zgroup.jpeg',
+  'Rumu': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-29T04%3A47%3A46.691Zgroup.jpeg',
+  'Sour Sally': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-27T04%3A25%3A44.114Zgroup.jpeg',
+  'Sour Sally Green': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-31T08%3A08%3A23.471Zgroup.jpeg',
+  'Suteki Sushi': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-31T08%3A29%3A23.481Zgroup.jpeg',
+  'Prossi Clinic': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-27T03%3A56%3A09.301Zgroup.jpeg',
+  'Dermis': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-03-11T04%3A35%3A52.972Zgroup.jpeg',
+  'Princessa Clinic and Spa': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-03-11T09%3A04%3A14.214Zgroup.jpeg',
+  'Diva Karaoke Family Express': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-03-12T04%3A00%3A18.937Zgroup.jpeg',
+  'Ocean Dental': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-24T04%3A02%3A27.524Zgroup.jpeg',
+  'Get Dentist': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-30T03%3A44%3A58.952Zgroup.jpeg',
+  'Dentalosophy': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-30T04%3A50%3A48.372Zgroup.jpeg',
+  'Goldmart': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-22T04%3A40%3A19.863Zgroup.jpeg',
+  'Alfamart': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-20T02%3A43%3A41.684Zgroup.jpeg',
+  'AZKO': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-11-11T04%3A44%3A35.242Zgroup.jpeg',
+  'Informa': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-03-12T03%3A26%3A25.853Zgroup.jpeg',
+  'The Little Things She Need': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-03-12T06%3A00%3A08.815Zgroup.jpeg',
+  'Wakai': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-03-12T06%3A00%3A50.824Zgroup.jpeg',
+  'Terra.eats.': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2025-10-31T08%3A28%3A31.321Zgroup.jpeg',
+  'Biomedilab': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-04-27T05%3A08%3A25.829Zgroup.png',
+  '101 Shoes': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-05-25T06%3A14%3A40.744Zgroup.png',
+  'Electronic City': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-03-13T08%3A26%3A21.148Zgroup.png',
+  'SATURDAYS': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-04-27T05%3A10%3A36.774Zgroup.png',
+  'TokoPDA': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-04-27T05%3A08%3A54.648Zgroup.png',
+  'OPTIK DR. SPECS': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-04-27T05%3A09%3A56.138Zgroup.png',
+  'Gramedia': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-07-01T03%3A22%3A39.612Zgroup.png',
+  'Mitra 10': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-03-13T08%3A25%3A47.385Zgroup.png',
+  'Holy Ban Indonesia': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-04-27T06%3A38%3A57.715Zgroup.png',
+  'Obermain': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-05-25T06%3A12%3A15.631Zgroup.png',
+  'LeSportsac': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-05-25T06%3A12%3A59.446Zgroup.png',
+  'Hush Puppies': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-05-25T06%3A13%3A29.308Zgroup.png',
+  'CAT Footwear': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-05-25T06%3A14%3A16.131Zgroup.png',
+  '9to9': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-05-25T06%3A15%3A28.926Zgroup.png',
+  'PHO 24': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-04-27T05%3A11%3A37.412Zgroup.png',
+  'I-ta Suki': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-04-27T05%3A07%3A58.199Zgroup.png',
+  "Ramen 'n Sushi Gotsu Maru": 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-04-27T06%3A38%3A10.372Zgroup.png',
+  'Ramen Mania': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-04-27T05%3A09%3A26.309Zgroup.png',
+  'VIET 24': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-04-27T05%3A11%3A06.499Zgroup.png',
+  'Ippudo Ramen': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-04-27T05%3A07%3A27.207Zgroup.png',
+  'Shabu Shabu House': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-04-30T07%3A36%3A28.425Zgroup.png',
+  'Balboni Ristorante': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-03-09T16%3A20%3A31.916Zgroup.png',
+  'Giggle Box': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-04-27T06%3A39%3A22.873Zgroup.png',
+  'Hotaru Shabu Shabu': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-05-25T06%3A16%3A14.242Zgroup.png',
+  'Bebek Bengil': 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-06-08T04%3A16%3A45.375Zgroup.png',
+  __default__: 'https://uvproduction.oss-ap-southeast-5.aliyuncs.com/mdm/assets/images/2026-03-05T03%3A56%3A28.191Zgroup.jpeg'
+};
+
+const LOGO = 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Matahari_%282022%29.svg/3840px-Matahari_%282022%29.svg.png';
+
+const merchants = {
+  fnb: ['Baby Dutch Pancake by Altima Group','Bakmi GM','Balboni Ristorante','Bebek Bengil','Bebek Klungkung','Bebek Semangat','C Bakes','Chanba','Cutt & Grill','Doughzen','Giggle Box','Haagen Dazs','Hotaru Shabu Shabu','I-ta Suki','Imperial Kitchen & Dimsum','Ippudo Ramen','Kafe Betawi','Karnivor By Altima Group','Kopi Kotak','Le Gourmet','Misuji 9+ Japanese Steakhouse','Nanny\'s Pavillon By Altima Group','Panella De Chao','Penyetan Cok','PHO 24','Pizza Hut Indonesia','Raffel\'s Sandwich','Ramen \'n Sushi Gotsu Maru','Ramen Mania','Rumu','Shabu Shabu House','Sour Sally','Sour Sally Green','Suteki Sushi','Terra.eats.','VIET 24'],
+  beauty: ['Prossi Clinic','Dermis','Princessa Clinic and Spa'],
+  experience: ['Diva Karaoke Family Express'],
+  health: ['Ocean Dental','Get Dentist','Dentalosophy','Biomedilab'],
+  invest: ['Goldmart'],
+  retail: ['101 Shoes','9to9','Alfamart','AZKO','CAT Footwear','Electronic City','Gramedia','Holy Ban Indonesia','Hush Puppies','Informa','LeSportsac','Matahari Department Store','Mitra 10','Obermain','OPTIK DR. SPECS','SATURDAYS','The Little Things She Need','TokoPDA','Wakai']
+};
+
+const pillClass = { fnb:'pill-fnb', beauty:'pill-beauty', experience:'pill-experience', health:'pill-health', invest:'pill-invest', retail:'pill-retail' };
+const pillLabel = { fnb:'F&B', beauty:'Beauty', experience:'Experience', health:'Health', invest:'Invest', retail:'Retail' };
+
+// Build cards
+function buildCards() {
+  Object.keys(merchants).forEach(cat => {
+    const grid = document.getElementById('grid-' + cat);
+    merchants[cat].forEach(name => {
+      const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g,'');
+      const isApps = uvAppsmerchants.has(name);
+      const card = document.createElement('a');
+      card.className = 'merchant-card';
+      card.href = 'merchant/' + slug + '.html';
+      card.dataset.name = name.toLowerCase();
+      card.dataset.cat = cat;
+      card.dataset.apps = isApps ? 'true' : 'false';
+      const imgSrc = merchantImages[name] || merchantImages.__default__;
+      card.innerHTML = `
+        <img class="merchant-card-img" src="${imgSrc}" alt="${name}">
+        <div class="merchant-card-body">
+          <div class="merchant-name">${name}</div>
+          <div class="merchant-card-footer">
+            <span class="merchant-cat-pill ${pillClass[cat]}">${pillLabel[cat]}</span>
+            <span class="merchant-loc-btn">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Cari Lokasi
+            </span>
+          </div>
+        </div>
+        <div class="merchant-badges">
+          <span class="mbadge mbadge-kasir">Scan Kartu di Kasir</span>
+          ${isApps ? '<span class="mbadge mbadge-apps">Diskon di UV Apps</span>' : ''}
+        </div>`;
+      grid.appendChild(card);
+    });
+    updateCatCount(cat);
+  });
+  updateTotal();
+}
+
+function updateCatCount(cat) {
+  const visible = document.querySelectorAll(`#grid-${cat} .merchant-card:not(.hidden)`).length;
+  const total = merchants[cat].length;
+  document.getElementById('count-' + cat).textContent = visible > 0 ? `${visible} merchant` : '';
+  document.getElementById('group-' + cat).style.display = visible === 0 ? 'none' : '';
+}
+
+function updateTotal() {
+  const visible = document.querySelectorAll('.merchant-card:not(.hidden)').length;
+  document.getElementById('filterCount').textContent = `${visible} merchant`;
+  document.getElementById('noResults').classList.toggle('visible', visible === 0);
+}
+
+// Filter logic
+let activecat = 'all';
+let searchVal = '';
+
+let activeApps = false;
+
+function applyFilter() {
+  document.querySelectorAll('.merchant-card').forEach(card => {
+    const catMatch = activecat === 'all' || card.dataset.cat === activecat;
+    const searchMatch = card.dataset.name.includes(searchVal);
+    const appsMatch = !activeApps || card.dataset.apps === 'true';
+    card.classList.toggle('hidden', !(catMatch && searchMatch && appsMatch));
+  });
+  Object.keys(merchants).forEach(updateCatCount);
+  updateTotal();
+}
+
+document.querySelectorAll('.filter-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    if (pill.dataset.apps) {
+      pill.classList.toggle('active');
+      activeApps = pill.classList.contains('active');
+      if (activeApps) {
+        document.querySelectorAll('.filter-pill[data-cat]').forEach(p => p.classList.remove('active'));
+        document.querySelector('.filter-pill[data-cat="all"]').classList.add('active');
+        activecat = 'all';
+      }
+    } else {
+      document.querySelectorAll('.filter-pill[data-cat]').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      activecat = pill.dataset.cat;
+    }
+    applyFilter();
+  });
+});
+
+document.getElementById('searchInput').addEventListener('input', e => {
+  searchVal = e.target.value.toLowerCase().trim();
+  applyFilter();
+});
+
+// Nav scroll
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.boxShadow = window.scrollY > 40 ? '0 2px 24px rgba(0,0,0,0.08)' : 'none';
+});
+
+// Smooth scroll CTA
+document.querySelector('.nav-cta').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('kontak').scrollIntoView({ behavior: 'smooth' });
+});
+
+// Form
+function submitForm() {
+  let valid = true;
+  [{ id:'f-nama',err:'err-nama',type:'text' },{ id:'f-perusahaan',err:'err-perusahaan',type:'text' },{ id:'f-email',err:'err-email',type:'email' },{ id:'f-wa',err:'err-wa',type:'text' }].forEach(f => {
+    const el = document.getElementById(f.id);
+    if (!el) return;
+    const val = el.value.trim();
+    let ok = val.length > 0;
+    if (f.type === 'email') ok = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(val);
+    el.classList.toggle('invalid', !ok);
+    if (!ok) valid = false;
+  });
+  if (valid) { const btn = document.querySelector('.btn-form-green'); btn.textContent = '✓ Pesan Terkirim!'; btn.style.background = 'var(--uv-green-deep)'; btn.disabled = true; }
+}
+document.addEventListener('DOMContentLoaded', () => {
+  ['f-nama','f-perusahaan','f-email','f-wa'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('input', () => el.classList.remove('invalid'));
+      if (id === 'f-email') el.addEventListener('blur', () => { const v = el.value.trim(); if (v) el.classList.toggle('invalid', !/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(v)); });
+    }
+  });
+  buildCards();
+});
+
+// Chat
+setTimeout(() => { document.getElementById('chatGreeting').classList.add('visible'); document.getElementById('chatBtn').classList.add('open'); }, 4000);
+function toggleChat() {
+  const g = document.getElementById('chatGreeting'), btn = document.getElementById('chatBtn'), notif = document.getElementById('chatNotif');
+  const isOpen = g.classList.contains('visible');
+  g.classList.toggle('visible', !isOpen); btn.classList.toggle('open', !isOpen);
+  if (!isOpen && notif) notif.style.display = 'none';
+}
+function startChat() {
+  if (typeof Tawk_API !== 'undefined' && Tawk_API.maximize) Tawk_API.maximize();
+  document.getElementById('chatGreeting').classList.remove('visible');
+  document.getElementById('chatBtn').classList.remove('open');
+}
+</script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+Tawk_API.onLoad = function() { Tawk_API.hideWidget(); };
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true; s1.src='https://embed.tawk.to/6a7c1b55f2dd231d4b747223/1jvqclhvk';
+s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+</body>
+</html>

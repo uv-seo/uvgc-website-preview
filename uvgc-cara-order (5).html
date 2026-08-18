@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cara Order; Ultra Voucher Gift Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --uvgc-blue: #005eb2; --uvgc-blue-deep: #003470; --uvgc-blue-deeper: #001f4a;
+  --uvgc-gold: #dfaf00; --uvgc-gold-light: #ffd876;
+  --uv-green: #009a46; --uv-green-deep: #00672f; --uv-green-pale: #d2ffe7;
+  --uv-amber: #fbaa19; --uv-amber-mid: #ec9904; --uv-amber-pale: #fef1d9;
+  --text-primary: #373737; --text-secondary: #5c5c5c;
+  --neutral-100: #e6e6e6; --neutral-200: #d3d3d3; --neutral-500: #979797;
+  --base-white: #fafafa; --bg-white: #ffffff;
+  --F: 'Poppins', sans-serif; --FB: 'Inter', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--FB); color: var(--text-primary); background: var(--bg-white); overflow-x: hidden; }
+
+.accent-bar { position: fixed; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, #005eb2 0%, #dfaf00 50%, #009a46 100%); z-index: 300; opacity: 0.7; }
+
+nav { position: fixed; top: 0; left: 4px; right: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(20px); border-bottom: 2px solid var(--uvgc-gold); height: 68px; display: flex; align-items: center; padding: 0 6%; justify-content: space-between; }
+.nav-logo img { height: 40px; width: auto; display: block; }
+.nav-menu { display: flex; align-items: center; gap: 28px; list-style: none; }
+.nav-menu a { font-family: var(--F); font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color .2s; }
+.nav-menu a:hover, .nav-menu a.active { color: var(--uvgc-blue); }
+.nav-cta { background: var(--uv-green); color: #fff !important; font-weight: 600 !important; padding: 9px 20px; border-radius: 8px; transition: background .2s; }
+.nav-cta:hover { background: var(--uv-green-deep) !important; }
+
+.gold-divider { height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(223,175,0,0.12) 20%, rgba(223,175,0,0.32) 50%, rgba(223,175,0,0.12) 80%, transparent 100%); }
+
+/* MINI HERO */
+.mini-hero { padding: 120px 6% 72px; background: var(--uvgc-blue-deep); position: relative; overflow: hidden; }
+.mini-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(0,154,70,0.06) 1.5px, transparent 1.5px); background-size: 36px 36px; pointer-events: none; }
+.mini-hero-arc { position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.05); pointer-events: none; }
+.mini-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+.mini-hero-eyebrow { font-family: var(--F); font-size: 11.5px; font-weight: 700; color: var(--uvgc-gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; display: block; }
+.mini-hero h1 { font-family: var(--F); font-weight: 800; font-size: clamp(28px,3.5vw,44px); color: #fff; line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 14px; }
+.mini-hero h1 span { color: var(--uvgc-gold); }
+.mini-hero p { font-family: var(--FB); font-size: 16px; color: rgba(255,255,255,0.65); max-width: 520px; line-height: 1.75; }
+
+/* SECTIONS */
+.section-white { background: var(--bg-white); padding: 88px 6%; position: relative; overflow: hidden; }
+.section-tinted { background: var(--base-white); padding: 88px 6%; position: relative; overflow: hidden; }
+.section-white::before, .section-tinted::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(0,94,178,0.03) 1.5px, transparent 1.5px); background-size: 36px 36px; pointer-events: none; }
+.section-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+
+/* CHIPS */
+.chip { display: inline-flex; align-items: center; font-family: var(--F); font-size: 11px; font-weight: 700; padding: 5px 14px; border-radius: 100px; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 14px; }
+.chip-personal { background: var(--uvgc-blue-deep); color: #fff; }
+.chip-korporat { background: var(--uv-green); color: #fff; }
+
+/* HEADINGS */
+.sh { font-family: var(--F); font-weight: 700; font-size: clamp(24px,2.8vw,36px); color: var(--text-primary); line-height: 1.12; letter-spacing: -0.025em; margin-bottom: 10px; }
+.sh-sub { font-family: var(--FB); font-size: 15.5px; color: var(--text-secondary); line-height: 1.75; max-width: 560px; margin-bottom: 52px; }
+
+/* PERSONAL STEPS */
+.steps-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.steps-list { position: relative; }
+.steps-list::before { content: ''; position: absolute; left: 20px; top: 40px; bottom: 40px; border-right: 1.5px dashed rgba(0,94,178,0.2); pointer-events: none; }
+.step-item { display: flex; gap: 16px; align-items: flex-start; padding: 14px 16px; border-radius: 12px; cursor: pointer; transition: background .2s; position: relative; z-index: 1; }
+.step-item:hover, .step-item.active { background: rgba(0,94,178,0.05); }
+.step-num { width: 40px; height: 40px; border-radius: 50%; background: var(--neutral-100); color: var(--text-secondary); font-family: var(--F); font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .2s; }
+.step-item:hover .step-num, .step-item.active .step-num { background: var(--uvgc-blue); color: #fff; box-shadow: 0 4px 14px rgba(0,94,178,0.3); }
+.step-content { padding-top: 6px; }
+.step-title { font-family: var(--F); font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 5px; }
+.step-desc { font-family: var(--FB); font-size: 13.5px; color: var(--text-secondary); line-height: 1.7; }
+.step-desc a { color: var(--uvgc-blue); text-decoration: none; font-weight: 500; }
+.step-desc a:hover { text-decoration: underline; }
+
+/* Step image */
+.step-img-wrap { display: flex; align-items: center; justify-content: center; }
+.step-img { width: 100%; max-height: 420px; object-fit: contain; display: none; filter: drop-shadow(0 12px 32px rgba(0,52,112,0.14)); transition: opacity .3s; }
+.step-img.active { display: block; }
+
+/* Pickup note */
+.pickup-note { display: flex; align-items: flex-start; gap: 10px; background: var(--uv-green-pale); border: 1px solid rgba(0,154,70,0.2); border-radius: 12px; padding: 14px 16px; margin-top: 24px; }
+.pickup-note svg { color: var(--uv-green-deep); flex-shrink: 0; margin-top: 1px; }
+.pickup-note-text { font-family: var(--FB); font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+.pickup-note-text strong { font-family: var(--F); font-weight: 700; color: var(--uv-green-deep); }
+
+/* KORPORAT */
+.korporat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.benefit-list { display: flex; flex-direction: column; gap: 14px; }
+.benefit-item { display: flex; align-items: flex-start; gap: 10px; }
+.benefit-dot { width: 22px; height: 22px; border-radius: 50%; background: var(--uv-green); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; color: #fff; }
+.benefit-text { font-family: var(--FB); font-size: 14px; color: var(--text-primary); line-height: 1.6; }
+.benefit-text strong { font-family: var(--F); font-weight: 700; }
+.korporat-steps { display: flex; flex-direction: column; gap: 16px; }
+.kstep { display: flex; gap: 14px; align-items: flex-start; }
+.kstep-num { width: 32px; height: 32px; border-radius: 50%; background: var(--uv-green-pale); border: 2px solid rgba(0,154,70,0.2); color: var(--uv-green-deep); font-family: var(--F); font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.kstep-title { font-family: var(--F); font-size: 14.5px; font-weight: 700; color: var(--text-primary); margin-bottom: 3px; }
+.kstep-desc { font-family: var(--FB); font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+.kstep-label { font-family: var(--F); font-size: 12px; font-weight: 600; color: var(--neutral-500); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
+.btn-cta-green { display: inline-flex; align-items: center; gap: 7px; background: var(--uv-green); color: #fff; font-family: var(--F); font-weight: 600; font-size: 14px; padding: 11px 24px; border-radius: 9px; text-decoration: none; margin-top: 24px; transition: all .2s; border: none; cursor: pointer; box-shadow: 0 4px 20px rgba(0,154,70,0.28); }
+.btn-cta-green:hover { background: var(--uv-green-deep); transform: translateY(-1px); }
+
+/* CTA FORM */
+.section-cta { background: linear-gradient(135deg, #e8f0fb 0%, #ddeeff 50%, #eaf4ff 100%); position: relative; overflow: hidden; padding: 96px 6%; }
+.section-cta::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(0,52,112,0.05) 1.5px, transparent 1.5px); background-size: 36px 36px; pointer-events: none; z-index: 0; }
+.section-cta-glow { position: absolute; top: -120px; right: -120px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(0,94,178,0.08) 0%, transparent 65%); pointer-events: none; }
+.cta-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; position: relative; z-index: 1; }
+.cta-left h2 { font-family: var(--F); font-size: clamp(26px,2.8vw,38px); font-weight: 700; color: var(--uvgc-blue-deep); line-height: 1.12; letter-spacing: -0.025em; margin-bottom: 14px; }
+.cta-left h2 span { color: var(--uvgc-blue); }
+.cta-left p { font-family: var(--FB); font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 28px; }
+.cta-trust { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.cta-trust li { display: flex; align-items: center; gap: 9px; font-family: var(--FB); font-size: 13.5px; color: var(--text-secondary); }
+.cta-trust-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--uv-green); flex-shrink: 0; }
+.cta-clients { margin-top: 28px; }
+.cta-clients-logos { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 10px; }
+.cta-clients-logos img { height: 18px; width: auto; object-fit: contain; display: block; }
+.form-box { background: #fff; border: 1px solid var(--neutral-100); border-radius: 20px; padding: 34px; box-shadow: 0 4px 24px rgba(0,52,112,0.08); }
+.form-box h3 { font-family: var(--F); font-size: 17px; font-weight: 700; color: var(--text-primary); margin-bottom: 5px; }
+.form-box > p { font-family: var(--FB); font-size: 13px; color: var(--text-secondary); margin-bottom: 22px; }
+.fg { margin-bottom: 12px; }
+.fg label { display: block; font-family: var(--F); font-size: 11.5px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; }
+.fg input, .fg select { width: 100%; padding: 10px 13px; border: 1.5px solid var(--neutral-200); border-radius: 8px; font-size: 13.5px; font-family: var(--FB); color: var(--text-primary); background: #fafafa; outline: none; transition: border .2s; -webkit-appearance: none; appearance: none; }
+.fg input::placeholder { color: #ababab; }
+.fg input:focus, .fg select:focus { border-color: var(--uvgc-blue); box-shadow: 0 0 0 3px rgba(0,94,178,0.1); }
+.fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+.fg-req { color: #ef4444; font-size: 11px; }
+.fg-err { font-family: var(--FB); font-size: 11.5px; color: #ef4444; margin-top: 4px; display: none; }
+.fg input.invalid { border-color: #ef4444 !important; box-shadow: 0 0 0 3px rgba(239,68,68,0.1) !important; }
+.fg input.invalid + .fg-err { display: block; }
+.btn-form-green { width: 100%; height: 43px; margin-top: 6px; background: var(--uv-green); color: #fff; font-family: var(--F); font-weight: 600; font-size: 14.5px; border: none; border-radius: 9px; cursor: pointer; box-shadow: 0 4px 20px rgba(0,154,70,0.3); transition: all .2s; }
+.btn-form-green:hover { background: var(--uv-green-deep); transform: translateY(-1px); }
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; max-width: 1200px; }
+.faq-item { border-bottom: 1px solid var(--neutral-100); }
+.faq-item:first-child { border-top: 1px solid var(--neutral-100); }
+.faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 0; background: none; border: none; cursor: pointer; text-align: left; font-family: var(--F); font-size: 15px; font-weight: 600; color: var(--text-primary); transition: color .2s; }
+.faq-q:hover { color: var(--uvgc-blue); }
+.faq-icon { width: 24px; height: 24px; border-radius: 50%; background: var(--neutral-100); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .25s; }
+.faq-item.open .faq-icon { background: var(--uv-green); transform: rotate(45deg); }
+.faq-icon svg { color: var(--text-secondary); }
+.faq-item.open .faq-icon svg { color: #fff; }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+.faq-a-inner { padding: 0 0 20px; font-family: var(--FB); font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
+.faq-item.open .faq-a { max-height: 300px; }
+
+/* FOOTER */
+footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
+.footer-logo img { height: 40px; display: block; margin-bottom: 10px; background: #fff; border-radius: 8px; padding: 6px 12px; }
+.footer-desc { font-family: var(--FB); font-size: 12.5px; color: rgba(255,255,255,0.65); line-height: 1.75; max-width: 240px; }
+.footer-addr { font-family: var(--FB); font-size: 11.5px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 240px; margin-top: 12px; }
+.footer-socials { display: flex; gap: 10px; margin-top: 18px; }
+.footer-social { width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.75); text-decoration: none; transition: all .2s; }
+.footer-social:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.footer-top { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 24px; }
+.f-col h4 { font-family: var(--F); font-size: 10.5px; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
+.f-links { list-style: none; }
+.f-links li { margin-bottom: 9px; }
+.f-links a { font-family: var(--FB); font-size: 12.5px; color: rgba(255,255,255,0.65); text-decoration: none; transition: color .2s; }
+.f-links a:hover { color: var(--uvgc-gold); }
+.footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-family: var(--FB); font-size: 11.5px; color: rgba(255,255,255,0.5); }
+.fb-links { display: flex; gap: 20px; }
+.fb-links a { color: rgba(255,255,255,0.5); text-decoration: none; }
+
+/* CHAT */
+.chat-bubble { position: fixed; bottom: 28px; right: 28px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.chat-greeting { background: #fff; border-radius: 16px; box-shadow: 0 8px 40px rgba(0,52,112,0.18); width: 300px; overflow: hidden; transform: translateY(10px) scale(0.96); opacity: 0; pointer-events: none; transition: all .3s cubic-bezier(.4,0,.2,1); transform-origin: bottom right; }
+.chat-greeting.visible { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+.chat-greeting-header { background: var(--uvgc-blue-deep); padding: 16px 18px; display: flex; align-items: center; gap: 12px; }
+.chat-agent-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--uv-green) 0%, var(--uvgc-blue) 100%); display: flex; align-items: center; justify-content: center; font-family: var(--F); font-weight: 800; font-size: 16px; color: #fff; flex-shrink: 0; }
+.chat-agent-name { font-family: var(--F); font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+.chat-agent-status { display: flex; align-items: center; gap: 5px; font-family: var(--FB); font-size: 11px; color: rgba(255,255,255,0.65); }
+.chat-status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--uv-green); animation: pulse-dot 2s infinite; }
+@keyframes pulse-dot { 0%,100%{box-shadow:0 0 0 2px rgba(0,154,70,0.3)}50%{box-shadow:0 0 0 4px rgba(0,154,70,0.15)} }
+.chat-close-btn { background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.5); padding: 4px; display: flex; border-radius: 6px; margin-left: auto; transition: all .2s; }
+.chat-greeting-body { padding: 16px 18px 18px; }
+.chat-bubble-msg, .chat-bubble-msg-2 { background: #f5f7fa; border-radius: 12px 12px 12px 4px; padding: 11px 14px; margin-bottom: 10px; font-family: var(--FB); font-size: 13px; color: var(--text-primary); line-height: 1.6; }
+.chat-bubble-msg-2 { animation: slide-msg .3s .4s both; }
+@keyframes slide-msg{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.chat-start-btn { width: 100%; padding: 11px; background: var(--uv-green); color: #fff; font-family: var(--F); font-size: 13.5px; font-weight: 700; border: none; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all .2s; }
+.chat-start-btn:hover { background: var(--uv-green-deep); }
+.chat-powered { text-align: center; margin-top: 10px; font-family: var(--FB); font-size: 10px; color: var(--neutral-500); }
+.chat-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--uvgc-blue-deep); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(0,52,112,0.35); transition: all .25s; position: relative; }
+.chat-btn:hover { transform: scale(1.08); }
+.chat-btn .icon-chat { display: flex; } .chat-btn .icon-close { display: none; }
+.chat-btn.open .icon-chat { display: none; } .chat-btn.open .icon-close { display: flex; }
+.chat-notif { position: absolute; top: -2px; right: -2px; width: 18px; height: 18px; border-radius: 50%; background: #ef4444; border: 2px solid #fff; display: flex; align-items: center; justify-content: center; font-family: var(--F); font-size: 10px; font-weight: 800; color: #fff; animation: bounce-in .4s 1.5s both; }
+@keyframes bounce-in{0%{transform:scale(0)}60%{transform:scale(1.2)}100%{transform:scale(1)}}
+
+@media(max-width:960px){
+  .steps-layout, .korporat-grid, .cta-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .step-img-wrap { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="accent-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html"><img src="https://img.mailinblue.com/1873598/images/content_library/original/6a72f916a777b4dd48714d03.png" alt="UVGC"></a>
+  <ul class="nav-menu">
+    <li><a href="uvgc-cara-pakai.html">Cara Pakai</a></li>
+    <li><a href="uvgc-cara-order.html" class="active">Cara Order</a></li>
+    <li><a href="uvgc-merchant.html">Merchant</a></li>
+    <li><a href="uvgc-program.html">Program</a></li>
+    <li><a href="#kontak" class="nav-cta">Hubungi Kami</a></li>
+  </ul>
+</nav>
+
+<!-- MINI HERO -->
+<section class="mini-hero">
+  <div class="mini-hero-arc"></div>
+  <div class="mini-hero-arc" style="width:180px;height:180px;top:auto;bottom:-60px;left:-60px;right:auto;"></div>
+  <div class="mini-hero-inner">
+    <span class="mini-hero-eyebrow">Cara Order</span>
+    <h1>Pesan <span>Ultra Voucher Gift Card</span></h1>
+    <p>Tersedia untuk pembelian personal maupun kebutuhan korporat dalam jumlah besar.</p>
+  </div>
+</section>
+
+<!-- ══ SECTION 1: PERSONAL ══ -->
+<section class="section-white">
+  <div class="section-inner">
+    <span class="chip chip-personal">Personal</span>
+    <h2 class="sh">Beli UVGC via Aplikasi &amp; Web Commerce</h2>
+    <p class="sh-sub">Beli UVGC digital langsung dari UV Apps atau Web Commerce Ultra Voucher. Pilih nominal, checkout, dan pilih metode pengiriman.</p>
+
+    <div class="steps-layout">
+      <div>
+        <div class="steps-list">
+          <div class="step-item active" onmouseenter="setStep(0)" onclick="setStep(0)">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-title">Buka UV Apps atau Web Commerce</div>
+              <div class="step-desc">Unduh aplikasi Ultra Voucher atau kunjungi <a href="https://ultravoucher.co.id/category/brand/ultra-voucher-gift-card" target="_blank">ultravoucher.co.id</a>. Login ke akun Anda, lalu pilih <strong>Ultra Voucher Gift Card</strong> untuk kartu fisik atau <strong>Ultra Voucher</strong> untuk voucher digital.</div>
+            </div>
+          </div>
+          <div class="step-item" onmouseenter="setStep(1)" onclick="setStep(1)">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-title">Pilih Nominal yang Diinginkan</div>
+              <div class="step-desc">Tersedia dalam berbagai pecahan dari Rp25.000 hingga Rp1.000.000. Tambahkan ke keranjang sesuai kebutuhan.</div>
+            </div>
+          </div>
+          <div class="step-item" onmouseenter="setStep(2)" onclick="setStep(2)">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-title">Checkout &amp; Pilih Pengiriman</div>
+              <div class="step-desc">Selesaikan pembayaran dan pilih metode pengiriman: dikirim ke alamat atau pickup langsung ke kantor Ultra Voucher.</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:10px;background:#fffbe6;border:1px solid rgba(223,175,0,0.25);border-radius:12px;padding:14px 16px;margin-top:24px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#dfaf00" stroke-width="2.5" style="flex-shrink:0;margin-top:1px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <div style="font-family:var(--FB);font-size:13px;color:var(--text-secondary);line-height:1.7;"><strong style="font-family:var(--F);font-weight:700;color:var(--text-primary);">Desain kartu mengikuti stok yang tersedia.</strong> Ingin kartu dengan desain custom brand Anda? <a href="#kontak" onclick="document.getElementById('kontak').scrollIntoView({behavior:'smooth'});return false;" style="color:var(--uvgc-blue);font-weight:600;text-decoration:none;">Hubungi tim kami melalui form konsultasi</a> di bawah.</div>
+        </div>
+
+        <div class="pickup-note">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="pickup-note-text">
+            <strong>Jam Pickup Kantor Ultra Voucher</strong><br>
+            Setiap hari kerja (di luar tanggal merah dan cuti bersama) pukul 08.30 hingga 17.30 WIB.<br>
+            Jl. Tebet Barat IX No.35BB, Jakarta Selatan 12810.
+          </div>
+        </div>
+      </div>
+
+      <div class="step-img-wrap">
+        <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7af82991fcc48ff727fbf4.png" class="step-img active" id="simg-0" alt="Step 1">
+        <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7af82991fcc48ff727fbf4.png" class="step-img" id="simg-1" alt="Step 2">
+        <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7af82991fcc48ff727fbf4.png" class="step-img" id="simg-2" alt="Step 3">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ══ SECTION 2: KORPORAT ══ -->
+<section class="section-tinted">
+  <div class="section-inner">
+    <span class="chip chip-korporat">Korporat</span>
+
+    <div class="korporat-grid">
+      <!-- Kiri: judul + subjudul + CTA -->
+      <div>
+        <h2 class="sh">Order dalam Jumlah Besar</h2>
+        <p class="sh-sub" style="margin-bottom:32px;">Solusi distribusi UVGC untuk perusahaan; dari ratusan hingga ribuan kartu dengan desain custom dan dedicated support.</p>
+        <button class="btn-cta-green" onclick="document.getElementById('kontak').scrollIntoView({behavior:'smooth'})">
+          Mulai Konsultasi
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <!-- Kanan: 3 step -->
+      <div class="steps-list">
+        <div class="step-item active" onmouseenter="setKStep(0)" onclick="setKStep(0)">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-title">Isi Form Konsultasi</div>
+            <div class="step-desc">Ceritakan kebutuhan Anda; jumlah kartu, nominal, timeline, dan kebutuhan kustomisasi.</div>
+          </div>
+        </div>
+        <div class="step-item" onmouseenter="setKStep(1)" onclick="setKStep(1)">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-title">Diskusi dengan Tim</div>
+            <div class="step-desc">Tim kami menghubungi Anda dalam 1 hari kerja untuk menyusun proposal yang sesuai.</div>
+          </div>
+        </div>
+        <div class="step-item" onmouseenter="setKStep(2)" onclick="setKStep(2)">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-title">Produksi &amp; Distribusi</div>
+            <div class="step-desc">Setelah kesepakatan, kartu diproduksi dan didistribusikan sesuai jadwal yang disepakati.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- LEADS FORM -->
+<section class="section-cta" id="kontak">
+  <div class="section-cta-glow"></div>
+  <div class="cta-grid">
+    <div class="cta-left">
+      <span style="font-family:var(--F);font-size:11.5px;font-weight:700;color:var(--uvgc-blue);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px;display:block;">Mulai Sekarang</span>
+      <h2>Hadiah yang Tepat,<br>untuk <span>Kebutuhan yang Tepat</span></h2>
+      <p>UVGC memastikan setiap penerima mendapatkan hadiah yang benar-benar mereka inginkan: Fleksibel, mudah dipakai, dan berkesan.</p>
+      <ul class="cta-trust">
+        <li><span class="cta-trust-dot"></span>Konsultasi gratis tanpa komitmen</li>
+        <li><span class="cta-trust-dot"></span>Respons dalam 1 hari kerja</li>
+      </ul>
+      <div class="cta-clients">
+        <span style="display:block;margin-bottom:12px;font-family:var(--F);font-size:11px;font-weight:600;color:#c0c0c0;letter-spacing:0.12em;text-transform:uppercase;">Dipercaya oleh perusahaan terkemuka</span>
+        <div class="cta-clients-logos">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Samsung_old_logo_before_year_2015.svg" alt="Samsung">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Hisense.svg" alt="Hisense">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Vivo_logo_2019.svg/3840px-Vivo_logo_2019.svg.png" alt="Vivo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Smartfren_%282019%29.svg" alt="Smartfren">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Mitsubishi_logo.svg/960px-Mitsubishi_logo.svg.png" alt="Mitsubishi">
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="form-box">
+        <h3>Konsultasi Gratis &amp; Pesan UVGC</h3>
+        <p>Isi form di bawah; tim kami akan segera menghubungi Anda.</p>
+        <div class="fg-row fg">
+          <div class="fg" style="margin-bottom:0;"><label>Nama Lengkap <span class="fg-req">*</span></label><input type="text" id="f-nama" placeholder="Budi Santoso"><div class="fg-err" id="err-nama">Nama lengkap wajib diisi</div></div>
+          <div class="fg" style="margin-bottom:0;"><label>Nama Perusahaan <span class="fg-req">*</span></label><input type="text" id="f-perusahaan" placeholder="PT Maju Bersama"><div class="fg-err" id="err-perusahaan">Nama perusahaan wajib diisi</div></div>
+        </div>
+        <div class="fg"><label>Email Kantor <span class="fg-req">*</span></label><input type="email" id="f-email" placeholder="budi@perusahaan.co.id"><div class="fg-err" id="err-email">Masukkan email yang valid</div></div>
+        <div class="fg-row fg">
+          <div class="fg" style="margin-bottom:0;"><label>No. WhatsApp <span class="fg-req">*</span></label><input type="tel" id="f-wa" placeholder="08xx xxxx xxxx"><div class="fg-err" id="err-wa">Nomor WhatsApp wajib diisi</div></div>
+          <div class="fg" style="margin-bottom:0;"><label>Job Title</label><input type="text" id="f-jobtitle" placeholder="HR Manager"></div>
+        </div>
+        <div class="fg"><label>Kebutuhan</label><select id="f-kebutuhan"><option value="" disabled selected>Pilih</option><option>Reward Karyawan</option><option>Insentif Mitra</option><option>Program Loyalitas</option><option>Lainnya</option></select></div>
+        <button class="btn-form-green" onclick="submitForm()">Kirim dan Mulai Konsultasi</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- FAQ -->
+<section class="section-white" style="padding-top:72px;padding-bottom:80px;">
+  <div class="section-inner">
+    <span style="font-family:var(--F);font-size:11.5px;font-weight:700;color:var(--uvgc-blue);letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:10px;">FAQ</span>
+    <h2 class="sh" style="margin-bottom:36px;">Pertanyaan yang Sering Diajukan</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Berapa lama proses pengiriman UVGC setelah pembelian?<div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div></button>
+        <div class="faq-a"><div class="faq-a-inner">UVGC digital dapat langsung digunakan setelah pembayaran berhasil. Untuk pengiriman fisik ke alamat, estimasi waktu mengikuti jasa pengiriman yang dipilih saat checkout. Pickup ke kantor Ultra Voucher tersedia setiap hari kerja pukul 08.30 hingga 17.30 WIB.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Apakah bisa membeli UVGC sebagai hadiah untuk orang lain?<div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div></button>
+        <div class="faq-a"><div class="faq-a-inner">Ya. Saat checkout, Anda dapat menentukan alamat pengiriman penerima hadiah. Untuk pembelian korporat dalam jumlah besar, tim kami dapat membantu distribusi langsung ke masing-masing penerima.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Berapa minimum order untuk pembelian korporat?<div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div></button>
+        <div class="faq-a"><div class="faq-a-inner">Minimum order korporat bervariasi tergantung jenis kartu dan kebutuhan kustomisasi. Hubungi tim kami melalui form konsultasi untuk mendapatkan informasi dan penawaran yang sesuai.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Apakah desain kartu bisa dikustomisasi dengan logo perusahaan?<div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div></button>
+        <div class="faq-a"><div class="faq-a-inner">Ya. Untuk pembelian korporat, sisi depan kartu UVGC fisik dapat dikustomisasi dengan desain dan identitas brand perusahaan. Tim desain kami akan membantu dari brief hingga produksi.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Metode pembayaran apa yang tersedia untuk pembelian korporat?<div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div></button>
+        <div class="faq-a"><div class="faq-a-inner">Pembelian korporat mendukung transfer bank dan dapat dibuatkan invoice resmi. Detail metode pembayaran akan diinformasikan tim kami saat proses konsultasi berlangsung.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo"><img src="https://img.mailinblue.com/1873598/images/content_library/original/6a72f916a777b4dd48714d03.png" alt="UVGC"></div>
+      <p class="footer-desc">Solusi gifting dan reward korporat yang fleksibel untuk berbagai macam kebutuhan.</p>
+      <p class="footer-addr">Jl. Tebet Barat IX No.35BB, RT4/RW4, Tebet Barat, Kecamatan Tebet, Kota Jakarta Selatan, DKI Jakarta 12810</p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" class="footer-social"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" class="footer-social"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" class="footer-social"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      </div>
+    </div>
+    <div class="f-col"><h4>Informasi</h4><ul class="f-links"><li><a href="uvgc-cara-pakai.html">Cara Pakai</a></li><li><a href="uvgc-cara-order.html">Cara Order</a></li><li><a href="uvgc-merchant.html">Merchant</a></li><li><a href="uvgc-program.html">Program</a></li><li><a href="#">Artikel</a></li></ul></div>
+    <div class="f-col"><h4>Perusahaan</h4><ul class="f-links"><li><a href="#">Ultra Corporation</a></li><li><a href="#">Tentang Kami</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Ultra Voucher Gift Card. Bagian dari Ultra Corporation.</span>
+    <div class="fb-links"><a href="#">Kebijakan Privasi</a><a href="#">Syarat dan Ketentuan</a></div>
+  </div>
+</footer>
+
+<!-- CHAT -->
+<div class="chat-bubble" id="chatBubble">
+  <div class="chat-greeting" id="chatGreeting">
+    <div class="chat-greeting-header">
+      <div class="chat-agent-avatar">UV</div>
+      <div><div class="chat-agent-name">Tim Ultra Voucher</div><div class="chat-agent-status"><span class="chat-status-dot"></span>Online sekarang</div></div>
+      <button class="chat-close-btn" onclick="toggleChat()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="chat-greeting-body">
+      <div class="chat-bubble-msg">👋 <strong>Halo! Selamat datang di Ultra Voucher Gift Card.</strong></div>
+      <div class="chat-bubble-msg-2">Ada pertanyaan seputar cara order UVGC? Tim kami siap membantu! 🎁</div>
+      <button class="chat-start-btn" onclick="startChat()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Mulai Chat dengan CS</button>
+      <div class="chat-powered">Powered by Tawk.to</div>
+    </div>
+  </div>
+  <button class="chat-btn" id="chatBtn" onclick="toggleChat()">
+    <span class="icon-chat"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+    <span class="icon-close"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+    <span class="chat-notif" id="chatNotif">1</span>
+  </button>
+</div>
+
+<script>
+function setKStep(idx) {
+  document.querySelectorAll('.section-tinted .step-item').forEach((el,i) => el.classList.toggle('active', i===idx));
+}
+function setStep(idx) {
+  document.querySelectorAll('.step-item').forEach((el,i) => el.classList.toggle('active', i===idx));
+  [0,1,2].forEach(i => { const img = document.getElementById('simg-'+i); if(img) img.classList.toggle('active', i===idx); });
+}
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.boxShadow = window.scrollY > 40 ? '0 2px 24px rgba(0,0,0,0.08)' : 'none';
+});
+document.querySelector('.nav-cta').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('kontak').scrollIntoView({ behavior: 'smooth' });
+});
+function submitForm() {
+  let valid = true;
+  [{id:'f-nama',type:'text'},{id:'f-perusahaan',type:'text'},{id:'f-email',type:'email'},{id:'f-wa',type:'text'}].forEach(f => {
+    const el = document.getElementById(f.id); if(!el) return;
+    const val = el.value.trim();
+    let ok = val.length > 0;
+    if(f.type==='email') ok = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(val);
+    el.classList.toggle('invalid', !ok); if(!ok) valid = false;
+  });
+  if(valid){ const btn=document.querySelector('.btn-form-green'); btn.textContent='✓ Pesan Terkirim!'; btn.style.background='var(--uv-green-deep)'; btn.disabled=true; }
+}
+document.addEventListener('DOMContentLoaded', () => {
+  ['f-nama','f-perusahaan','f-email','f-wa'].forEach(id => {
+    const el = document.getElementById(id); if(!el) return;
+    el.addEventListener('input', () => el.classList.remove('invalid'));
+    if(id==='f-email') el.addEventListener('blur', () => { const v=el.value.trim(); if(v) el.classList.toggle('invalid', !/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(v)); });
+  });
+});
+setTimeout(() => { document.getElementById('chatGreeting').classList.add('visible'); document.getElementById('chatBtn').classList.add('open'); }, 4000);
+function toggleChat() {
+  const g=document.getElementById('chatGreeting'), btn=document.getElementById('chatBtn'), notif=document.getElementById('chatNotif');
+  const isOpen=g.classList.contains('visible');
+  g.classList.toggle('visible',!isOpen); btn.classList.toggle('open',!isOpen);
+  if(!isOpen && notif) notif.style.display='none';
+}
+function startChat() {
+  if(typeof Tawk_API!=='undefined' && Tawk_API.maximize) Tawk_API.maximize();
+  document.getElementById('chatGreeting').classList.remove('visible');
+  document.getElementById('chatBtn').classList.remove('open');
+}
+</script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+Tawk_API.onLoad = function() { Tawk_API.hideWidget(); };
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true; s1.src='https://embed.tawk.to/6a7c1b55f2dd231d4b747223/1jvqclhvk';
+s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+</body>
+</html>
