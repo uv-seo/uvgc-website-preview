@@ -122,8 +122,8 @@ h2.sh-light { color: #fff; }
 
 /* Smaller phone mockup */
 .app-phone-mockup { position: relative; display: flex; align-items: center; justify-content: center; background: transparent; }
-.app-phone-img { width: 100%; max-height: 400px; object-fit: contain; display: none; transition: opacity .25s ease; filter: drop-shadow(0 12px 32px rgba(0,52,112,0.15)); }
-.app-phone-img.img-active { display: block; opacity: 1; }
+.app-phone-img { width: 100%; max-height: 400px; object-fit: contain; opacity: 0; position: absolute; transition: opacity .15s ease; filter: drop-shadow(0 12px 32px rgba(0,52,112,0.15)); pointer-events: none; }
+.app-phone-img.img-active { opacity: 1; position: relative; pointer-events: auto; }
 .app-benefits { display: flex; flex-direction: column; gap: 14px; }
 .app-benefit-item { display: flex; align-items: flex-start; gap: 10px; }
 .app-benefit-icon { width: 32px; height: 32px; border-radius: 50%; background: var(--uv-green); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -169,9 +169,9 @@ h2.sh-light { color: #fff; }
 .faq-item.open .faq-icon { background: var(--uv-green); transform: rotate(45deg); }
 .faq-icon svg { color: var(--text-secondary); transition: color .2s; }
 .faq-item.open .faq-icon svg { color: #fff; }
-.faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .2s ease; }
 .faq-a-inner { padding: 0 0 20px; font-family: var(--FB); font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
-.faq-item.open .faq-a { max-height: 300px; }
+.faq-item.open .faq-a { max-height: 400px; }
 
 /* ── CTA FORM (same as homepage) ── */
 .section-cta { background: linear-gradient(135deg, #e8f0fb 0%, #ddeeff 50%, #eaf4ff 100%); position: relative; overflow: hidden; padding: 96px 6%; }
@@ -238,6 +238,51 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
 .app-benefit-icon-lg { width: 32px; height: 32px; border-radius: 50%; background: var(--uv-green); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #fff; }
 .app-benefit-text-lg { font-family: var(--FB); font-size: 14px; color: var(--text-primary); line-height: 1.55; }
 .app-benefit-text-lg strong { font-family: var(--F); font-weight: 700; }
+
+/* ══ NAV HAMBURGER & MOBILE NAV ══ */
+.nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; align-self: center; flex-direction: column; gap: 4px; }
+.nav-hamburger .hb { width: 20px; height: 2px; background: var(--uvgc-blue); border-radius: 2px; display: block; }
+.mobile-nav { display: none; position: fixed; top: 68px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--neutral-100); z-index: 199; flex-direction: column; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.mobile-nav a { font-family: var(--F); font-size: 13px; font-weight: 500; color: var(--text-primary); text-decoration: none; padding: 14px 6%; border-bottom: 0.5px solid var(--neutral-100); display: flex; align-items: center; justify-content: space-between; transition: background .15s; }
+.mobile-nav a:hover { background: var(--base-white); color: var(--uvgc-blue); }
+.mobile-nav a svg { flex-shrink: 0; opacity: 0.4; }
+.mobile-nav-cta { margin: 12px 6% 14px; display: flex; align-items: center; justify-content: center; gap: 6px; background: var(--uv-green); color: #fff !important; padding: 11px; border-radius: 8px; font-family: var(--F); font-size: 13px; font-weight: 600; text-decoration: none; }
+.mobile-nav-cta:hover { background: var(--uv-green-deep) !important; color: #fff !important; }
+
+@media (max-width: 1023px) {
+  nav .nav-menu { display: none !important; }
+
+  /* MINI HERO */
+  .mini-hero { padding: 96px 6% 48px; }
+
+  /* SECTION OFFLINE */
+  .section-white { padding-top: 44px !important; }
+  /* SECTION ONLINE — app-layout 1 kolom */
+  .app-layout { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .app-phone-mockup { order: 2; }
+  .app-layout > div:first-child { order: 1; }
+
+  /* statement + benefits grid → stack vertikal */
+  div[style*="grid-template-columns:1fr 1fr"][style*="gap:48px"] { display: flex !important; flex-direction: column !important; gap: 24px !important; }
+  .app-benefits-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
+
+  /* method tabs — scrollable */
+  .method-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap; }
+  .method-tab { white-space: nowrap; padding: 12px 16px; }
+
+  /* section-intro padding */
+  .section-intro { padding: 44px 6% 64px !important; }
+  #offline-steps { display: flex !important; flex-direction: column !important; gap: 0 !important; }
+  #offline-steps > div { width: 100% !important; }
+  #offline-steps .step-arrow { transform: rotate(90deg); padding: 8px 0; }
+  .nav-hamburger { display: flex !important; }
+  .mobile-nav.open { display: flex !important; }
+  .footer-top { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .fb-links { justify-content: center; }
+  .cta-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+  .fg-row { grid-template-columns: 1fr !important; }
+}
 </style>
 </head>
 <body>
@@ -246,17 +291,30 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="uvgc-visual-test.html">
+  <a class="nav-logo" href="index.html">
     <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a72f916a777b4dd48714d03.png" alt="UVGC">
   </a>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" id="navHamburger" aria-label="Menu">
+    <span class="hb"></span>
+    <span class="hb"></span>
+    <span class="hb"></span>
+  </button>
   <ul class="nav-menu">
-    <li><a href="uvgc-cara-pakai.html" class="active">Cara Pakai</a></li>
-    <li><a href="uvgc-cara-order.html">Cara Order</a></li>
-    <li><a href="uvgc-merchant.html">Merchant</a></li>
-    <li><a href="uvgc-program.html">Program</a></li>
+    <li><a href="index.html#redeem">Cara Pakai</a></li>
+    <li><a href="cara-order.html">Cara Order</a></li>
+    <li><a href="index.html#merchant">Merchant</a></li>
+    <li><a href="#">Program</a></li>
     <li><a href="#kontak" class="nav-cta">Hubungi Kami</a></li>
   </ul>
 </nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="uvgc-cara-pakai.html">Cara Pakai <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="uvgc-cara-order.html">Cara Order <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="uvgc-merchant.html">Merchant <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="uvgc-program.html">Program <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="#kontak" class="mobile-nav-cta">Hubungi Kami <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
 
 <!-- MINI HERO -->
 <section class="mini-hero">
@@ -282,7 +340,7 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
     </div>
 
     <!-- 3 Steps — floating image treatment -->
-    <div style="display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;align-items:end;margin-top:52px;gap:0;">
+    <div id="offline-steps" style="display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;align-items:end;margin-top:52px;gap:0;">
 
       <!-- Step 1 -->
       <div style="display:flex;flex-direction:column;align-items:center;">
@@ -336,7 +394,7 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
     </div>
 
     <div style="margin-top:36px;text-align:center;">
-      <a href="uvgc-merchant.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--uv-green);color:#fff;font-family:var(--F);font-weight:600;font-size:14px;padding:0 28px;height:43px;border-radius:8px;text-decoration:none;box-shadow:0 4px 20px rgba(0,154,70,0.28);transition:all .22s;" onmouseover="this.style.background='var(--uv-green-deep)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--uv-green)';this.style.transform='translateY(0)'">
+      <a href="merchant.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--uv-green);color:#fff;font-family:var(--F);font-weight:600;font-size:14px;padding:0 28px;height:43px;border-radius:8px;text-decoration:none;box-shadow:0 4px 20px rgba(0,154,70,0.28);transition:all .22s;" onmouseover="this.style.background='var(--uv-green-deep)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--uv-green)';this.style.transform='translateY(0)'">
         Lihat Daftar Merchant Offline
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
@@ -686,7 +744,7 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
           Bagaimana cara mengetahui daftar merchant yang menerima UVGC?
           <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Daftar lengkap merchant partner tersedia di halaman <a href="uvgc-merchant.html" style="color:var(--uvgc-blue);font-weight:600;">Merchant</a> di website ini, serta di dalam aplikasi Ultra Voucher pada menu "Around You". Merchant mencakup lebih dari 20.000 outlet di seluruh Indonesia.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Daftar lengkap merchant partner tersedia di halaman <a href="index.html#merchant" style="color:var(--uvgc-blue);font-weight:600;">Merchant</a> di website ini, serta di dalam aplikasi Ultra Voucher pada menu "Around You". Merchant mencakup lebih dari 20.000 outlet di seluruh Indonesia.</div></div>
       </div>
     </div>
   </div>
@@ -706,7 +764,7 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
         <a href="#" class="footer-social" aria-label="X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
       </div>
     </div>
-    <div class="f-col"><h4>Informasi</h4><ul class="f-links"><li><a href="uvgc-cara-pakai.html" class="active">Cara Pakai</a></li><li><a href="uvgc-cara-order.html">Cara Order</a></li><li><a href="uvgc-merchant.html">Merchant</a></li><li><a href="uvgc-program.html">Program</a></li><li><a href="uvgc-artikel.html">Artikel</a></li></ul></div>
+    <div class="f-col"><h4>Informasi</h4><ul class="f-links"><li><a href="cara-pakai.html">Cara Pakai</a></li><li><a href="cara-order.html">Cara Order</a></li><li><a href="index.html#merchant">Merchant</a></li><li><a href="#">Program</a></li><li><a href="#">Artikel</a></li></ul></div>
     <div class="f-col"><h4>Perusahaan</h4><ul class="f-links"><li><a href="#">Ultra Corporation</a></li><li><a href="#">Tentang Kami</a></li></ul></div>
   </div>
   <div class="footer-bottom">
@@ -766,6 +824,17 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
 </div>
 
 <script>
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+window.addEventListener('click', function(e) {
+  const nav = document.getElementById('mobileNav');
+  const btn = document.getElementById('navHamburger');
+  if (nav && btn && !nav.contains(e.target) && !btn.contains(e.target)) {
+    nav.classList.remove('open');
+  }
+});
+
 // Nav scroll shadow
 window.addEventListener('scroll', () => {
   document.querySelector('nav').style.boxShadow = window.scrollY > 40 ? '0 2px 24px rgba(0,0,0,0.08)' : 'none';
