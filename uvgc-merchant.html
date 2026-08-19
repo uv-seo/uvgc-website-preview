@@ -637,7 +637,7 @@ function buildCards() {
       const isApps = uvAppsmerchants.has(name);
       const card = document.createElement('a');
       card.className = 'merchant-card';
-      card.href = isApps ? 'uvgc-merchant-detail-5.html' : 'uvgc-merchant-detail-4.html';
+      card.href = 'uvgc-merchant-detail-5.html';
       card.dataset.name = name.toLowerCase();
       card.dataset.cat = cat;
       card.dataset.apps = isApps ? 'true' : 'false';
