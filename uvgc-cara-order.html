@@ -62,7 +62,7 @@ nav { position: fixed; top: 0; left: 4px; right: 0; z-index: 200; background: rg
 /* PERSONAL STEPS */
 .steps-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 .steps-list { position: relative; }
-.steps-list::before { content: ''; position: absolute; left: 20px; top: 40px; bottom: 40px; border-right: 1.5px dashed rgba(0,94,178,0.2); pointer-events: none; }
+.steps-list::before { content: ''; position: absolute; left: 20px; top: 40px; bottom: 60px; border-right: 1.5px dashed rgba(0,94,178,0.2); pointer-events: none; }
 .step-item { display: flex; gap: 16px; align-items: flex-start; padding: 14px 16px; border-radius: 12px; cursor: pointer; transition: background .2s; position: relative; z-index: 1; }
 .step-item:hover, .step-item.active { background: rgba(0,94,178,0.05); }
 .step-num { width: 40px; height: 40px; border-radius: 50%; background: var(--neutral-100); color: var(--text-secondary); font-family: var(--F); font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .2s; }
@@ -192,6 +192,60 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
   .footer-top { grid-template-columns: 1fr 1fr; }
   .step-img-wrap { display: none; }
 }
+
+/* ══ NAV HAMBURGER & MOBILE NAV ══ */
+.nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; align-self: center; flex-direction: column; gap: 4px; }
+.nav-hamburger .hb { width: 20px; height: 2px; background: var(--uvgc-blue); border-radius: 2px; display: block; }
+.mobile-nav { display: none; position: fixed; top: 68px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--neutral-100); z-index: 199; flex-direction: column; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.mobile-nav a { font-family: var(--F); font-size: 13px; font-weight: 500; color: var(--text-primary); text-decoration: none; padding: 14px 6%; border-bottom: 0.5px solid var(--neutral-100); display: flex; align-items: center; justify-content: space-between; transition: background .15s; }
+.mobile-nav a:hover { background: var(--base-white); color: var(--uvgc-blue); }
+.mobile-nav a svg { flex-shrink: 0; opacity: 0.4; }
+.mobile-nav-cta { margin: 12px 6% 14px; display: flex; align-items: center; justify-content: center; gap: 6px; background: var(--uv-green); color: #fff !important; padding: 11px; border-radius: 8px; font-family: var(--F); font-size: 13px; font-weight: 600; text-decoration: none; }
+.mobile-nav-cta:hover { background: var(--uv-green-deep) !important; color: #fff !important; }
+
+@media (max-width: 1023px) {
+  /* NAV */
+  nav .nav-menu { display: none !important; }
+  .nav-hamburger { display: flex !important; }
+  .mobile-nav.open { display: flex !important; }
+
+  /* MINI HERO */
+  .mini-hero { padding: 96px 6% 48px !important; }
+
+  /* STEPS LAYOUT PERSONAL — 1 kolom: image → steps → callout → button */
+  .steps-layout { display: flex !important; flex-direction: column !important; gap: 0 !important; }
+  .step-img-wrap { display: flex !important; order: 1; margin-bottom: 28px; }
+  .step-img { max-width: 100% !important; }
+  .steps-layout > div:first-child { order: 2; display: flex; flex-direction: column; }
+  .steps-list { order: 1; }
+  .steps-layout > div:first-child > div[style*="background:#fffbe6"] { order: 2; }
+  .steps-layout > div:first-child > .pickup-note { order: 3; }
+  /* KORPORAT — 1 kolom: judul → subtitle → steps → button */
+  .korporat-grid { display: flex !important; flex-direction: column !important; gap: 0 !important; }
+  .korporat-grid > div:first-child { display: flex; flex-direction: column; order: 1; }
+  .korporat-grid > div:first-child h2 { order: 1; }
+  .korporat-grid > div:first-child p { order: 2; }
+  .korporat-grid { display: flex !important; flex-direction: column !important; gap: 0 !important; }
+  .korporat-grid > div:first-child { order: 1; margin-bottom: 24px; }
+  .korporat-grid > div:last-child { order: 2; }
+  .korporat-cta-btn { display: none !important; }
+  .korporat-cta-mobile { display: flex !important; }
+
+  /* KORPORAT SECTION */
+  .corp-layout { grid-template-columns: 1fr !important; gap: 32px !important; }
+
+  /* CTA FORM */
+  .cta-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+  .fg-row { grid-template-columns: 1fr !important; }
+
+  /* FOOTER */
+  .footer-top { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .fb-links { justify-content: center; }
+
+  /* SECTION PADDING */
+  .section-white, .section-tinted { padding: 44px 6% !important; }
+}
 </style>
 </head>
 <body>
@@ -201,6 +255,11 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="uvgc-visual-test.html"><img src="https://img.mailinblue.com/1873598/images/content_library/original/6a72f916a777b4dd48714d03.png" alt="UVGC"></a>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" id="navHamburger" aria-label="Menu">
+    <span class="hb"></span>
+    <span class="hb"></span>
+    <span class="hb"></span>
+  </button>
   <ul class="nav-menu">
     <li><a href="uvgc-cara-pakai.html">Cara Pakai</a></li>
     <li><a href="uvgc-cara-order.html" class="active">Cara Order</a></li>
@@ -289,35 +348,43 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
       <!-- Kiri: judul + subjudul + CTA -->
       <div>
         <h2 class="sh">Order dalam Jumlah Besar</h2>
-        <p class="sh-sub" style="margin-bottom:32px;">Solusi distribusi UVGC untuk perusahaan; dari ratusan hingga ribuan kartu dengan desain custom dan dedicated support.</p>
-        <button class="btn-cta-green" onclick="document.getElementById('kontak').scrollIntoView({behavior:'smooth'})">
+        <p class="sh-sub" style="margin-bottom:0;">Solusi distribusi UVGC untuk perusahaan; dari ratusan hingga ribuan kartu dengan desain custom dan dedicated support.</p>
+        <button class="btn-cta-green korporat-cta-btn" onclick="document.getElementById('kontak').scrollIntoView({behavior:'smooth'})">
           Mulai Konsultasi
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
       </div>
 
       <!-- Kanan: 3 step -->
-      <div class="steps-list">
-        <div class="step-item active" onmouseenter="setKStep(0)" onclick="setKStep(0)">
-          <div class="step-num">1</div>
-          <div class="step-content">
-            <div class="step-title">Isi Form Konsultasi</div>
-            <div class="step-desc">Ceritakan kebutuhan Anda; jumlah kartu, nominal, timeline, dan kebutuhan kustomisasi.</div>
+      <div>
+        <div class="steps-list">
+          <div class="step-item active" onmouseenter="setKStep(0)" onclick="setKStep(0)">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-title">Isi Form Konsultasi</div>
+              <div class="step-desc">Ceritakan kebutuhan Anda; jumlah kartu, nominal, timeline, dan kebutuhan kustomisasi.</div>
+            </div>
+          </div>
+          <div class="step-item" onmouseenter="setKStep(1)" onclick="setKStep(1)">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-title">Diskusi dengan Tim</div>
+              <div class="step-desc">Tim kami menghubungi Anda dalam 1 hari kerja untuk menyusun proposal yang sesuai.</div>
+            </div>
+          </div>
+          <div class="step-item" onmouseenter="setKStep(2)" onclick="setKStep(2)">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-title">Produksi &amp; Distribusi</div>
+              <div class="step-desc">Setelah kesepakatan, kartu diproduksi dan didistribusikan sesuai jadwal yang disepakati.</div>
+            </div>
           </div>
         </div>
-        <div class="step-item" onmouseenter="setKStep(1)" onclick="setKStep(1)">
-          <div class="step-num">2</div>
-          <div class="step-content">
-            <div class="step-title">Diskusi dengan Tim</div>
-            <div class="step-desc">Tim kami menghubungi Anda dalam 1 hari kerja untuk menyusun proposal yang sesuai.</div>
-          </div>
-        </div>
-        <div class="step-item" onmouseenter="setKStep(2)" onclick="setKStep(2)">
-          <div class="step-num">3</div>
-          <div class="step-content">
-            <div class="step-title">Produksi &amp; Distribusi</div>
-            <div class="step-desc">Setelah kesepakatan, kartu diproduksi dan didistribusikan sesuai jadwal yang disepakati.</div>
-          </div>
+        <div class="korporat-cta-mobile" style="margin-top:28px;display:none;justify-content:center;">
+          <button class="btn-cta-green" onclick="document.getElementById('kontak').scrollIntoView({behavior:'smooth'})">
+            Mulai Konsultasi
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
         </div>
       </div>
     </div>
@@ -447,6 +514,17 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
 </div>
 
 <script>
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+window.addEventListener('click', function(e) {
+  const nav = document.getElementById('mobileNav');
+  const btn = document.getElementById('navHamburger');
+  if (nav && btn && !nav.contains(e.target) && !btn.contains(e.target)) {
+    nav.classList.remove('open');
+  }
+});
+
 function setKStep(idx) {
   document.querySelectorAll('.section-tinted .step-item').forEach((el,i) => el.classList.toggle('active', i===idx));
 }
