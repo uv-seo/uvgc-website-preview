@@ -180,6 +180,46 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
   .cta-grid { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr 1fr; }
 }
+
+/* ══ NAV HAMBURGER & MOBILE NAV ══ */
+.nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; align-self: center; flex-direction: column; gap: 4px; }
+.nav-hamburger .hb { width: 20px; height: 2px; background: var(--uvgc-blue); border-radius: 2px; display: block; }
+.mobile-nav { display: none; position: fixed; top: 68px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--neutral-100); z-index: 199; flex-direction: column; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.mobile-nav a { font-family: var(--F); font-size: 13px; font-weight: 500; color: var(--text-primary); text-decoration: none; padding: 14px 6%; border-bottom: 0.5px solid var(--neutral-100); display: flex; align-items: center; justify-content: space-between; transition: background .15s; }
+.mobile-nav a:hover { background: var(--base-white); color: var(--uvgc-blue); }
+.mobile-nav a svg { flex-shrink: 0; opacity: 0.4; }
+.mobile-nav-cta { margin: 12px 6% 14px; display: flex; align-items: center; justify-content: center; gap: 6px; background: var(--uv-green); color: #fff !important; padding: 11px; border-radius: 8px; font-family: var(--F); font-size: 13px; font-weight: 600; text-decoration: none; }
+.mobile-nav-cta:hover { background: var(--uv-green-deep) !important; color: #fff !important; }
+
+@media (max-width: 1023px) {
+  /* NAV */
+  nav .nav-menu { display: none !important; }
+  .nav-hamburger { display: flex !important; }
+  .mobile-nav.open { display: flex !important; }
+
+  /* HERO */
+  .hero { padding-top: 96px !important; }
+  .hero-content { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .hero-img { max-width: 280px !important; width: 100% !important; margin: 0 auto !important; display: block !important; }
+  .hero-name { font-size: clamp(24px, 5vw, 36px) !important; }
+
+  /* LOC SECTION */
+  .loc-section { padding: 40px 5% !important; }
+  .loc-controls { flex-direction: column !important; gap: 10px !important; }
+  .loc-search { width: 100% !important; }
+  .loc-filter { width: 100% !important; }
+  .loc-grid { grid-template-columns: 1fr !important; }
+
+  /* CTA FORM */
+  .cta-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+  .fg-row { grid-template-columns: 1fr !important; }
+  .section-cta { padding: 44px 6% !important; }
+
+  /* FOOTER */
+  .footer-top { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .fb-links { justify-content: center; }
+}
 </style>
 </head>
 <body>
@@ -191,6 +231,11 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
   <a class="nav-logo" href="uvgc-visual-test.html">
     <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a72f916a777b4dd48714d03.png" alt="UVGC">
   </a>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" id="navHamburger" aria-label="Menu">
+    <span class="hb"></span>
+    <span class="hb"></span>
+    <span class="hb"></span>
+  </button>
   <ul class="nav-menu">
     <li><a href="uvgc-cara-pakai.html">Cara Pakai</a></li>
     <li><a href="uvgc-cara-order.html">Cara Order</a></li>
@@ -199,6 +244,14 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
     <li><a href="#kontak" class="nav-cta">Hubungi Kami</a></li>
   </ul>
 </nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="uvgc-cara-pakai.html">Cara Pakai <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="uvgc-cara-order.html">Cara Order <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="uvgc-merchant.html">Merchant <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="uvgc-program.html">Program <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="#kontak" class="mobile-nav-cta">Hubungi Kami <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -393,6 +446,17 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
 </div>
 
 <script>
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+window.addEventListener('click', function(e) {
+  const nav = document.getElementById('mobileNav');
+  const btn = document.getElementById('navHamburger');
+  if (nav && btn && !nav.contains(e.target) && !btn.contains(e.target)) {
+    nav.classList.remove('open');
+  }
+});
+
 // Nav scroll
 window.addEventListener('scroll', () => {
   document.querySelector('nav').style.boxShadow = window.scrollY > 40 ? '0 2px 24px rgba(0,0,0,0.08)' : 'none';
