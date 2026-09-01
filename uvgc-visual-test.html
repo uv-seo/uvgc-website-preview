@@ -1314,18 +1314,19 @@ h2.sh-light { color: #fff; }
 .fg select option { background: #fff; color: var(--text-primary); }
 .fg { position: relative; }
 .fg select { padding-right: 36px; cursor: pointer; }
-.fg select ~ .fg-chevron { display: none; }
 .fg:has(select)::after {
   content: '';
   position: absolute;
   right: 13px;
-  bottom: 11px;
+  top: 50%;
+  transform: translateY(4px);
   width: 16px;
   height: 16px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23878787' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: 16px;
   pointer-events: none;
+  z-index: 0;
 }
 .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
 .btn-form-green {
@@ -1851,13 +1852,11 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
       <div class="card-showcase-label">Dari Program Korporat Kami</div>
       <div class="card-marquee-wrap">
         <div class="card-marquee-track">
-          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a704e9e0153d604b1066436.png" alt="Sinarmas Land" class="card-marquee-img">
           <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a799500f1e8984839c8568d.jpeg" alt="IRC Tire" class="card-marquee-img">
           <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7995008b48874e7700a8a4.jpeg" alt="Zurich" class="card-marquee-img">
           <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a704e9e0153d604b1066435.png" alt="Inve Indonesia" class="card-marquee-img">
           <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a704e9e0153d604b1066433.png" alt="Mizzle" class="card-marquee-img">
           <!-- Duplicate for seamless loop -->
-          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a704e9e0153d604b1066436.png" alt="Sinarmas Land" class="card-marquee-img">
           <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a799500f1e8984839c8568d.jpeg" alt="IRC Tire" class="card-marquee-img">
           <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7995008b48874e7700a8a4.jpeg" alt="Zurich" class="card-marquee-img">
           <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a704e9e0153d604b1066435.png" alt="Inve Indonesia" class="card-marquee-img">
