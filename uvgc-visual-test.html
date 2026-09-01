@@ -1312,6 +1312,21 @@ h2.sh-light { color: #fff; }
 .fg input::placeholder { color: var(--neutral-400, #ababab); }
 .fg input:focus, .fg select:focus { border-color: var(--uvgc-blue); box-shadow: 0 0 0 3px rgba(0,94,178,0.1); }
 .fg select option { background: #fff; color: var(--text-primary); }
+.fg { position: relative; }
+.fg select { padding-right: 36px; cursor: pointer; }
+.fg select ~ .fg-chevron { display: none; }
+.fg:has(select)::after {
+  content: '';
+  position: absolute;
+  right: 13px;
+  bottom: 11px;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23878787' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 16px;
+  pointer-events: none;
+}
 .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
 .btn-form-green {
   width: 100%; padding: 0; height: 43px; margin-top: 6px;
@@ -1625,7 +1640,7 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
       <div class="hero-stats">
         <div class="hero-stat"><div class="hero-stat-n">1jt+</div><div class="hero-stat-l">Total Penggunaan</div></div>
         <div class="hero-stat"><div class="hero-stat-n">20.000+</div><div class="hero-stat-l">Store redeem langsung</div></div>
-        <div class="hero-stat"><div class="hero-stat-n">24/7</div><div class="hero-stat-l">Customer support</div></div>
+        <div class="hero-stat"><div class="hero-stat-n">Dedicated</div><div class="hero-stat-l">Account Manager</div></div>
       </div>
     </div>
     <div class="hero-photos" style="display:flex;align-items:center;justify-content:center;">
@@ -1645,34 +1660,32 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
         <div class="marquee-item"><img src="https://www.bca.co.id/-/media/Files/2024/kemudian-ringan/assets/icon--myBCA" alt="myBCA" loading="lazy"></div>
         <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Logo_Wondr_by_BNI.svg/3840px-Logo_Wondr_by_BNI.svg.png" alt="Wondr by BNI" loading="lazy"></div>
         <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Livin_by_Mandiri.svg/1280px-Livin_by_Mandiri.svg.png" alt="Livin by Mandiri" loading="lazy"></div>
-        <div class="marquee-item"><img src="https://www.vhv.rs/dpng/d/56-566771_logo-jenius-btpn-png-transparent-png.png" alt="Jenius" loading="lazy"></div>
+        <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/id/8/89/Jenius-logo.png" alt="Jenius" loading="lazy"></div>
         <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/3/38/CIMB_Niaga_logo.svg" alt="CIMB Niaga" loading="lazy"></div>
-        <div class="marquee-item"><img src="https://www.btn.co.id/-/media/Images/About/Logo/logo-btn-1.png" alt="BTN" loading="lazy"></div>
+        <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/BTN_2024.svg/960px-BTN_2024.svg.png" alt="BTN" loading="lazy"></div>
         <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bank_Mandiri_logo_2016.svg/3840px-Bank_Mandiri_logo_2016.svg.png" alt="Mandiri" loading="lazy"></div>
         <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Logo_baru_BRImo.svg/960px-Logo_baru_BRImo.svg.png" alt="BRImo" loading="lazy"></div>
         <div class="marquee-item"><img src="https://www.bca.co.id/-/media/Files/2024/kemudian-ringan/assets/icon--myBCA" alt="myBCA" loading="lazy"></div>
         <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Logo_Wondr_by_BNI.svg/3840px-Logo_Wondr_by_BNI.svg.png" alt="Wondr by BNI" loading="lazy"></div>
         <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Livin_by_Mandiri.svg/1280px-Livin_by_Mandiri.svg.png" alt="Livin by Mandiri" loading="lazy"></div>
-        <div class="marquee-item"><img src="https://www.vhv.rs/dpng/d/56-566771_logo-jenius-btpn-png-transparent-png.png" alt="Jenius" loading="lazy"></div>
+        <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/id/8/89/Jenius-logo.png" alt="Jenius" loading="lazy"></div>
         <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/3/38/CIMB_Niaga_logo.svg" alt="CIMB Niaga" loading="lazy"></div>
-        <div class="marquee-item"><img src="https://www.btn.co.id/-/media/Images/About/Logo/logo-btn-1.png" alt="BTN" loading="lazy"></div>
+        <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/BTN_2024.svg/960px-BTN_2024.svg.png" alt="BTN" loading="lazy"></div>
         <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bank_Mandiri_logo_2016.svg/3840px-Bank_Mandiri_logo_2016.svg.png" alt="Mandiri" loading="lazy"></div>
       </div>
     </div>
     <!-- Row 2: FSI & Fintech -->
     <div class="marquee-wrap" style="margin-top:28px;">
       <div class="marquee-track marquee-track-reverse">
-        <div class="marquee-item"><img src="https://images.seeklogo.com/logo-png/50/2/kredivo-logo-png_seeklogo-504047.png" alt="Kredivo" loading="lazy"></div>
+        <div class="marquee-item"><img src="https://image.cermati.com/v1582185705/upcaqimam6jtf9hoy6mz.png" alt="Kredivo" loading="lazy"></div>
         <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Gopay_logo_%282019%29.svg/1280px-Gopay_logo_%282019%29.svg.png" alt="GoPay" loading="lazy"></div>
-        <div class="marquee-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw7Y8i1Rgeu4n1uNihL1NBLnRWA3CFD8LFBZBPZA0eQgAZcUsi_e3DP4M&s=10" alt="Alipay+ Rewards" loading="lazy"></div>
-        <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Dana_logo.png" alt="DANA" loading="lazy"></div>
+                <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Dana_logo.png" alt="DANA" loading="lazy"></div>
         <div class="marquee-item"><img src="https://afpi.or.id//fm/uploads/members/1692867846.png" alt="AstraPay" loading="lazy"></div>
         <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Telkomsel_2021.png" alt="Telkomsel" loading="lazy"></div>
         <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Smartfren_%282019%29.svg" alt="Smartfren" loading="lazy"></div>
-        <div class="marquee-item"><img src="https://images.seeklogo.com/logo-png/50/2/kredivo-logo-png_seeklogo-504047.png" alt="Kredivo" loading="lazy"></div>
+        <div class="marquee-item"><img src="https://image.cermati.com/v1582185705/upcaqimam6jtf9hoy6mz.png" alt="Kredivo" loading="lazy"></div>
         <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Gopay_logo_%282019%29.svg/1280px-Gopay_logo_%282019%29.svg.png" alt="GoPay" loading="lazy"></div>
-        <div class="marquee-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw7Y8i1Rgeu4n1uNihL1NBLnRWA3CFD8LFBZBPZA0eQgAZcUsi_e3DP4M&s=10" alt="Alipay+ Rewards" loading="lazy"></div>
-        <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Dana_logo.png" alt="DANA" loading="lazy"></div>
+                <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Dana_logo.png" alt="DANA" loading="lazy"></div>
         <div class="marquee-item"><img src="https://afpi.or.id//fm/uploads/members/1692867846.png" alt="AstraPay" loading="lazy"></div>
         <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Telkomsel_2021.png" alt="Telkomsel" loading="lazy"></div>
         <div class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Smartfren_%282019%29.svg" alt="Smartfren" loading="lazy"></div>
@@ -2166,6 +2179,76 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
             <label>Job Title</label>
             <input type="text" id="f-jobtitle" placeholder="HR Manager">
           </div>
+        </div>
+        <div class="fg">
+          <label>Industri</label>
+          <select id="f-industri">
+            <option value="" disabled selected>Pilih industri</option>
+            <option>Agen Perjalanan, Travel</option>
+            <option>Asuransi Jiwa</option>
+            <option>Asuransi Kesehatan</option>
+            <option>Asuransi Umum</option>
+            <option>Bank Korporasi</option>
+            <option>Bank Retail</option>
+            <option>Bioskop</option>
+            <option>Brand, Groceries</option>
+            <option>Crowdfunding & P2P Investment</option>
+            <option>Cryptocurrency & Blockchain</option>
+            <option>Developer Real Estate</option>
+            <option>E-Commerce</option>
+            <option>EdTech</option>
+            <option>Energi Terbarukan</option>
+            <option>Esports</option>
+            <option>Farmasi</option>
+            <option>Fashion, Dept Store</option>
+            <option>Futsal</option>
+            <option>Golf</option>
+            <option>Infrastruktur</option>
+            <option>ISP (Internet Service Provider)</option>
+            <option>Klinik dan Laboratorium</option>
+            <option>Komunitas Belanja</option>
+            <option>Komunitas Bikers</option>
+            <option>Komunitas Runners</option>
+            <option>Leasing Elektronik</option>
+            <option>Leasing Kendaraan</option>
+            <option>Lembaga Kursus dan Pelatihan</option>
+            <option>Lembaga Pendidikan Formal</option>
+            <option>Lending (Pinjaman)</option>
+            <option>Listrik, Gas Alam, Air Bersih</option>
+            <option>Logistik dan Ekspedisi</option>
+            <option>Makanan & Minuman</option>
+            <option>Manufaktur Bahan Bangunan</option>
+            <option>Manufaktur Elektronik</option>
+            <option>Manufaktur Otomotif</option>
+            <option>Marketplace</option>
+            <option>Maskapai</option>
+            <option>Minyak dan Gas Bumi (Oil & Gas)</option>
+            <option>NGO (Non-Governmental Organization)</option>
+            <option>Operator Seluler</option>
+            <option>Pangan dan Pertanian</option>
+            <option>Payments (Pembayaran)</option>
+            <option>Pemerintah</option>
+            <option>Penerbitan</option>
+            <option>Peralatan Telekomunikasi</option>
+            <option>Perhotelan</option>
+            <option>Perusahaan Minyak dan Gas</option>
+            <option>Produk Kecantikan</option>
+            <option>Produk Rumah Tangga</option>
+            <option>Properti Komersial</option>
+            <option>Properti Perhotelan</option>
+            <option>Ride-Hailing</option>
+            <option>Rumah Sakit</option>
+            <option>SaaS (Software as a Service)</option>
+            <option>Streaming dan TV Berlangganan</option>
+            <option>Sumber Daya Alam</option>
+            <option>Tambang Batu Bara</option>
+            <option>Tambang Mineral Logam</option>
+            <option>Transportasi</option>
+            <option>Transportasi Darat</option>
+            <option>Transportasi Udara</option>
+            <option>WealthTech (Investasi)</option>
+            <option>Others</option>
+          </select>
         </div>
         <div class="fg">
           <label>Kebutuhan</label>
