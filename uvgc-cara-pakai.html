@@ -196,6 +196,21 @@ h2.sh-light { color: #fff; }
 .fg input::placeholder { color: #ababab; }
 .fg input:focus, .fg select:focus { border-color: var(--uvgc-blue); box-shadow: 0 0 0 3px rgba(0,94,178,0.1); }
 .fg select option { background: #fff; color: var(--text-primary); }
+.fg { position: relative; }
+.fg select { padding-right: 36px; cursor: pointer; }
+.fg select ~ .fg-chevron { display: none; }
+.fg:has(select)::after {
+  content: '';
+  position: absolute;
+  right: 13px;
+  bottom: 11px;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23878787' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 16px;
+  pointer-events: none;
+}
 .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
 .fg-req { color: #ef4444; font-size: 11px; }
 .fg-err { font-family: var(--FB); font-size: 11.5px; color: #ef4444; margin-top: 4px; display: none; }
@@ -666,10 +681,9 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
       <div class="cta-clients">
         <span style="display:block;margin-bottom:12px;font-family:var(--F);font-size:11px;font-weight:600;color:#c0c0c0;letter-spacing:0.12em;text-transform:uppercase;">Dipercaya oleh perusahaan terkemuka</span>
         <div class="cta-clients-logos">
-          <img src="https://www.bca.co.id/-/media/Files/2024/kemudian-ringan/assets/icon--myBCA" alt="myBCA">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Logo_baru_BRImo.svg/960px-Logo_baru_BRImo.svg.png" alt="BRImo">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Logo_Wondr_by_BNI.svg/3840px-Logo_Wondr_by_BNI.svg.png" alt="Wondr by BNI">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Livin_by_Mandiri.svg/1280px-Livin_by_Mandiri.svg.png" alt="Livin by Mandiri">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" alt="BCA">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/BRI_2025.png" alt="BRI">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Bank_Negara_Indonesia_logo_%282004%29.svg/1280px-Bank_Negara_Indonesia_logo_%282004%29.svg.png" alt="BNI">
           <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Telkomsel_2021.png" alt="Telkomsel">
         </div>
       </div>
@@ -687,7 +701,7 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
           <div class="fg" style="margin-bottom:0;"><label>No. WhatsApp <span class="fg-req">*</span></label><input type="tel" id="f-wa" placeholder="08xx xxxx xxxx"><div class="fg-err" id="err-wa">Nomor WhatsApp wajib diisi</div></div>
           <div class="fg" style="margin-bottom:0;"><label>Job Title</label><input type="text" id="f-jobtitle" placeholder="HR Manager"></div>
         </div>
-        <div class="fg"><label>Kebutuhan</label><select id="f-kebutuhan"><option value="" disabled selected>Pilih</option><option>Reward Karyawan</option><option>Insentif Mitra</option><option>Program Loyalitas</option><option>Lainnya</option></select></div>
+        <div class="fg"><label>Industri</label><select id="f-industri"><option value="" disabled selected>Pilih industri</option><option>Agen Perjalanan, Travel</option><option>Asuransi Jiwa</option><option>Asuransi Kesehatan</option><option>Asuransi Umum</option><option>Bank Korporasi</option><option>Bank Retail</option><option>Bioskop</option><option>Brand, Groceries</option><option>Crowdfunding & P2P Investment</option><option>Cryptocurrency & Blockchain</option><option>Developer Real Estate</option><option>E-Commerce</option><option>EdTech</option><option>Energi Terbarukan</option><option>Esports</option><option>Farmasi</option><option>Fashion, Dept Store</option><option>Futsal</option><option>Golf</option><option>Infrastruktur</option><option>ISP (Internet Service Provider)</option><option>Klinik dan Laboratorium</option><option>Komunitas Belanja</option><option>Komunitas Bikers</option><option>Komunitas Runners</option><option>Leasing Elektronik</option><option>Leasing Kendaraan</option><option>Lembaga Kursus dan Pelatihan</option><option>Lembaga Pendidikan Formal</option><option>Lending (Pinjaman)</option><option>Listrik, Gas Alam, Air Bersih</option><option>Logistik dan Ekspedisi</option><option>Makanan & Minuman</option><option>Manufaktur Bahan Bangunan</option><option>Manufaktur Elektronik</option><option>Manufaktur Otomotif</option><option>Marketplace</option><option>Maskapai</option><option>Minyak dan Gas Bumi (Oil & Gas)</option><option>NGO (Non-Governmental Organization)</option><option>Operator Seluler</option><option>Pangan dan Pertanian</option><option>Payments (Pembayaran)</option><option>Pemerintah</option><option>Penerbitan</option><option>Peralatan Telekomunikasi</option><option>Perhotelan</option><option>Perusahaan Minyak dan Gas</option><option>Produk Kecantikan</option><option>Produk Rumah Tangga</option><option>Properti Komersial</option><option>Properti Perhotelan</option><option>Ride-Hailing</option><option>Rumah Sakit</option><option>SaaS (Software as a Service)</option><option>Streaming dan TV Berlangganan</option><option>Sumber Daya Alam</option><option>Tambang Batu Bara</option><option>Tambang Mineral Logam</option><option>Transportasi</option><option>Transportasi Darat</option><option>Transportasi Udara</option><option>WealthTech (Investasi)</option><option>Others</option></select></div><div class="fg"><label>Kebutuhan</label><select id="f-kebutuhan"><option value="" disabled selected>Pilih</option><option>Reward Karyawan</option><option>Insentif Mitra</option><option>Program Loyalitas</option><option>Lainnya</option></select></div>
         <button class="btn-form-green" onclick="submitForm()">Kirim dan Mulai Konsultasi</button>
       </div>
     </div>
