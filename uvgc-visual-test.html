@@ -1578,6 +1578,36 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
   .section-header h2 { font-size: clamp(24px, 4vw, 36px) !important; }
 }
 </style>
+
+<!-- HERO SLIDER STYLES -->
+<style>
+.hero-slider { position: relative; min-height: 92vh; overflow: hidden; }
+.hero-slide { display: none; align-items: center; padding: 128px 6% 80px; min-height: 92vh; position: relative; overflow: hidden; }
+.hero-slide.active { display: flex; }
+.hero-slide-1 { background: url('https://img.mailinblue.com/1873598/images/content_library/original/6a7b008868d18913c79fc34c.jpg') center center / cover no-repeat; }
+.hero-slide-1::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(0,94,178,0.045) 1.5px, transparent 1.5px); background-size: 36px 36px; pointer-events: none; }
+.hero-slide-2 { background: linear-gradient(135deg, #ede0ff 0%, #f5eeff 45%, #ffffff 100%); }
+.hero-slide-2::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(120,40,200,0.05) 1.5px, transparent 1.5px); background-size: 36px 36px; pointer-events: none; }
+.hero-slide-2-glow { position: absolute; top: -100px; right: -80px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(140,60,220,0.1) 0%, transparent 65%); pointer-events: none; }
+.hero-slide-2-arc { position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; border-radius: 50%; border: 1.5px solid rgba(140,60,220,0.1); pointer-events: none; }
+.hero-slider-dots { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
+.hero-dot { width: 8px; height: 8px; border-radius: 100px; border: none; cursor: pointer; padding: 0; background: rgba(0,0,0,0.18); transition: all .3s; }
+.hero-dot.active { width: 24px; background: #005eb2; }
+.hero-dot.purple.active { background: #7c28cc; }
+.hero-stats-purple { border-color: rgba(124,40,204,0.2); background: rgba(255,255,255,0.6); }
+.hero-stats-purple .hero-stat { border-right-color: rgba(124,40,204,0.15); }
+.hero-slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(255,255,255,0.82); border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 12px rgba(0,0,0,0.1); transition: all .2s; }
+.hero-slider-arrow:hover { background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+.hero-slider-arrow.prev { left: 20px; }
+.hero-slider-arrow.next { right: 20px; }
+.hero-eyebrow-purple { display: inline-flex; align-items: center; gap: 7px; background: rgba(124,40,204,0.1); border: 1px solid rgba(124,40,204,0.2); border-radius: 100px; padding: 4px 12px 4px 8px; margin-bottom: 20px; }
+.hero-eyebrow-purple-dot { width: 6px; height: 6px; border-radius: 50%; background: #7c28cc; }
+.hero-eyebrow-purple span { font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 600; color: #5a1a9a; letter-spacing: 0.06em; text-transform: uppercase; }
+.ac-purple { color: #7c28cc; }
+.btn-purple { background: #7c28cc; color: #fff; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 14px; padding: 12px 26px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; height: 43px; box-shadow: 0 4px 20px rgba(124,40,204,0.28); transition: all .22s; }
+.btn-purple:hover { background: #5a1a9a; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(124,40,204,0.36); }
+</style>
+
 </head>
 <body>
 
@@ -1617,40 +1647,108 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
      HERO — bg: white + dot pattern + arc motifs
      Narasi: perkenalan
      ══════════════════════════════════ -->
-<section class="hero">
-  <div class="hero-arc"></div>
-  <div class="hero-arc-2"></div>
-  <div class="hero-bg-word">GIFT CARD</div>
-  <div class="hero-inner">
-    <div>
-      <h1 class="hero-h1">
-        Satu Kartu Hadiah,<br>
-        untuk <span class="ac-blue">Jutaan</span><br>
-        <span class="ac-gold">Pilihan</span>
-      </h1>
-      <img class="hero-img-mobile" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7c327100359da74a973e6e.png" alt="Ultra Voucher Gift Card">
-      <p class="hero-sub">Penerima bisa pilih sendiri hadiah yang paling bermakna; mulai dari belanja, kuliner, hingga investasi, semua dalam Ultra Voucher Gift Card.</p>
-      <div class="hero-btns">
-        <a href="#kontak" class="btn-green">
-          Konsultasi Gratis
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#product" class="btn-outline-blue">
-          Kenali UVGC
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+<div class="hero-slider" id="heroSlider">
+
+  <!-- SLIDE 1: Hero utama -->
+  <div class="hero-slide hero-slide-1 active">
+    <div class="hero-arc"></div>
+    <div class="hero-arc-2"></div>
+    <div class="hero-bg-word">GIFT CARD</div>
+    <div class="hero-inner">
+      <div>
+        <h1 class="hero-h1">
+          Satu Kartu Hadiah,<br>
+          untuk <span class="ac-blue">Jutaan</span><br>
+          <span class="ac-gold">Pilihan</span>
+        </h1>
+        <img class="hero-img-mobile" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7c327100359da74a973e6e.png" alt="Ultra Voucher Gift Card">
+        <p class="hero-sub">Penerima bisa pilih sendiri hadiah yang paling bermakna; mulai dari belanja, kuliner, hingga investasi, semua dalam Ultra Voucher Gift Card.</p>
+        <div class="hero-btns">
+          <a href="#kontak" class="btn-green">
+            Konsultasi Gratis
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#product" class="btn-outline-blue">
+            Kenali UVGC
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="hero-stat-n">1 Juta+</div><div class="hero-stat-l">Total Penggunaan</div></div>
+          <div class="hero-stat"><div class="hero-stat-n">20.000+</div><div class="hero-stat-l">Store redeem langsung</div></div>
+          <div class="hero-stat"><div class="hero-stat-n">Dedicated</div><div class="hero-stat-l">Account Manager</div></div>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><div class="hero-stat-n">1 Juta+</div><div class="hero-stat-l">Total Penggunaan</div></div>
-        <div class="hero-stat"><div class="hero-stat-n">20.000+</div><div class="hero-stat-l">Store redeem langsung</div></div>
-        <div class="hero-stat"><div class="hero-stat-n">Dedicated</div><div class="hero-stat-l">Account Manager</div></div>
+      <div class="hero-photos" style="display:flex;align-items:center;justify-content:center;">
+        <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7c327100359da74a973e6e.png" alt="Ultra Voucher Gift Card" style="width:100%;max-width:680px;display:block;filter:drop-shadow(0 28px 56px rgba(0,94,178,0.2));">
       </div>
-    </div>
-    <div class="hero-photos" style="display:flex;align-items:center;justify-content:center;">
-      <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7c327100359da74a973e6e.png" alt="Ultra Voucher Gift Card" style="width:100%;max-width:680px;display:block;filter:drop-shadow(0 28px 56px rgba(0,94,178,0.2));">
     </div>
   </div>
-</section>
+
+  <!-- SLIDE 2: Scratch & Win -->
+  <div class="hero-slide hero-slide-2">
+    <div class="hero-slide-2-glow"></div>
+    <div class="hero-slide-2-arc"></div>
+    <div class="hero-bg-word" style="-webkit-text-stroke-color:rgba(124,40,204,0.05);">SCRATCH WIN</div>
+    <div class="hero-inner">
+      <div>
+        <h1 class="hero-h1">
+          Gosok UVGC &amp;<br>
+          <span class="ac-purple">Menangkan</span><br>
+          Hadiah Menarik!
+        </h1>
+        <img class="hero-img-mobile" src="https://img.mailinblue.com/1873598/images/content_library/original/6acf0687d41ee4ec0844421a.png" alt="UVGC Scratch & Win">
+        <p class="hero-sub">Dapatkan hadiah langsung setiap pembelian Ultra Voucher Gift Card. Gosok bagian belakang kartu dan temukan hadiahmu.</p>
+        <div class="hero-btns">
+          <a href="#program" class="btn-purple">
+            Ketahui Program
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="hero-stats hero-stats-purple">
+          <div class="hero-stat"><div class="hero-stat-n" style="color:#7c28cc;">9.000+</div><div class="hero-stat-l">Total Hadiah</div></div>
+          <div class="hero-stat"><div class="hero-stat-n" style="color:#7c28cc;">3 Langkah</div><div class="hero-stat-l">Gosok · Klaim · Menang</div></div>
+          <div class="hero-stat"><div class="hero-stat-n" style="color:#7c28cc;">Mei 2027</div><div class="hero-stat-l">Undian Grand Prize</div></div>
+        </div>
+      </div>
+      <div class="hero-photos" style="display:flex;align-items:center;justify-content:center;">
+        <img src="https://img.mailinblue.com/1873598/images/content_library/original/6acf0687d41ee4ec0844421a.png" alt="UVGC Scratch & Win" style="width:100%;max-width:600px;display:block;filter:drop-shadow(0 28px 56px rgba(124,40,204,0.18));">
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDER CONTROLS -->
+  <button class="hero-slider-arrow prev" onclick="heroSlide(-1)" aria-label="Sebelumnya">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#373737" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="hero-slider-arrow next" onclick="heroSlide(1)" aria-label="Berikutnya">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#373737" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+  <div class="hero-slider-dots">
+    <button class="hero-dot active" onclick="heroGoTo(0)" aria-label="Slide 1"></button>
+    <button class="hero-dot purple" onclick="heroGoTo(1)" aria-label="Slide 2"></button>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var slides = document.querySelectorAll('#heroSlider .hero-slide');
+  var dots   = document.querySelectorAll('#heroSlider .hero-dot');
+  var cur    = 0, timer;
+  function show(n) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = (n + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+  }
+  window.heroSlide = function(dir){ show(cur + dir); resetTimer(); };
+  window.heroGoTo  = function(n)  { show(n); resetTimer(); };
+  function resetTimer(){ clearInterval(timer); timer = setInterval(function(){ show(cur + 1); }, 5000); }
+  resetTimer();
+})();
+</script>
 
 <!-- TRUSTED — still white, connected by dot pattern, closed by gold line -->
 <section class="trusted">
