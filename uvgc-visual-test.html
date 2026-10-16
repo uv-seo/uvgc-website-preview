@@ -127,6 +127,19 @@ nav {
   padding: 0 6%; justify-content: space-between;
 }
 .nav-logo img { height: 40px; width: auto; display: block; }
+/* DISCLAIMER BAR */
+.disclaimer-bar {
+  position: fixed; top: 68px; left: 4px; right: 0; z-index: 199;
+  background: #f0f7ff;
+  border-bottom: 1px solid #c8dff7;
+  padding: 7px 6%;
+  text-align: center;
+  font-family: var(--F); font-size: 12.5px; color: #1a3a5c;
+  line-height: 1.4;
+}
+.disclaimer-bar strong { color: var(--uvgc-blue); font-weight: 700; }
+.disclaimer-bar a { color: var(--uvgc-blue); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+.disclaimer-bar .disc-icon { margin-right: 6px; }
 .nav-menu { display: flex; align-items: center; gap: 28px; list-style: none; }
 .nav-menu a {
   font-family: var(--F); font-size: 13px; font-weight: 500;
@@ -1673,6 +1686,11 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
   </div>
 </nav>
 
+<!-- DISCLAIMER BAR -->
+<div class="disclaimer-bar">
+  <span data-i18n="disclaimer.text">Beli UVGC resmi hanya di <strong>UV Apps</strong>, <strong>Web Commerce</strong>, atau lewat <strong>form di website ini</strong></span>
+</div>
+
 <div class="mobile-nav" id="mobileNav">
   <a href="uvgc-cara-pakai.html" data-i18n="nav.how">Cara Pakai <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
   <a href="uvgc-cara-order.html" data-i18n="nav.order">Cara Order <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
@@ -2871,6 +2889,9 @@ s0.parentNode.insertBefore(s1,s0);
       'nav.register': 'Daftar',
       'nav.contact':  'Hubungi Kami',
 
+      /* DISCLAIMER */
+      'disclaimer.text': 'Beli UVGC resmi hanya di <strong>UV Apps</strong>, <strong>Web Commerce</strong>, atau lewat <strong>form di website ini</strong>',
+
       /* HERO SLIDE 1 — S&W */
       's1.h1a':   'Gosok UVGC &amp;',
       's1.h1b':   'Menangkan',
@@ -3042,6 +3063,9 @@ s0.parentNode.insertBefore(s1,s0);
       'nav.become':   'Join as Merchant',
       'nav.register': 'Register',
       'nav.contact':  'Contact Us',
+
+      /* DISCLAIMER */
+      'disclaimer.text': 'Buy UVGC only via <strong>UV Apps</strong>, <strong>Web Commerce</strong>, or the <strong>form on this page</strong>',
 
       /* HERO SLIDE 1 — S&W */
       's1.h1a':   'Scratch UVGC,',
