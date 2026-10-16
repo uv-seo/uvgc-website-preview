@@ -1596,6 +1596,34 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
 .hero-dot.purple.active { background: #7c28cc; }
 .hero-stats-purple { border-color: rgba(124,40,204,0.2); background: rgba(255,255,255,0.6); }
 .hero-stats-purple .hero-stat { border-right-color: rgba(124,40,204,0.15); }
+
+/* ── LANG TOGGLE — pill with flag circles ── */
+.lang-toggle {
+  display: flex; align-items: center; flex-shrink: 0; margin-left: 16px;
+  background: #e8eaed; border-radius: 100px; padding: 4px;
+  gap: 0; position: relative;
+}
+.lang-pill-track {
+  position: absolute; top: 4px; bottom: 4px;
+  width: calc(50% - 4px); border-radius: 100px;
+  background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+  transition: transform .25s cubic-bezier(.4,0,.2,1);
+  pointer-events: none;
+}
+.lang-toggle[data-lang="en"] .lang-pill-track { transform: translateX(100%); }
+.lang-btn {
+  display: flex; align-items: center; gap: 6px; cursor: pointer;
+  padding: 5px 12px; border-radius: 100px; border: none;
+  background: transparent; position: relative; z-index: 1;
+  transition: opacity .2s;
+  font-family: var(--F); font-size: 11px; font-weight: 600;
+  color: var(--text-secondary); white-space: nowrap;
+  user-select: none;
+}
+.lang-btn-flag { font-size: 17px; line-height: 1; }
+.lang-btn.active { color: var(--text-primary); }
+.lang-btn.inactive { opacity: 0.5; }
+.lang-btn:hover { opacity: 0.85; }
 .hero-slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(255,255,255,0.82); border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 12px rgba(0,0,0,0.1); transition: all .2s; }
 .hero-slider-arrow:hover { background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
 .hero-slider-arrow.prev { left: 20px; }
@@ -1624,23 +1652,34 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
     <span class="hb"></span>
     <span class="hb"></span>
   </button>
+  <div style="display:flex;align-items:center;gap:0;">
   <ul class="nav-menu">
-    <li><a href="uvgc-cara-pakai.html">Cara Pakai</a></li>
-    <li><a href="uvgc-cara-order.html">Cara Order</a></li>
-    <li><a href="uvgc-merchant.html">List Merchant</a></li>
-    <li><a href="uvgc-program.html">Program</a></li>
-    <li><a href="uvgc-jadi-merchant.html">Jadi Merchant<span style="display:inline-flex;align-items:center;background:var(--uvgc-gold);color:var(--uvgc-blue-deep);font-family:var(--F);font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-left:6px;vertical-align:middle;">Daftar</span></a></li>
-    <li><a href="#kontak" class="nav-cta">Hubungi Kami</a></li>
+    <li><a href="uvgc-cara-pakai.html" data-i18n="nav.how">Cara Pakai</a></li>
+    <li><a href="uvgc-cara-order.html" data-i18n="nav.order">Cara Order</a></li>
+    <li><a href="uvgc-merchant.html" data-i18n="nav.merchant">List Merchant</a></li>
+    <li><a href="uvgc-program.html" data-i18n="nav.program">Program</a></li>
+    <li><a href="uvgc-jadi-merchant.html"><span data-i18n="nav.become">Jadi Merchant</span><span data-i18n="nav.register" style="display:inline-flex;align-items:center;background:var(--uvgc-gold);color:var(--uvgc-blue-deep);font-family:var(--F);font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-left:6px;vertical-align:middle;">Daftar</span></a></li>
+    <li><a href="#kontak" class="nav-cta" data-i18n="nav.contact">Hubungi Kami</a></li>
   </ul>
+  <div class="lang-toggle" id="langToggle" data-lang="id">
+    <div class="lang-pill-track"></div>
+    <button class="lang-btn active" id="flag-id" onclick="switchLang('id')" aria-label="Bahasa Indonesia">
+      <span class="lang-btn-flag">🇮🇩</span>
+    </button>
+    <button class="lang-btn inactive" id="flag-en" onclick="switchLang('en')" aria-label="English">
+      <span class="lang-btn-flag">🇺🇸</span>
+    </button>
+  </div>
+  </div>
 </nav>
 
 <div class="mobile-nav" id="mobileNav">
-  <a href="uvgc-cara-pakai.html">Cara Pakai <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
-  <a href="uvgc-cara-order.html">Cara Order <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
-  <a href="uvgc-merchant.html">List Merchant <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
-  <a href="uvgc-program.html">Program <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
-  <a href="uvgc-jadi-merchant.html"><span style="display:inline-flex;align-items:center;gap:6px;">Jadi Merchant<span style="display:inline-flex;align-items:center;background:var(--uvgc-gold);color:var(--uvgc-blue-deep);font-family:var(--F);font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-left:6px;vertical-align:middle;">Daftar</span></span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
-  <a href="#kontak" class="mobile-nav-cta">Hubungi Kami <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  <a href="uvgc-cara-pakai.html" data-i18n="nav.how">Cara Pakai <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="uvgc-cara-order.html" data-i18n="nav.order">Cara Order <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="uvgc-merchant.html" data-i18n="nav.merchant">List Merchant <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="uvgc-program.html" data-i18n="nav.program">Program <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="uvgc-jadi-merchant.html"><span style="display:inline-flex;align-items:center;gap:6px;"><span data-i18n="nav.become">Jadi Merchant</span><span data-i18n="nav.register" style="display:inline-flex;align-items:center;background:var(--uvgc-gold);color:var(--uvgc-blue-deep);font-family:var(--F);font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-left:6px;vertical-align:middle;">Daftar</span></span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="#kontak" class="mobile-nav-cta" data-i18n="nav.contact">Hubungi Kami <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
 </div>
 
 <!-- ══════════════════════════════════
@@ -1649,70 +1688,70 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
      ══════════════════════════════════ -->
 <div class="hero-slider" id="heroSlider">
 
-  <!-- SLIDE 1: Hero utama -->
-  <div class="hero-slide hero-slide-1 active">
-    <div class="hero-arc"></div>
-    <div class="hero-arc-2"></div>
-    <div class="hero-bg-word">GIFT CARD</div>
-    <div class="hero-inner">
-      <div>
-        <h1 class="hero-h1">
-          Satu Kartu Hadiah,<br>
-          untuk <span class="ac-blue">Jutaan</span><br>
-          <span class="ac-gold">Pilihan</span>
-        </h1>
-        <img class="hero-img-mobile" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7c327100359da74a973e6e.png" alt="Ultra Voucher Gift Card">
-        <p class="hero-sub">Penerima bisa pilih sendiri hadiah yang paling bermakna; mulai dari belanja, kuliner, hingga investasi, semua dalam Ultra Voucher Gift Card.</p>
-        <div class="hero-btns">
-          <a href="#kontak" class="btn-green">
-            Konsultasi Gratis
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#product" class="btn-outline-blue">
-            Kenali UVGC
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-        <div class="hero-stats">
-          <div class="hero-stat"><div class="hero-stat-n">1 Juta+</div><div class="hero-stat-l">Total Penggunaan</div></div>
-          <div class="hero-stat"><div class="hero-stat-n">20.000+</div><div class="hero-stat-l">Store redeem langsung</div></div>
-          <div class="hero-stat"><div class="hero-stat-n">Dedicated</div><div class="hero-stat-l">Account Manager</div></div>
-        </div>
-      </div>
-      <div class="hero-photos" style="display:flex;align-items:center;justify-content:center;">
-        <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7c327100359da74a973e6e.png" alt="Ultra Voucher Gift Card" style="width:100%;max-width:680px;display:block;filter:drop-shadow(0 28px 56px rgba(0,94,178,0.2));">
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 2: Scratch & Win -->
-  <div class="hero-slide hero-slide-2">
+  <!-- SLIDE 1: Scratch & Win -->
+  <div class="hero-slide hero-slide-2 active">
     <div class="hero-slide-2-glow"></div>
     <div class="hero-slide-2-arc"></div>
     <div class="hero-bg-word" style="-webkit-text-stroke-color:rgba(124,40,204,0.05);">SCRATCH WIN</div>
     <div class="hero-inner">
       <div>
         <h1 class="hero-h1">
-          Gosok UVGC &amp;<br>
-          <span class="ac-purple">Menangkan</span><br>
-          Hadiah Menarik!
+          <span data-i18n="s1.h1a">Gosok UVGC &amp;</span><br>
+          <span class="ac-purple" data-i18n="s1.h1b">Menangkan</span><br>
+          <span data-i18n="s1.h1c">Hadiah Menarik!</span>
         </h1>
-        <img class="hero-img-mobile" src="https://img.mailinblue.com/1873598/images/content_library/original/6acf0687d41ee4ec0844421a.png" alt="UVGC Scratch & Win">
-        <p class="hero-sub">Dapatkan hadiah langsung setiap pembelian Ultra Voucher Gift Card. Gosok bagian belakang kartu dan temukan hadiahmu.</p>
+        <img class="hero-img-mobile" src="https://img.mailinblue.com/1873598/images/content_library/original/6ad0a79a41243ee55e8ae9eb.png" alt="UVGC Scratch & Win">
+        <p class="hero-sub" data-i18n="s1.sub">Dapatkan hadiah langsung setiap pembelian Ultra Voucher Gift Card. Gosok bagian belakang kartu dan temukan hadiahmu.</p>
         <div class="hero-btns">
           <a href="#program" class="btn-purple">
-            Ketahui Program
+            <span data-i18n="s1.cta">Ketahui Program</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
         <div class="hero-stats hero-stats-purple">
-          <div class="hero-stat"><div class="hero-stat-n" style="color:#7c28cc;">9.000+</div><div class="hero-stat-l">Total Hadiah</div></div>
-          <div class="hero-stat"><div class="hero-stat-n" style="color:#7c28cc;">3 Langkah</div><div class="hero-stat-l">Gosok · Klaim · Menang</div></div>
-          <div class="hero-stat"><div class="hero-stat-n" style="color:#7c28cc;">Mei 2027</div><div class="hero-stat-l">Undian Grand Prize</div></div>
+          <div class="hero-stat"><div class="hero-stat-n" style="color:#7c28cc;">9.000+</div><div class="hero-stat-l" data-i18n="s1.stat1l">Total Hadiah</div></div>
+          <div class="hero-stat"><div class="hero-stat-n" style="color:#7c28cc;" data-i18n="s1.stat2n">3 Langkah</div><div class="hero-stat-l" data-i18n="s1.stat2l">Gosok · Klaim · Menang</div></div>
+          <div class="hero-stat"><div class="hero-stat-n" style="color:#7c28cc;" data-i18n="s1.stat3n">Mei 2027</div><div class="hero-stat-l" data-i18n="s1.stat3l">Undian Grand Prize</div></div>
         </div>
       </div>
       <div class="hero-photos" style="display:flex;align-items:center;justify-content:center;">
-        <img src="https://img.mailinblue.com/1873598/images/content_library/original/6acf0687d41ee4ec0844421a.png" alt="UVGC Scratch & Win" style="width:100%;max-width:600px;display:block;filter:drop-shadow(0 28px 56px rgba(124,40,204,0.18));">
+        <img src="https://img.mailinblue.com/1873598/images/content_library/original/6ad0a79a41243ee55e8ae9eb.png" alt="UVGC Scratch & Win" style="width:100%;max-width:600px;display:block;filter:drop-shadow(0 28px 56px rgba(124,40,204,0.18));">
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: Hero utama -->
+  <div class="hero-slide hero-slide-1">
+    <div class="hero-arc"></div>
+    <div class="hero-arc-2"></div>
+    <div class="hero-bg-word">GIFT CARD</div>
+    <div class="hero-inner">
+      <div>
+        <h1 class="hero-h1">
+          <span data-i18n="s2.h1a">Satu Kartu Hadiah,</span><br>
+          <span data-i18n="s2.h1b">untuk </span><span class="ac-blue" data-i18n="s2.h1c">Jutaan</span><br>
+          <span class="ac-gold" data-i18n="s2.h1d">Pilihan</span>
+        </h1>
+        <img class="hero-img-mobile" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7c327100359da74a973e6e.png" alt="Ultra Voucher Gift Card">
+        <p class="hero-sub" data-i18n="s2.sub">Penerima bisa pilih sendiri hadiah yang paling bermakna; mulai dari belanja, kuliner, hingga investasi, semua dalam Ultra Voucher Gift Card.</p>
+        <div class="hero-btns">
+          <a href="#kontak" class="btn-green">
+            <span data-i18n="s2.cta1">Konsultasi Gratis</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#product" class="btn-outline-blue">
+            <span data-i18n="s2.cta2">Kenali UVGC</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="hero-stat-n" data-i18n="s2.stat1n">1 Juta+</div><div class="hero-stat-l" data-i18n="s2.stat1l">Total Penggunaan</div></div>
+          <div class="hero-stat"><div class="hero-stat-n">20.000+</div><div class="hero-stat-l" data-i18n="s2.stat2l">Store redeem langsung</div></div>
+          <div class="hero-stat"><div class="hero-stat-n" data-i18n="s2.stat3n">Dedicated</div><div class="hero-stat-l" data-i18n="s2.stat3l">Account Manager</div></div>
+        </div>
+      </div>
+      <div class="hero-photos" style="display:flex;align-items:center;justify-content:center;">
+        <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a7c327100359da74a973e6e.png" alt="Ultra Voucher Gift Card" style="width:100%;max-width:680px;display:block;filter:drop-shadow(0 28px 56px rgba(0,94,178,0.2));">
       </div>
     </div>
   </div>
@@ -1725,8 +1764,8 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#373737" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
   </button>
   <div class="hero-slider-dots">
-    <button class="hero-dot active" onclick="heroGoTo(0)" aria-label="Slide 1"></button>
-    <button class="hero-dot purple" onclick="heroGoTo(1)" aria-label="Slide 2"></button>
+    <button class="hero-dot purple active" onclick="heroGoTo(0)" aria-label="Slide 1"></button>
+    <button class="hero-dot" onclick="heroGoTo(1)" aria-label="Slide 2"></button>
   </div>
 
 </div>
@@ -1753,7 +1792,7 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
 <!-- TRUSTED — still white, connected by dot pattern, closed by gold line -->
 <section class="trusted">
   <div class="trusted-inner">
-    <span class="trusted-lbl">Dipercaya oleh</span>
+    <span class="trusted-lbl" data-i18n="trusted.label">Dipercaya oleh</span>
     <!-- Row 1: Perbankan -->
     <div class="marquee-wrap">
       <div class="marquee-track">
@@ -1801,14 +1840,14 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
   <div class="section-intro-arc"></div>
   <div class="section-inner">
     <div class="section-header" style="margin-bottom:28px;">
-      <span class="eyebrow-blue">Lihat Pilihan Ultra Voucher Gift Card</span>
-      <h2 class="sh">Tersedia dalam Dua Format</h2>
+      <span class="eyebrow-blue" data-i18n="prod.eyebrow">Lihat Pilihan Ultra Voucher Gift Card</span>
+      <h2 class="sh" data-i18n="prod.h2">Tersedia dalam Dua Format</h2>
       <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
-        <p class="sh-sub" style="margin-bottom:0;flex:1;min-width:220px;">Pilih gift card yang paling sesuai dengan kebutuhan Anda: fisik untuk pengalaman gifting yang lebih personal, atau digital untuk distribusi yang cepat dan praktis.</p>
+        <p class="sh-sub" style="margin-bottom:0;flex:1;min-width:220px;" data-i18n="prod.sub">Pilih gift card yang paling sesuai dengan kebutuhan Anda: fisik untuk pengalaman gifting yang lebih personal, atau digital untuk distribusi yang cepat dan praktis.</p>
         <div class="fmt-pill-group" style="flex-shrink:0;">
           <div class="fmt-pill-thumb" id="fmtThumb"></div>
-          <button class="fmt-pill-btn active" onclick="switchFmt(0)">Gift Card Fisik</button>
-          <button class="fmt-pill-btn" onclick="switchFmt(1)">Gift Card Digital</button>
+          <button class="fmt-pill-btn active" onclick="switchFmt(0)" data-i18n="prod.tab1">Gift Card Fisik</button>
+          <button class="fmt-pill-btn" onclick="switchFmt(1)" data-i18n="prod.tab2">Gift Card Digital</button>
         </div>
       </div>
     </div>
@@ -1816,15 +1855,15 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
     <div class="fmt-panel active" id="fmt-0">
       <div class="pf-split" style="margin-top:0;padding-top:0;">
         <div class="pf-text">
-          <span class="pf-badge pf-badge-amber">Fisik</span>
-          <h3 class="pf-title">Ultra Voucher Gift Card</h3>
-          <p class="pf-desc">Kartu hadiah fisik premium dengan desain custom yang bisa dipersonalisasi. Cocok untuk pemberian hadiah langsung dan program loyalitas.</p>
+          <span class="pf-badge pf-badge-amber" data-i18n="prod.badge1">Fisik</span>
+          <h3 class="pf-title" data-i18n="prod.phys.title">Ultra Voucher Gift Card</h3>
+          <p class="pf-desc" data-i18n="prod.phys.desc">Kartu hadiah fisik premium dengan desain custom yang bisa dipersonalisasi. Cocok untuk pemberian hadiah langsung dan program loyalitas.</p>
           <ul class="pf-list">
-            <li><div class="pf-icon" style="background:#fef1d9;">🎨</div><div><div class="pf-item-title">Personalisasi Desain</div><div class="pf-item-desc">Tampilan kartu dapat disesuaikan dengan tema program atau momen pemberian hadiah.</div></div></li>
-            <li><div class="pf-icon" style="background:#dbeafe;">💳</div><div><div class="pf-item-title">Berbagai Pilihan Nominal</div><div class="pf-item-desc">Pilihan nominal voucher yang variatif mulai dari Rp25.000 hingga Rp1.000.000.</div></div></li>
-            <li><div class="pf-icon" style="background:#fef1d9;">📦</div><div><div class="pf-item-title">Cocok untuk Corporate Gifting</div><div class="pf-item-desc">Hadiah karyawan, event perusahaan, dan momen apresiasi yang berkesan.</div></div></li>
+            <li><div class="pf-icon" style="background:#fef1d9;">🎨</div><div><div class="pf-item-title" data-i18n="prod.phys.feat1t">Personalisasi Desain</div><div class="pf-item-desc" data-i18n="prod.phys.feat1d">Tampilan kartu dapat disesuaikan dengan tema program atau momen pemberian hadiah.</div></div></li>
+            <li><div class="pf-icon" style="background:#dbeafe;">💳</div><div><div class="pf-item-title" data-i18n="prod.phys.feat2t">Berbagai Pilihan Nominal</div><div class="pf-item-desc" data-i18n="prod.phys.feat2d">Pilihan nominal voucher yang variatif mulai dari Rp25.000 hingga Rp1.000.000.</div></div></li>
+            <li><div class="pf-icon" style="background:#fef1d9;">📦</div><div><div class="pf-item-title" data-i18n="prod.phys.feat3t">Cocok untuk Corporate Gifting</div><div class="pf-item-desc" data-i18n="prod.phys.feat3d">Hadiah karyawan, event perusahaan, dan momen apresiasi yang berkesan.</div></div></li>
           </ul>
-          <a href="#kontak" class="btn-primary-green">Pesan Gift Card Fisik <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="#kontak" class="btn-primary-green" data-i18n="prod.phys.cta">Pesan Gift Card Fisik <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
         <div class="pf-visual">
           <div class="pf-blob pf-blob-gold"></div>
@@ -1842,15 +1881,15 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
           <img class="pf-img" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7d95a3f68b5413e9e9acad.png" alt="Ultra Voucher Digital">
         </div>
         <div class="pf-text">
-          <span class="pf-badge pf-badge-blue">Digital</span>
-          <h3 class="pf-title">Ultra Voucher Digital</h3>
-          <p class="pf-desc">Voucher yang dikirim langsung ke penerima via WhatsApp, Email, atau SMS. Distribusi massal dalam hitungan menit; ideal untuk program skala besar.</p>
+          <span class="pf-badge pf-badge-blue" data-i18n="prod.badge2">Digital</span>
+          <h3 class="pf-title" data-i18n="prod.digi.title">Ultra Voucher Digital</h3>
+          <p class="pf-desc" data-i18n="prod.digi.desc">Voucher yang dikirim langsung ke penerima via WhatsApp, Email, atau SMS. Distribusi massal dalam hitungan menit; ideal untuk program skala besar.</p>
           <ul class="pf-list">
-            <li><div class="pf-icon" style="background:#dbeafe;">💬</div><div><div class="pf-item-title">Pengiriman Instan via WhatsApp, Email, &amp; SMS</div><div class="pf-item-desc">Ribuan penerima bisa mendapatkan voucher dalam hitungan menit.</div></div></li>
-            <li><div class="pf-icon" style="background:#fef1d9;">🔗</div><div><div class="pf-item-title">Integrasi API untuk Otomatisasi Penuh</div><div class="pf-item-desc">Otomatisasi distribusi voucher langsung dari sistem yang sudah Anda gunakan.</div></div></li>
-            <li><div class="pf-icon" style="background:#dbeafe;">📊</div><div><div class="pf-item-title">Dashboard Pemantauan Real-Time</div><div class="pf-item-desc">Lacak status pengiriman dan penggunaan setiap voucher secara langsung.</div></div></li>
+            <li><div class="pf-icon" style="background:#dbeafe;">💬</div><div><div class="pf-item-title" data-i18n="prod.digi.feat1t">Pengiriman Instan via WhatsApp, Email, &amp; SMS</div><div class="pf-item-desc" data-i18n="prod.digi.feat1d">Ribuan penerima bisa mendapatkan voucher dalam hitungan menit.</div></div></li>
+            <li><div class="pf-icon" style="background:#fef1d9;">🔗</div><div><div class="pf-item-title" data-i18n="prod.digi.feat2t">Integrasi API untuk Otomatisasi Penuh</div><div class="pf-item-desc" data-i18n="prod.digi.feat2d">Otomatisasi distribusi voucher langsung dari sistem yang sudah Anda gunakan.</div></div></li>
+            <li><div class="pf-icon" style="background:#dbeafe;">📊</div><div><div class="pf-item-title" data-i18n="prod.digi.feat3t">Dashboard Pemantauan Real-Time</div><div class="pf-item-desc" data-i18n="prod.digi.feat3d">Lacak status pengiriman dan penggunaan setiap voucher secara langsung.</div></div></li>
           </ul>
-          <a href="#kontak" class="btn-primary-green">Pesan Gift Card Digital <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="#kontak" class="btn-primary-green" data-i18n="prod.digi.cta">Pesan Gift Card Digital <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -1872,26 +1911,26 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
 
       <!-- Kiri: heading + kedua keterangan selalu tampil -->
       <div>
-        <span class="eyebrow-blue">Kenali Kartunya</span>
-        <h2 class="sh">Bagian Depan dan Belakang<br>Ultra Voucher Gift Card</h2>
-        <p class="sh-sub" style="margin-bottom:32px;">Setiap UVGC fisik hadir dengan sisi depan yang dapat dikustomisasi dan sisi belakang yang digunakan untuk transaksi.</p>
+        <span class="eyebrow-blue" data-i18n="card.eyebrow">Kenali Kartunya</span>
+        <h2 class="sh" data-i18n="card.h2">Bagian Depan dan Belakang<br>Ultra Voucher Gift Card</h2>
+        <p class="sh-sub" style="margin-bottom:32px;" data-i18n="card.sub">Setiap UVGC fisik hadir dengan sisi depan yang dapat dikustomisasi dan sisi belakang yang digunakan untuk transaksi.</p>
 
         <!-- Sisi Depan — always visible, clickable -->
         <div style="padding:20px;background:#fff;border:1px solid var(--neutral-100);border-radius:14px;margin-bottom:14px;transition:box-shadow .25s,border-color .25s;cursor:pointer;" id="info-static-0" onclick="flipTo(0)">
           <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;">
             <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--uvgc-blue);color:#fff;font-family:var(--F);font-size:11px;font-weight:800;flex-shrink:0;">A</span>
-            <span style="font-family:var(--F);font-size:14.5px;font-weight:700;color:var(--text-primary);">Sisi Depan: Desain Custom Perusahaan Anda</span>
+            <span style="font-family:var(--F);font-size:14.5px;font-weight:700;color:var(--text-primary);" data-i18n="card.side.at">Sisi Depan: Desain Custom Perusahaan Anda</span>
           </div>
-          <p style="font-family:var(--FB);font-size:13px;color:var(--text-secondary);line-height:1.7;margin-left:31px;">Sisi depan dapat dipersonalisasi dengan identitas visual, nama program, dan nominal reward; baik untuk kampanye reguler maupun tematik.</p>
+          <p style="font-family:var(--FB);font-size:13px;color:var(--text-secondary);line-height:1.7;margin-left:31px;" data-i18n="card.side.ad">Sisi depan dapat dipersonalisasi dengan identitas visual, nama program, dan nominal reward; baik untuk kampanye reguler maupun tematik.</p>
         </div>
 
         <!-- Sisi Belakang — always visible, clickable -->
         <div style="padding:20px;background:#fff;border:1px solid var(--neutral-100);border-radius:14px;transition:box-shadow .25s,border-color .25s;cursor:pointer;" id="info-static-1" onclick="flipTo(1)">
           <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;">
             <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--neutral-200);color:var(--text-secondary);font-family:var(--F);font-size:11px;font-weight:800;flex-shrink:0;" id="badge-b">B</span>
-            <span style="font-family:var(--F);font-size:14.5px;font-weight:700;color:var(--text-primary);">Sisi Belakang: Semua Metode Redeem</span>
+            <span style="font-family:var(--F);font-size:14.5px;font-weight:700;color:var(--text-primary);" data-i18n="card.side.bt">Sisi Belakang: Semua Metode Redeem</span>
           </div>
-          <p style="font-family:var(--FB);font-size:13px;color:var(--text-secondary);line-height:1.7;margin-left:31px;">Memuat Voucher ID, Expired Date, QR Code untuk redeem via aplikasi, barcode untuk outlet offline, dan area Scratch &amp; Win untuk hadiah kejutan.</p>
+          <p style="font-family:var(--FB);font-size:13px;color:var(--text-secondary);line-height:1.7;margin-left:31px;" data-i18n="card.side.bd">Memuat Voucher ID, Expired Date, QR Code untuk redeem via aplikasi, barcode untuk outlet offline, dan area Scratch &amp; Win untuk hadiah kejutan.</p>
         </div>
       </div>
 
@@ -1945,7 +1984,7 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
 
     <!-- Dari Program Korporat Kami -->
     <div class="card-showcase">
-      <div class="card-showcase-label">Dari Program Korporat Kami</div>
+      <div class="card-showcase-label" data-i18n="card.showcase.label">Dari Program Korporat Kami</div>
       <div class="card-marquee-wrap">
         <div class="card-marquee-track">
           <img src="https://img.mailinblue.com/1873598/images/content_library/original/6a799500f1e8984839c8568d.jpeg" alt="IRC Tire" class="card-marquee-img">
@@ -1980,17 +2019,17 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
   <div class="section-warm-arc"></div>
   <div class="section-inner">
     <div class="section-header">
-      <span class="eyebrow-amber">Cara Penggunaan</span>
-      <h2 class="sh">Redeem UVGC Fisik dalam Tiga Pilihan</h2>
-      <p class="sh-sub" style="max-width:680px;">Mulai dari digital hingga offline; setiap metode memberikan pengalaman redeem yang mudah, cepat, dan praktis.</p>
+      <span class="eyebrow-amber" data-i18n="redeem.eyebrow">Cara Penggunaan</span>
+      <h2 class="sh" data-i18n="redeem.h2">Redeem UVGC Fisik dalam Tiga Pilihan</h2>
+      <p class="sh-sub" style="max-width:680px;" data-i18n="redeem.sub">Mulai dari digital hingga offline; setiap metode memberikan pengalaman redeem yang mudah, cepat, dan praktis.</p>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:0;">
       <div class="rhc-outer">
         <img class="rhc-img-float" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ebe945a295bdcc0411eb3.png" alt="Redeem Online">
         <div class="redeem-highlight-card">
-          <div class="rhc-label">Redeem Online</div>
-          <p class="rhc-desc">Scan QR Code untuk konversi nilai kartu menjadi saldo Ultra Value, lalu gunakan untuk belanja voucher digital di Ultra Voucher App, Web Commerce, atau pesan makanan via UFood.</p>
+          <div class="rhc-label" data-i18n="redeem.phys.m1t">Redeem Online</div>
+          <p class="rhc-desc" data-i18n="redeem.phys.m1d">Scan QR Code untuk konversi nilai kartu menjadi saldo Ultra Value, lalu gunakan untuk belanja voucher digital di Ultra Voucher App, Web Commerce, atau pesan makanan via UFood.</p>
           <div class="rhc-logos">
             <img src="https://blog.ultravoucher.co.id/wp-content/uploads/2021/02/logo_ultra_voucher_retina.png.webp" alt="Ultra Voucher" class="rhc-logo-img">
             <div class="rhc-logo-divider"></div>
@@ -2001,21 +2040,21 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
       <div class="rhc-outer">
         <img class="rhc-img-float" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7eb9fb7f694711a3d48450.png" alt="Redeem Offline">
         <div class="redeem-highlight-card">
-          <div class="rhc-label">Redeem Offline</div>
-          <p class="rhc-desc">Gunakan UVGC langsung di kasir merchant partner; tidak perlu aplikasi, cukup tunjukkan kartu untuk di-scan barcodenya. Transaksi selesai dalam hitungan detik.</p>
+          <div class="rhc-label" data-i18n="redeem.phys.m2t">Redeem Offline</div>
+          <p class="rhc-desc" data-i18n="redeem.phys.m2d">Gunakan UVGC langsung di kasir merchant partner; tidak perlu aplikasi, cukup tunjukkan kartu untuk di-scan barcodenya. Transaksi selesai dalam hitungan detik.</p>
           <div class="rhc-merchant-logos">
             <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/ALFAMART_LOGO_BARU.png" alt="Alfamart" class="rhc-merch-img">
             <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Azko.png" alt="Azko" class="rhc-merch-img rhc-merch-sm">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Matahari_%282022%29.svg/3840px-Matahari_%282022%29.svg.png" alt="Matahari" class="rhc-merch-img rhc-merch-sm">
-            <span class="rhc-merch-chip">1.000+ Merchant Partner</span>
+            <span class="rhc-merch-chip" data-i18n="redeem.merch.chip">1.000+ Merchant Partner</span>
           </div>
         </div>
       </div>
       <div class="rhc-outer">
-        <img class="rhc-img-float" src="https://img.mailinblue.com/1873598/images/content_library/original/6a7ebe945a295bdcc0411eb3.png" alt="Redeem EDC &amp; POS">
+        <img class="rhc-img-float" src="https://uvgc.ultravoucher.co.id/wp-content/uploads/2026/09/6aaa0ebb643ae0e034eb19ef-1.webp" alt="Redeem EDC &amp; POS">
         <div class="redeem-highlight-card">
-          <div class="rhc-label">Redeem di EDC &amp; POS</div>
-          <p class="rhc-desc">Gunakan UVGC langsung di mesin EDC atau POS merchant partner; tap atau swipe kartu untuk pembayaran instan tanpa perlu aplikasi tambahan.</p>
+          <div class="rhc-label" data-i18n="redeem.phys.m3t">Redeem di EDC &amp; POS</div>
+          <p class="rhc-desc" data-i18n="redeem.phys.m3d">Gunakan UVGC langsung di mesin EDC atau POS merchant partner; tap atau swipe kartu untuk pembayaran instan tanpa perlu aplikasi tambahan.</p>
           <div class="rhc-merchant-logos">
             <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" alt="BCA" class="rhc-merch-img">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/BRI_2025.png" alt="BRI" class="rhc-merch-img">
@@ -2028,22 +2067,22 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
     <!-- UVGC Digital sub-section -->
     <div style="margin-top:56px;">
       <div class="section-header" style="margin-bottom:24px;">
-        <h2 class="sh">Redeem UVGC Digital Sesuai Keinginan</h2>
-        <p class="sh-sub" style="max-width:none;white-space:nowrap;">Dua cara mudah untuk menggunakan UVGC Digital. Pilih sesuai kebutuhanmu.</p>
+        <h2 class="sh" data-i18n="redeem.digi.h2">Redeem UVGC Digital Sesuai Keinginan</h2>
+        <p class="sh-sub" style="max-width:none;white-space:nowrap;" data-i18n="redeem.digi.sub">Dua cara mudah untuk menggunakan UVGC Digital. Pilih sesuai kebutuhanmu.</p>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
         <div class="rhc-outer">
           <img class="rhc-img-float" src="https://img.mailinblue.com/1873598/images/content_library/original/6ac78c99ff393366ac72658e.png" alt="Konversi ke Saldo Ultra Value">
           <div class="redeem-highlight-card">
-            <div class="rhc-label">Konversi ke Saldo Ultra Value</div>
-            <p class="rhc-desc">Redeem Ultra Value digital menjadi saldo di Ultra Voucher Apps dan Web Commerce. Cukup konfirmasi, login ke akun Ultra Voucher, saldo siap dipakai.</p>
+            <div class="rhc-label" data-i18n="redeem.digi.m1t">Konversi ke Saldo Ultra Value</div>
+            <p class="rhc-desc" data-i18n="redeem.digi.m1d">Redeem Ultra Value digital menjadi saldo di Ultra Voucher Apps dan Web Commerce. Cukup konfirmasi, login ke akun Ultra Voucher, saldo siap dipakai.</p>
           </div>
         </div>
         <div class="rhc-outer">
           <img class="rhc-img-float" src="https://img.mailinblue.com/1873598/images/content_library/original/6ac7909b81147d7a3d83335b.png" alt="Redeem Langsung di Kasir">
           <div class="redeem-highlight-card">
-            <div class="rhc-label">Redeem Langsung di Kasir</div>
-            <p class="rhc-desc">Redeem dengan pilih Scan at Cashier. Setelah konfirmasi, kode QR atau barcode akan muncul dan tunjukkan langsung di kasir merchant.</p>
+            <div class="rhc-label" data-i18n="redeem.digi.m2t">Redeem Langsung di Kasir</div>
+            <p class="rhc-desc" data-i18n="redeem.digi.m2d">Redeem dengan pilih Scan at Cashier. Setelah konfirmasi, kode QR atau barcode akan muncul dan tunjukkan langsung di kasir merchant.</p>
           </div>
         </div>
       </div>
@@ -2051,7 +2090,7 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
 
     <div style="text-align:center;margin-top:36px;">
       <a href="uvgc-cara-pakai.html" class="btn-primary-green">
-        Panduan Cara Pakai Lengkap
+        <span data-i18n="redeem.cta">Panduan Cara Pakai Lengkap</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -2071,11 +2110,11 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
     <!-- Merchant intro -->
     <div id="merchant-intro" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:72px;">
       <div>
-        <span class="eyebrow-blue" id="merchant-eyebrow">Jaringan Merchant</span>
-        <h2 class="sh" id="merchant-h2">Digunakan di 1.000+ Merchant Pilihan Indonesia</h2>
-        <p class="sh-sub" style="margin-bottom:28px;">Dari supermarket hingga restoran; dari retail fashion hingga elektronik, semua bisa dijangkau dengan satu kartu.</p>
+        <span class="eyebrow-blue" id="merchant-eyebrow" data-i18n="merch.eyebrow">Jaringan Merchant</span>
+        <h2 class="sh" id="merchant-h2" data-i18n="merch.h2">Digunakan di 1.000+ Merchant Pilihan Indonesia</h2>
+        <p class="sh-sub" style="margin-bottom:28px;" data-i18n="merch.sub">Dari supermarket hingga restoran; dari retail fashion hingga elektronik, semua bisa dijangkau dengan satu kartu.</p>
         <a href="uvgc-merchant.html" class="btn-primary-green">
-          Lihat Semua Merchant
+          <span data-i18n="merch.cta">Lihat Semua Merchant</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -2198,22 +2237,22 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
       </div>
 
       <a href="uvgc-merchant.html" class="btn-primary-green" style="text-align:center;justify-content:center;width:240px;box-sizing:border-box;margin-top:42px;align-self:center;">
-        Lihat Semua Merchant
+        <span data-i18n="merch.cta">Lihat Semua Merchant</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
 
     <!-- Comparison table -->
     <div>
-      <span class="eyebrow-blue">Mengapa UVGC?</span>
-      <h2 class="sh" style="margin-bottom:8px;">Lebih dari Sekadar Gift Card</h2>
-      <p class="sh-sub" style="margin-bottom:36px;">Bandingkan sendiri mengapa UVGC menjadi pilihan utama perusahaan-perusahaan terkemuka di Indonesia.</p>
+      <span class="eyebrow-blue" data-i18n="compare.eyebrow">Mengapa UVGC?</span>
+      <h2 class="sh" style="margin-bottom:8px;" data-i18n="compare.h2">Lebih dari Sekadar Gift Card</h2>
+      <p class="sh-sub" style="margin-bottom:36px;" data-i18n="compare.sub">Bandingkan sendiri mengapa UVGC menjadi pilihan utama perusahaan-perusahaan terkemuka di Indonesia.</p>
       <table class="ct-new">
         <thead>
           <tr>
-            <th class="ct-th-feat">Fitur</th>
+            <th class="ct-th-feat" data-i18n="compare.col.feat">Fitur</th>
             <th class="ct-th-others">
-              <span class="ct-col-name" style="display:block;text-align:center;">Gift Card Lain</span>
+              <span class="ct-col-name" style="display:block;text-align:center;" data-i18n="compare.col.others">Gift Card Lain</span>
             </th>
             <th class="ct-th-uvgc">
               <div style="background:#fff;border-radius:10px;padding:6px 14px;display:inline-flex;align-items:center;"><img src="https://img.mailinblue.com/1873598/images/content_library/original/6a72f916a777b4dd48714d03.png" alt="UVGC" style="height:28px;width:auto;display:block;"></div>
@@ -2222,33 +2261,33 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
         </thead>
         <tbody>
           <tr>
-            <td class="ct-td-feat"><div class="ct-feat-inner-wrap"><span class="ct-feat-icon">🎁</span><div><div class="ct-feat-label">Ribuan Pilihan Merchant</div><div class="ct-feat-sub">Redeem di ribuan merchant</div></div></td>
-            <td class="ct-td-others"><span class="ct-stars">★★★☆☆</span><span class="ct-others-label">Pilihan terbatas</span></td>
+            <td class="ct-td-feat"><div class="ct-feat-inner-wrap"><span class="ct-feat-icon">🎁</span><div><div class="ct-feat-label" data-i18n="compare.f1t">Ribuan Pilihan Merchant</div><div class="ct-feat-sub" data-i18n="compare.f1d">Redeem di ribuan merchant</div></div></td>
+            <td class="ct-td-others"><span class="ct-stars">★★★☆☆</span><span class="ct-others-label" data-i18n="compare.f1x">Pilihan terbatas</span></td>
             <td class="ct-td-uvgc"><span class="ct-ck">✓</span></td>
           </tr>
           <tr>
-            <td class="ct-td-feat"><div class="ct-feat-inner-wrap"><span class="ct-feat-icon">🏷️</span><div><div class="ct-feat-label">Diskon Eksklusif In-App</div><div class="ct-feat-sub">Diskon tambahan bagi penerima</div></div></div></td>
-            <td class="ct-td-others"><span class="ct-cx-red">✕</span><span class="ct-others-label">Tidak tersedia</span></td>
+            <td class="ct-td-feat"><div class="ct-feat-inner-wrap"><span class="ct-feat-icon">🏷️</span><div><div class="ct-feat-label" data-i18n="compare.f2t">Diskon Eksklusif In-App</div><div class="ct-feat-sub" data-i18n="compare.f2d">Diskon tambahan bagi penerima</div></div></div></td>
+            <td class="ct-td-others"><span class="ct-cx-red">✕</span><span class="ct-others-label" data-i18n="compare.na">Tidak tersedia</span></td>
             <td class="ct-td-uvgc"><span class="ct-ck">✓</span></td>
           </tr>
           <tr>
-            <td class="ct-td-feat"><div class="ct-feat-inner-wrap"><span class="ct-feat-icon">📊</span><div><div class="ct-feat-label">Tracking Data Real-Time</div><div class="ct-feat-sub">Pantau langsung pengiriman voucher digital</div></div></div></td>
-            <td class="ct-td-others"><span class="ct-stars">★★★☆☆</span><span class="ct-others-label">Terbatas</span></td>
+            <td class="ct-td-feat"><div class="ct-feat-inner-wrap"><span class="ct-feat-icon">📊</span><div><div class="ct-feat-label" data-i18n="compare.f3t">Tracking Data Real-Time</div><div class="ct-feat-sub" data-i18n="compare.f3d">Pantau langsung pengiriman voucher digital</div></div></div></td>
+            <td class="ct-td-others"><span class="ct-stars">★★★☆☆</span><span class="ct-others-label" data-i18n="compare.limited">Terbatas</span></td>
             <td class="ct-td-uvgc"><span class="ct-ck">✓</span></td>
           </tr>
           <tr>
-            <td class="ct-td-feat"><div class="ct-feat-inner-wrap"><span class="ct-feat-icon">👥</span><div><div class="ct-feat-label">Dedicated Account Manager</div><div class="ct-feat-sub">Pendampingan tim sales &amp; support</div></div></div></td>
-            <td class="ct-td-others"><span class="ct-cx-red">✕</span><span class="ct-others-label">Tidak tersedia</span></td>
+            <td class="ct-td-feat"><div class="ct-feat-inner-wrap"><span class="ct-feat-icon">👥</span><div><div class="ct-feat-label" data-i18n="compare.f4t">Dedicated Account Manager</div><div class="ct-feat-sub" data-i18n="compare.f4d">Pendampingan tim sales &amp; support</div></div></div></td>
+            <td class="ct-td-others"><span class="ct-cx-red">✕</span><span class="ct-others-label" data-i18n="compare.na">Tidak tersedia</span></td>
             <td class="ct-td-uvgc"><span class="ct-ck">✓</span></td>
           </tr>
           <tr>
-            <td class="ct-td-feat"><div class="ct-feat-inner-wrap"><span class="ct-feat-icon">⭐</span><div><div class="ct-feat-label">Exclusive Value dari UV</div><div class="ct-feat-sub">Free Miles &amp; program berhadiah</div></div></div></td>
-            <td class="ct-td-others"><span class="ct-cx-red">✕</span><span class="ct-others-label">Tidak tersedia</span></td>
+            <td class="ct-td-feat"><div class="ct-feat-inner-wrap"><span class="ct-feat-icon">⭐</span><div><div class="ct-feat-label" data-i18n="compare.f5t">Exclusive Value dari UV</div><div class="ct-feat-sub" data-i18n="compare.f5d">Free Miles &amp; program berhadiah</div></div></div></td>
+            <td class="ct-td-others"><span class="ct-cx-red">✕</span><span class="ct-others-label" data-i18n="compare.na">Tidak tersedia</span></td>
             <td class="ct-td-uvgc"><span class="ct-ck">✓</span></td>
           </tr>
           <tr>
-            <td class="ct-td-feat"><div class="ct-feat-inner-wrap"><span class="ct-feat-icon">💳</span><div><div class="ct-feat-label">Integrasi EDC BCA &amp; BRI</div><div class="ct-feat-sub">Scan UVGC di Mesin EDC BCA &amp; BRI</div></div></div></td>
-            <td class="ct-td-others"><span class="ct-cx-red">✕</span><span class="ct-others-label">Tidak tersedia</span></td>
+            <td class="ct-td-feat"><div class="ct-feat-inner-wrap"><span class="ct-feat-icon">💳</span><div><div class="ct-feat-label" data-i18n="compare.f6t">Integrasi EDC BCA &amp; BRI</div><div class="ct-feat-sub" data-i18n="compare.f6d">Scan UVGC di Mesin EDC BCA &amp; BRI</div></div></div></td>
+            <td class="ct-td-others"><span class="ct-cx-red">✕</span><span class="ct-others-label" data-i18n="compare.na">Tidak tersedia</span></td>
             <td class="ct-td-uvgc"><span class="ct-ck">✓</span></td>
           </tr>
         </tbody>
@@ -2266,15 +2305,15 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
   <div class="section-cta-glow"></div>
   <div class="cta-grid">
     <div class="cta-left">
-      <span class="eyebrow-blue" style="margin-bottom:14px;display:block;">Mulai Sekarang</span>
-      <h2>Hadiah yang Tepat,<br>untuk <span>Kebutuhan yang Tepat</span></h2>
-      <p>UVGC memastikan setiap penerima mendapatkan hadiah yang benar-benar mereka inginkan: Fleksibel, mudah dipakai, dan berkesan.</p>
+      <span class="eyebrow-blue" style="margin-bottom:14px;display:block;" data-i18n="cta.eyebrow">Mulai Sekarang</span>
+      <h2><span data-i18n="cta.h2a">Hadiah yang Tepat,</span><br><span data-i18n="cta.h2b">untuk </span><span data-i18n="cta.h2c">Kebutuhan yang Tepat</span></h2>
+      <p data-i18n="cta.sub">UVGC memastikan setiap penerima mendapatkan hadiah yang benar-benar mereka inginkan: Fleksibel, mudah dipakai, dan berkesan.</p>
       <ul class="cta-trust">
-        <li><span class="cta-trust-dot"></span>Konsultasi gratis tanpa komitmen</li>
-        <li><span class="cta-trust-dot"></span>Respons dalam 1 hari kerja</li>
+        <li><span class="cta-trust-dot"></span><span data-i18n="cta.trust1">Konsultasi gratis tanpa komitmen</span></li>
+        <li><span class="cta-trust-dot"></span><span data-i18n="cta.trust2">Respons dalam 1 hari kerja</span></li>
       </ul>
       <div class="cta-clients">
-        <span style="display:block;margin-bottom:12px;font-family:var(--F);font-size:11px;font-weight:600;color:#c0c0c0;letter-spacing:0.12em;text-transform:uppercase;">Dipercaya oleh perusahaan terkemuka</span>
+        <span style="display:block;margin-bottom:12px;font-family:var(--F);font-size:11px;font-weight:600;color:#c0c0c0;letter-spacing:0.12em;text-transform:uppercase;" data-i18n="cta.clients">Dipercaya oleh perusahaan terkemuka</span>
         <div class="cta-clients-logos" style="margin-top:10px;">
           <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" alt="BCA">
           <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/BRI_2025.png" alt="BRI">
@@ -2285,30 +2324,30 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
     </div>
     <div>
       <div class="form-box">
-        <h3>Konsultasi Gratis &amp; Pesan UVGC</h3>
-        <p>Isi form di bawah; tim kami akan segera menghubungi Anda.</p>
+        <h3 data-i18n="form.h3">Konsultasi Gratis &amp; Pesan UVGC</h3>
+        <p data-i18n="form.sub">Isi form di bawah; tim kami akan segera menghubungi Anda.</p>
         <div class="fg-row fg">
           <div class="fg" style="margin-bottom:0;">
-            <label>Nama Lengkap <span class="fg-req">*</span></label>
-            <input type="text" id="f-nama" placeholder="Budi Santoso" required>
-            <div class="fg-err" id="err-nama">Nama lengkap wajib diisi</div>
+            <label data-i18n="form.lbl.name">Nama Lengkap <span class="fg-req">*</span></label>
+            <input type="text" id="f-nama" data-i18n-placeholder="form.ph.name" placeholder="Budi Santoso" required>
+            <div class="fg-err" id="err-nama" data-i18n="form.err.name">Nama lengkap wajib diisi</div>
           </div>
           <div class="fg" style="margin-bottom:0;">
-            <label>Nama Perusahaan <span class="fg-req">*</span></label>
-            <input type="text" id="f-perusahaan" placeholder="PT Maju Bersama" required>
-            <div class="fg-err" id="err-perusahaan">Nama perusahaan wajib diisi</div>
+            <label data-i18n="form.lbl.company">Nama Perusahaan <span class="fg-req">*</span></label>
+            <input type="text" id="f-perusahaan" data-i18n-placeholder="form.ph.company" placeholder="PT Maju Bersama" required>
+            <div class="fg-err" id="err-perusahaan" data-i18n="form.err.company">Nama perusahaan wajib diisi</div>
           </div>
         </div>
         <div class="fg">
-          <label>Email Kantor <span class="fg-req">*</span></label>
-          <input type="email" id="f-email" placeholder="budi@perusahaan.co.id" required>
-          <div class="fg-err" id="err-email">Masukkan email yang valid</div>
+          <label data-i18n="form.lbl.email">Email Kantor <span class="fg-req">*</span></label>
+          <input type="email" id="f-email" data-i18n-placeholder="form.ph.email" placeholder="budi@perusahaan.co.id" required>
+          <div class="fg-err" id="err-email" data-i18n="form.err.email">Masukkan email yang valid</div>
         </div>
         <div class="fg-row fg">
           <div class="fg" style="margin-bottom:0;">
-            <label>No. WhatsApp <span class="fg-req">*</span></label>
+            <label data-i18n="form.lbl.wa">No. WhatsApp <span class="fg-req">*</span></label>
             <input type="tel" id="f-wa" placeholder="08xx xxxx xxxx" required>
-            <div class="fg-err" id="err-wa">Nomor WhatsApp wajib diisi</div>
+            <div class="fg-err" id="err-wa" data-i18n="form.err.wa">Nomor WhatsApp wajib diisi</div>
           </div>
           <div class="fg" style="margin-bottom:0;">
             <label>Job Title</label>
@@ -2316,9 +2355,9 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
           </div>
         </div>
         <div class="fg">
-          <label>Industri</label>
+          <label data-i18n="form.lbl.industry">Industri</label>
           <select id="f-industri">
-            <option value="" disabled selected>Pilih industri</option>
+            <option value="" disabled selected data-i18n="form.ph.industry">Pilih industri</option>
             <option>Agen Perjalanan, Travel</option>
             <option>Asuransi Jiwa</option>
             <option>Asuransi Kesehatan</option>
@@ -2386,16 +2425,16 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
           </select>
         </div>
         <div class="fg">
-          <label>Kebutuhan</label>
+          <label data-i18n="form.lbl.need">Kebutuhan</label>
           <select id="f-kebutuhan">
-            <option value="" disabled selected>Pilih</option>
-            <option>Reward Karyawan</option>
-            <option>Insentif Mitra</option>
-            <option>Program Loyalitas</option>
-            <option>Lainnya</option>
+            <option value="" disabled selected data-i18n="form.ph.need">Pilih</option>
+            <option data-i18n="form.need.1">Reward Karyawan</option>
+            <option data-i18n="form.need.2">Insentif Mitra</option>
+            <option data-i18n="form.need.3">Program Loyalitas</option>
+            <option data-i18n="form.need.4">Lainnya</option>
           </select>
         </div>
-        <button class="btn-form-green" onclick="submitForm()">Kirim dan Mulai Konsultasi</button>
+        <button class="btn-form-green" onclick="submitForm()" data-i18n="form.submit">Kirim dan Mulai Konsultasi</button>
       </div>
     </div>
   </div>
@@ -2406,7 +2445,7 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
   <div class="footer-top">
     <div>
       <div class="footer-logo"><img src="https://img.mailinblue.com/1873598/images/content_library/original/6a72f916a777b4dd48714d03.png" alt="UVGC"></div>
-      <p class="footer-desc">Solusi gifting dan reward korporat yang fleksibel untuk berbagai macam kebutuhan.</p>
+      <p class="footer-desc" data-i18n="footer.desc">Solusi gifting dan reward korporat yang fleksibel untuk berbagai macam kebutuhan.</p>
       <p class="footer-addr">Jl. Tebet Barat IX No.35BB, RT4/RW4, Tebet Barat, Kecamatan Tebet, Kota Jakarta Selatan, DKI Jakarta 12810</p>
       <div class="footer-socials">
         <a href="#" class="footer-social" aria-label="Instagram">
@@ -2423,12 +2462,12 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
         </a>
       </div>
     </div>
-    <div class="f-col"><h4>Informasi</h4><ul class="f-links"><li><a href="uvgc-cara-pakai.html">Cara Pakai</a></li><li><a href="uvgc-cara-order.html">Cara Order</a></li><li><a href="uvgc-merchant.html">List Merchant</a></li><li><a href="uvgc-jadi-merchant.html">Jadi Merchant</a></li><li><a href="uvgc-program.html">Program</a></li><li><a href="uvgc-artikel.html">Artikel</a></li></ul></div>
-    <div class="f-col"><h4>Perusahaan</h4><ul class="f-links"><li><a href="#">Ultra Corporation</a></li><li><a href="#">Tentang Kami</a></li></ul></div>
+    <div class="f-col"><h4 data-i18n="footer.col1">Informasi</h4><ul class="f-links"><li><a href="uvgc-cara-pakai.html" data-i18n="nav.how">Cara Pakai</a></li><li><a href="uvgc-cara-order.html" data-i18n="nav.order">Cara Order</a></li><li><a href="uvgc-merchant.html" data-i18n="nav.merchant">List Merchant</a></li><li><a href="uvgc-jadi-merchant.html" data-i18n="nav.become">Jadi Merchant</a></li><li><a href="uvgc-program.html" data-i18n="nav.program">Program</a></li><li><a href="uvgc-artikel.html" data-i18n="footer.article">Artikel</a></li></ul></div>
+    <div class="f-col"><h4 data-i18n="footer.col2">Perusahaan</h4><ul class="f-links"><li><a href="#">Ultra Corporation</a></li><li><a href="#" data-i18n="footer.about">Tentang Kami</a></li></ul></div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Ultra Voucher Gift Card. Bagian dari Ultra Corporation.</span>
-    <div class="fb-links"><a href="#">Kebijakan Privasi</a><a href="#">Syarat dan Ketentuan</a></div>
+    <span data-i18n="footer.copy">© 2026 Ultra Voucher Gift Card. Bagian dari Ultra Corporation.</span>
+    <div class="fb-links"><a href="#" data-i18n="footer.privacy">Kebijakan Privasi</a><a href="#" data-i18n="footer.terms">Syarat dan Ketentuan</a></div>
   </div>
 </footer>
 
@@ -2815,6 +2854,391 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
+
+<!-- ════════════════════════════════════
+     i18n — MULTILANGUAGE SYSTEM
+     ════════════════════════════════════ -->
+<script>
+(function () {
+  var t = {
+    id: {
+      /* NAV */
+      'nav.how':      'Cara Pakai',
+      'nav.order':    'Cara Order',
+      'nav.merchant': 'List Merchant',
+      'nav.program':  'Program',
+      'nav.become':   'Jadi Merchant',
+      'nav.register': 'Daftar',
+      'nav.contact':  'Hubungi Kami',
+
+      /* HERO SLIDE 1 — S&W */
+      's1.h1a':   'Gosok UVGC &amp;',
+      's1.h1b':   'Menangkan',
+      's1.h1c':   'Hadiah Menarik!',
+      's1.sub':   'Dapatkan hadiah langsung setiap pembelian Ultra Voucher Gift Card. Gosok bagian belakang kartu dan temukan hadiahmu.',
+      's1.cta':   'Ketahui Program',
+      's1.stat1l':'Total Hadiah',
+      's1.stat2n':'3 Langkah',
+      's1.stat2l':'Gosok · Klaim · Menang',
+      's1.stat3n':'Mei 2027',
+      's1.stat3l':'Undian Grand Prize',
+
+      /* HERO SLIDE 2 — Hero utama */
+      's2.h1a':   'Satu Kartu Hadiah,',
+      's2.h1b':   'untuk ',
+      's2.h1c':   'Jutaan',
+      's2.h1d':   'Pilihan',
+      's2.sub':   'Penerima bisa pilih sendiri hadiah yang paling bermakna; mulai dari belanja, kuliner, hingga investasi, semua dalam Ultra Voucher Gift Card.',
+      's2.cta1':  'Konsultasi Gratis',
+      's2.cta2':  'Kenali UVGC',
+      's2.stat1n':'1 Juta+',
+      's2.stat1l':'Total Penggunaan',
+      's2.stat2l':'Store redeem langsung',
+      's2.stat3n':'Dedicated',
+      's2.stat3l':'Account Manager',
+
+      /* TRUSTED */
+      'trusted.label': 'Dipercaya oleh',
+
+      /* PRODUCT FORMAT */
+      'prod.eyebrow':    'Lihat Pilihan Ultra Voucher Gift Card',
+      'prod.h2':         'Tersedia dalam Dua Format',
+      'prod.sub':        'Pilih gift card yang paling sesuai dengan kebutuhan Anda: fisik untuk pengalaman gifting yang lebih personal, atau digital untuk distribusi yang cepat dan praktis.',
+      'prod.tab1':       'Gift Card Fisik',
+      'prod.tab2':       'Gift Card Digital',
+      'prod.badge1':     'Fisik',
+      'prod.phys.title': 'Ultra Voucher Gift Card',
+      'prod.phys.desc':  'Kartu hadiah fisik premium dengan desain custom yang bisa dipersonalisasi. Cocok untuk pemberian hadiah langsung dan program loyalitas.',
+      'prod.badge2':     'Digital',
+      'prod.digi.title': 'Ultra Voucher Digital',
+      'prod.digi.desc':  'Voucher yang dikirim langsung ke penerima via WhatsApp, Email, atau SMS. Distribusi massal dalam hitungan menit; ideal untuk program skala besar.',
+      'prod.phys.feat1t':'Personalisasi Desain',
+      'prod.phys.feat1d':'Tampilan kartu dapat disesuaikan dengan tema program atau momen pemberian hadiah.',
+      'prod.phys.feat2t':'Berbagai Pilihan Nominal',
+      'prod.phys.feat2d':'Pilihan nominal voucher yang variatif mulai dari Rp25.000 hingga Rp1.000.000.',
+      'prod.phys.feat3t':'Cocok untuk Corporate Gifting',
+      'prod.phys.feat3d':'Hadiah karyawan, event perusahaan, dan momen apresiasi yang berkesan.',
+      'prod.phys.cta':   'Pesan Gift Card Fisik →',
+      'prod.digi.feat1t':'Pengiriman Instan via WhatsApp, Email, &amp; SMS',
+      'prod.digi.feat1d':'Ribuan penerima bisa mendapatkan voucher dalam hitungan menit.',
+      'prod.digi.feat2t':'Integrasi API untuk Otomatisasi Penuh',
+      'prod.digi.feat2d':'Otomatisasi distribusi voucher langsung dari sistem yang sudah Anda gunakan.',
+      'prod.digi.feat3t':'Dashboard Pemantauan Real-Time',
+      'prod.digi.feat3d':'Lacak status pengiriman dan penggunaan setiap voucher secara langsung.',
+      'prod.digi.cta':   'Pesan Gift Card Digital →',
+
+      /* CARD FLIP */
+      'card.eyebrow':  'Kenali Kartunya',
+      'card.h2':       'Bagian Depan dan Belakang<br>Ultra Voucher Gift Card',
+      'card.sub':      'Setiap UVGC fisik hadir dengan sisi depan yang dapat dikustomisasi dan sisi belakang yang digunakan untuk transaksi.',
+      'card.side.at':  'Sisi Depan: Desain Custom Perusahaan Anda',
+      'card.side.ad':  'Sisi depan dapat dipersonalisasi dengan identitas visual, nama program, dan nominal reward; baik untuk kampanye reguler maupun tematik.',
+      'card.side.bt':  'Sisi Belakang: Semua Metode Redeem',
+      'card.side.bd':  'Memuat Voucher ID, Expired Date, QR Code untuk redeem via aplikasi, barcode untuk outlet offline, dan area Scratch &amp; Win untuk hadiah kejutan.',
+
+      /* REDEEM */
+      'redeem.eyebrow':  'Cara Penggunaan',
+      'redeem.h2':       'Redeem UVGC Fisik dalam Tiga Pilihan',
+      'redeem.sub':      'Mulai dari digital hingga offline; setiap metode memberikan pengalaman redeem yang mudah, cepat, dan praktis.',
+      'redeem.digi.h2':  'Redeem UVGC Digital Sesuai Keinginan',
+      'redeem.digi.sub': 'Dua cara mudah untuk menggunakan UVGC Digital. Pilih sesuai kebutuhanmu.',
+      'redeem.cta':      'Panduan Cara Pakai Lengkap',
+      'redeem.phys.m1t': 'Redeem Online',
+      'redeem.phys.m1d': 'Scan QR Code untuk konversi nilai kartu menjadi saldo Ultra Value, lalu gunakan untuk belanja voucher digital di Ultra Voucher App, Web Commerce, atau pesan makanan via UFood.',
+      'redeem.phys.m2t': 'Redeem Offline',
+      'redeem.phys.m2d': 'Gunakan UVGC langsung di kasir merchant partner; tidak perlu aplikasi, cukup tunjukkan kartu untuk di-scan barcodenya. Transaksi selesai dalam hitungan detik.',
+      'redeem.phys.m3t': 'Redeem di EDC &amp; POS',
+      'redeem.phys.m3d': 'Gunakan UVGC langsung di mesin EDC atau POS merchant partner; tap atau swipe kartu untuk pembayaran instan tanpa perlu aplikasi tambahan.',
+      'redeem.digi.m1t': 'Konversi ke Saldo Ultra Value',
+      'redeem.digi.m1d': 'Redeem Ultra Value digital menjadi saldo di Ultra Voucher Apps dan Web Commerce. Cukup konfirmasi, login ke akun Ultra Voucher, saldo siap dipakai.',
+      'redeem.digi.m2t': 'Redeem Langsung di Kasir',
+      'redeem.digi.m2d': 'Redeem dengan pilih Scan at Cashier. Setelah konfirmasi, kode QR atau barcode akan muncul dan tunjukkan langsung di kasir merchant.',
+      'redeem.merch.chip':'1.000+ Merchant Partner',
+
+      /* MERCHANT */
+      'merch.eyebrow': 'Jaringan Merchant',
+      'merch.h2':      'Digunakan di 1.000+ Merchant Pilihan Indonesia',
+      'merch.sub':     'Dari supermarket hingga restoran; dari retail fashion hingga elektronik, semua bisa dijangkau dengan satu kartu.',
+      'merch.cta':     'Lihat Semua Merchant',
+
+      /* COMPARISON */
+      'compare.eyebrow':  'Mengapa UVGC?',
+      'compare.h2':       'Lebih dari Sekadar Gift Card',
+      'compare.sub':      'Bandingkan sendiri mengapa UVGC menjadi pilihan utama perusahaan-perusahaan terkemuka di Indonesia.',
+      'compare.col.feat': 'Fitur',
+      'compare.col.others':'Gift Card Lain',
+      'compare.na':       'Tidak tersedia',
+      'compare.limited':  'Terbatas',
+      'compare.f1t':      'Ribuan Pilihan Merchant',
+      'compare.f1d':      'Redeem di ribuan merchant',
+      'compare.f1x':      'Pilihan terbatas',
+      'compare.f2t':      'Diskon Eksklusif In-App',
+      'compare.f2d':      'Diskon tambahan bagi penerima',
+      'compare.f3t':      'Tracking Data Real-Time',
+      'compare.f3d':      'Pantau langsung pengiriman voucher digital',
+      'compare.f4t':      'Dedicated Account Manager',
+      'compare.f4d':      'Pendampingan tim sales &amp; support',
+      'compare.f5t':      'Exclusive Value dari UV',
+      'compare.f5d':      'Free Miles &amp; program berhadiah',
+      'compare.f6t':      'Integrasi EDC BCA &amp; BRI',
+      'compare.f6d':      'Scan UVGC di Mesin EDC BCA &amp; BRI',
+
+      /* CTA FORM */
+      'cta.eyebrow': 'Mulai Sekarang',
+      'cta.h2a':     'Hadiah yang Tepat,',
+      'cta.h2b':     'untuk ',
+      'cta.h2c':     'Kebutuhan yang Tepat',
+      'cta.sub':     'UVGC memastikan setiap penerima mendapatkan hadiah yang benar-benar mereka inginkan: Fleksibel, mudah dipakai, dan berkesan.',
+      'cta.trust1':  'Konsultasi gratis tanpa komitmen',
+      'cta.trust2':  'Respons dalam 1 hari kerja',
+      'cta.clients': 'Dipercaya oleh perusahaan terkemuka',
+
+      /* CARD SHOWCASE */
+      'card.showcase.label': 'Dari Program Korporat Kami',
+
+      /* FORM */
+      'form.h3':     'Konsultasi Gratis &amp; Pesan UVGC',
+      'form.sub':    'Isi form di bawah; tim kami akan segera menghubungi Anda.',
+      'form.submit': 'Kirim dan Mulai Konsultasi',
+
+      /* FORM LABELS & PLACEHOLDERS */
+      'form.lbl.name':     'Nama Lengkap <span class="fg-req">*</span>',
+      'form.lbl.company':  'Nama Perusahaan <span class="fg-req">*</span>',
+      'form.lbl.email':    'Email Kantor <span class="fg-req">*</span>',
+      'form.lbl.wa':       'No. WhatsApp <span class="fg-req">*</span>',
+      'form.lbl.industry': 'Industri',
+      'form.lbl.need':     'Kebutuhan',
+      'form.ph.name':      'Budi Santoso',
+      'form.ph.company':   'PT Maju Bersama',
+      'form.ph.email':     'budi@perusahaan.co.id',
+      'form.ph.industry':  'Pilih industri',
+      'form.ph.need':      'Pilih',
+      'form.err.name':     'Nama lengkap wajib diisi',
+      'form.err.company':  'Nama perusahaan wajib diisi',
+      'form.err.email':    'Masukkan email yang valid',
+      'form.err.wa':       'Nomor WhatsApp wajib diisi',
+      'form.need.1':       'Reward Karyawan',
+      'form.need.2':       'Insentif Mitra',
+      'form.need.3':       'Program Loyalitas',
+      'form.need.4':       'Lainnya',
+
+      /* FOOTER */
+      'footer.desc':    'Solusi gifting dan reward korporat yang fleksibel untuk berbagai macam kebutuhan.',
+      'footer.col1':    'Informasi',
+      'footer.col2':    'Perusahaan',
+      'footer.article': 'Artikel',
+      'footer.about':   'Tentang Kami',
+      'footer.copy':    '© 2026 Ultra Voucher Gift Card. Bagian dari Ultra Corporation.',
+      'footer.privacy': 'Kebijakan Privasi',
+      'footer.terms':   'Syarat dan Ketentuan',
+    },
+
+    en: {
+      /* NAV */
+      'nav.how':      'How to Use',
+      'nav.order':    'How to Order',
+      'nav.merchant': 'Merchant List',
+      'nav.program':  'Program',
+      'nav.become':   'Join as Merchant',
+      'nav.register': 'Register',
+      'nav.contact':  'Contact Us',
+
+      /* HERO SLIDE 1 — S&W */
+      's1.h1a':   'Scratch UVGC,',
+      's1.h1b':   'Win Your',
+      's1.h1c':   'Big Prizes!',
+      's1.sub':   'Get instant rewards with every Ultra Voucher Gift Card purchase. Scratch the back of your card and find out what you\'ve won.',
+      's1.cta':   'Explore the Program',
+      's1.stat1l':'Total Prizes',
+      's1.stat2n':'3 Steps',
+      's1.stat2l':'Scratch · Claim · Win',
+      's1.stat3n':'May 2027',
+      's1.stat3l':'Grand Prize Draw',
+
+      /* HERO SLIDE 2 */
+      's2.h1a':   'One Gift Card,',
+      's2.h1b':   'for ',
+      's2.h1c':   'Millions of',
+      's2.h1d':   'Choices',
+      's2.sub':   'Recipients pick exactly what they want: groceries, dining, or even investments, all packed into one Ultra Voucher Gift Card.',
+      's2.cta1':  'Free Consultation',
+      's2.cta2':  'Explore UVGC',
+      's2.stat1n':'1 Million+',
+      's2.stat1l':'Total Usage',
+      's2.stat2l':'Partner merchant locations',
+      's2.stat3n':'Dedicated',
+      's2.stat3l':'Account Manager',
+
+      /* TRUSTED */
+      'trusted.label': 'Trusted by',
+
+      /* PRODUCT FORMAT */
+      'prod.eyebrow':    'Explore Ultra Voucher Gift Card Options',
+      'prod.h2':         'Available in Two Formats',
+      'prod.sub':        'Physical for a personal touch; digital for speed. Pick what works best for you.',
+      'prod.tab1':       'Physical Gift Card',
+      'prod.tab2':       'Digital Gift Card',
+      'prod.badge1':     'Physical',
+      'prod.phys.title': 'Ultra Voucher Gift Card',
+      'prod.phys.desc':  'Premium physical gift card with a fully customizable design. Great for in-person gifting and corporate loyalty programs.',
+      'prod.badge2':     'Digital',
+      'prod.digi.title': 'Ultra Voucher Digital',
+      'prod.digi.desc':  'Vouchers sent directly to recipients via WhatsApp, Email, or SMS. Reach thousands in minutes; perfect for large-scale programs.',
+      'prod.phys.feat1t':'Custom Design',
+      'prod.phys.feat1d':'Card appearance can be tailored to match your program theme or gifting occasion.',
+      'prod.phys.feat2t':'Multiple Denominations',
+      'prod.phys.feat2d':'Choose from a wide range of voucher values, from Rp25,000 to Rp1,000,000.',
+      'prod.phys.feat3t':'Great for Corporate Gifting',
+      'prod.phys.feat3d':'Perfect for employee gifts, company events, and meaningful appreciation moments.',
+      'prod.phys.cta':   'Order Physical Gift Card →',
+      'prod.digi.feat1t':'Instant Delivery via WhatsApp, Email, &amp; SMS',
+      'prod.digi.feat1d':'Thousands of recipients can get their vouchers in just minutes.',
+      'prod.digi.feat2t':'API Integration for Full Automation',
+      'prod.digi.feat2d':'Connect your existing system via API and distribute vouchers automatically.',
+      'prod.digi.feat3t':'Real-Time Monitoring Dashboard',
+      'prod.digi.feat3d':'Track delivery status and usage for every voucher, live.',
+      'prod.digi.cta':   'Order Digital Gift Card →',
+
+      /* CARD FLIP */
+      'card.eyebrow':  'Know Your Card',
+      'card.h2':       'Two Sides,<br>One Powerful Card',
+      'card.sub':      'Every physical UVGC has two sides: a custom-branded front and a back loaded with all your redemption options.',
+      'card.side.at':  'Front Side: Make It Yours',
+      'card.side.ad':  'Brand it your way: add your logo, program name, and reward amount. Works for regular and seasonal campaigns alike.',
+      'card.side.bt':  'Back Side: Ready to Redeem',
+      'card.side.bd':  'Everything your recipient needs: Voucher ID, expiry date, QR code for the app, barcode for offline stores, and a Scratch &amp; Win panel for instant prizes.',
+
+      /* REDEEM */
+      'redeem.eyebrow':  'How to Use',
+      'redeem.h2':       'Three Ways to Redeem Your UVGC',
+      'redeem.sub':      'Whether online or in-store, each method gives you a smooth, fast, and easy redemption experience.',
+      'redeem.digi.h2':  'Two Ways to Use Your Digital UVGC',
+      'redeem.digi.sub': 'Two simple ways to use your Digital UVGC. Go with whatever works best for you.',
+      'redeem.cta':      'Full Usage Guide',
+      'redeem.phys.m1t': 'Redeem Online',
+      'redeem.phys.m1d': 'Scan the QR Code to convert the card value into Ultra Value balance, then use it to shop for digital vouchers on the Ultra Voucher App, Web Commerce, or order food via UFood.',
+      'redeem.phys.m2t': 'Redeem Offline',
+      'redeem.phys.m2d': 'Use your UVGC directly at a partner merchant\'s cashier, no app needed. Just show the card, let them scan the barcode, and you\'re done in seconds.',
+      'redeem.phys.m3t': 'Redeem at EDC &amp; POS',
+      'redeem.phys.m3d': 'Use UVGC at a partner merchant\'s EDC or POS machine. Tap or swipe the card for instant payment, no extra app required.',
+      'redeem.digi.m1t': 'Convert to Ultra Value Balance',
+      'redeem.digi.m1d': 'Convert your digital Ultra Value into balance on Ultra Voucher Apps or Web Commerce. Just confirm and log in to your Ultra Voucher account; your balance is ready to use.',
+      'redeem.digi.m2t': 'Scan Directly at Cashier',
+      'redeem.digi.m2d': 'Choose Scan at Cashier when redeeming. After confirmation, a QR code or barcode appears on screen; show it directly to the cashier.',
+      'redeem.merch.chip':'1,000+ Partner Merchants',
+
+      /* MERCHANT */
+      'merch.eyebrow': 'Merchant Network',
+      'merch.h2':      'Shop at 1,000+ Merchants Across Indonesia',
+      'merch.sub':     'From supermarkets to restaurants, fashion to electronics; all covered with just one card.',
+      'merch.cta':     'View All Merchants',
+
+      /* COMPARISON */
+      'compare.eyebrow':  'Why UVGC?',
+      'compare.h2':       'More Than Just a Gift Card',
+      'compare.sub':      'See for yourself why UVGC is the go-to choice for top companies across Indonesia.',
+      'compare.col.feat': 'Feature',
+      'compare.col.others':'Other Gift Cards',
+      'compare.na':       'Not available',
+      'compare.limited':  'Limited',
+      'compare.f1t':      'Thousands of Merchant Options',
+      'compare.f1d':      'Redeem at thousands of merchants',
+      'compare.f1x':      'Limited options',
+      'compare.f2t':      'Exclusive In-App Discounts',
+      'compare.f2d':      'Extra perks for recipients',
+      'compare.f3t':      'Real-Time Data Tracking',
+      'compare.f3d':      'Monitor digital voucher delivery live',
+      'compare.f4t':      'Dedicated Account Manager',
+      'compare.f4d':      'Your own dedicated sales &amp; support contact',
+      'compare.f5t':      'Exclusive Value from UV',
+      'compare.f5d':      'Free Miles &amp; rewards program',
+      'compare.f6t':      'BCA &amp; BRI EDC Integration',
+      'compare.f6d':      'Scan UVGC at BCA &amp; BRI EDC machines',
+
+      /* CTA FORM */
+      'cta.eyebrow': 'Get Started',
+      'cta.h2a':     'The Right Gift,',
+      'cta.h2b':     'for ',
+      'cta.h2c':     'the Right Moment',
+      'cta.sub':     'UVGC makes sure every recipient gets something they actually want: flexible, easy to use, and genuinely memorable.',
+      'cta.trust1':  'Free consultation, zero commitment',
+      'cta.trust2':  'We reply within 1 business day',
+      'cta.clients': 'Trusted by leading companies',
+
+      /* CARD SHOWCASE */
+      'card.showcase.label': 'From Our Corporate Programs',
+
+      /* FORM */
+      'form.h3':     'Free Consultation &amp; Order UVGC',
+      'form.sub':    'Fill in the form below and our team will reach out to you soon.',
+      'form.submit': 'Send and Start Your Consultation',
+
+      /* FORM LABELS & PLACEHOLDERS */
+      'form.lbl.name':     'Full Name <span class="fg-req">*</span>',
+      'form.lbl.company':  'Company Name <span class="fg-req">*</span>',
+      'form.lbl.email':    'Work Email <span class="fg-req">*</span>',
+      'form.lbl.wa':       'WhatsApp Number <span class="fg-req">*</span>',
+      'form.lbl.industry': 'Industry',
+      'form.lbl.need':     'What do you need?',
+      'form.ph.name':      'John Smith',
+      'form.ph.company':   'PT Maju Bersama',
+      'form.ph.email':     'john@company.com',
+      'form.ph.industry':  'Select your industry',
+      'form.ph.need':      'Select',
+      'form.err.name':     'Full name is required',
+      'form.err.company':  'Company name is required',
+      'form.err.email':    'Please enter a valid email',
+      'form.err.wa':       'WhatsApp number is required',
+      'form.need.1':       'Employee Rewards',
+      'form.need.2':       'Partner Incentives',
+      'form.need.3':       'Loyalty Program',
+      'form.need.4':       'Other',
+
+      /* FOOTER */
+      'footer.desc':    'Flexible corporate gifting and reward solutions for every business need.',
+      'footer.col1':    'Information',
+      'footer.col2':    'Company',
+      'footer.article': 'Articles',
+      'footer.about':   'About Us',
+      'footer.copy':    '© 2026 Ultra Voucher Gift Card. Part of Ultra Corporation.',
+      'footer.privacy': 'Privacy Policy',
+      'footer.terms':   'Terms &amp; Conditions',
+    }
+  };
+
+  var cur = localStorage.getItem('uvgc_lang') || 'id';
+
+  function applyLang(lang) {
+    cur = lang;
+    var dict = t[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) {
+        el.innerHTML = dict[key];
+      }
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-placeholder');
+      if (dict[key] !== undefined) {
+        el.placeholder = dict[key];
+      }
+    });
+    /* Toggle pill state */
+    var toggle = document.getElementById('langToggle');
+    var fid = document.getElementById('flag-id');
+    var fen = document.getElementById('flag-en');
+    if (toggle) toggle.setAttribute('data-lang', lang);
+    if (fid) { fid.classList.toggle('active', lang === 'id'); fid.classList.toggle('inactive', lang !== 'id'); }
+    if (fen) { fen.classList.toggle('active', lang === 'en'); fen.classList.toggle('inactive', lang !== 'en'); }
+    try { localStorage.setItem('uvgc_lang', lang); } catch(e){}
+  }
+
+  window.switchLang = applyLang;
+
+  /* Apply on load */
+  document.addEventListener('DOMContentLoaded', function () { applyLang(cur); });
+})();
+</script>
 
 </body>
 </html>
