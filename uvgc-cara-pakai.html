@@ -298,6 +298,16 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
   .cta-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
   .fg-row { grid-template-columns: 1fr !important; }
 }
+
+/* ── LANG TOGGLE ── */
+.lang-toggle { display: flex; align-items: center; flex-shrink: 0; margin-left: 16px; background: #e8eaed; border-radius: 100px; padding: 4px; gap: 0; position: relative; }
+.lang-pill-track { position: absolute; top: 4px; bottom: 4px; width: calc(50% - 4px); border-radius: 100px; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.18); transition: transform .25s cubic-bezier(.4,0,.2,1); pointer-events: none; }
+.lang-toggle[data-lang="en"] .lang-pill-track { transform: translateX(100%); }
+.lang-btn { display: flex; align-items: center; gap: 6px; cursor: pointer; padding: 5px 12px; border-radius: 100px; border: none; background: transparent; position: relative; z-index: 1; transition: opacity .2s; font-family: var(--F); font-size: 11px; font-weight: 600; color: var(--text-secondary); white-space: nowrap; user-select: none; }
+.lang-btn-flag { font-size: 17px; line-height: 1; }
+.lang-btn.active { color: var(--text-primary); }
+.lang-btn.inactive { opacity: 0.5; }
+.lang-btn:hover { opacity: 0.85; }
 </style>
 </head>
 <body>
@@ -314,23 +324,34 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
     <span class="hb"></span>
     <span class="hb"></span>
   </button>
+  <div style="display:flex;align-items:center;gap:0;">
   <ul class="nav-menu">
-    <li><a href="uvgc-cara-pakai.html">Cara Pakai</a></li>
-    <li><a href="uvgc-cara-order.html">Cara Order</a></li>
-    <li><a href="uvgc-merchant.html">List Merchant</a></li>
-    <li><a href="uvgc-program.html">Program</a></li>
-    <li><a href="uvgc-jadi-merchant.html">Jadi Merchant<span style="display:inline-flex;align-items:center;background:var(--uvgc-gold);color:var(--uvgc-blue-deep);font-family:var(--F);font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-left:6px;vertical-align:middle;">Daftar</span></a></li>
-    <li><a href="#kontak" class="nav-cta">Hubungi Kami</a></li>
+    <li><a href="uvgc-cara-pakai.html" data-i18n="nav.how">Cara Pakai</a></li>
+    <li><a href="uvgc-cara-order.html" data-i18n="nav.order">Cara Order</a></li>
+    <li><a href="uvgc-merchant.html" data-i18n="nav.merchant">List Merchant</a></li>
+    <li><a href="uvgc-program.html" data-i18n="nav.program">Program</a></li>
+    <li><a href="uvgc-jadi-merchant.html"><span data-i18n="nav.become">Jadi Merchant</span><span data-i18n="nav.become.badge" style="display:inline-flex;align-items:center;background:var(--uvgc-gold);color:var(--uvgc-blue-deep);font-family:var(--F);font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-left:6px;vertical-align:middle;">Daftar</span></a></li>
+    <li><a href="#kontak" class="nav-cta" data-i18n="nav.contact">Hubungi Kami</a></li>
   </ul>
+  <div class="lang-toggle" id="langToggle" data-lang="id">
+    <div class="lang-pill-track"></div>
+    <button class="lang-btn active" id="flag-id" onclick="switchLang('id')" aria-label="Bahasa Indonesia">
+      <span class="lang-btn-flag">🇮🇩</span>
+    </button>
+    <button class="lang-btn inactive" id="flag-en" onclick="switchLang('en')" aria-label="English">
+      <span class="lang-btn-flag">🇺🇸</span>
+    </button>
+  </div>
+  </div>
 </nav>
 
 <div class="mobile-nav" id="mobileNav">
-  <a href="uvgc-cara-pakai.html">Cara Pakai <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
-  <a href="uvgc-cara-order.html">Cara Order <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
-  <a href="uvgc-merchant.html">List Merchant <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
-  <a href="uvgc-program.html">Program <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
-  <a href="uvgc-jadi-merchant.html"><span style="display:inline-flex;align-items:center;gap:6px;">Jadi Merchant<span style="display:inline-flex;align-items:center;background:var(--uvgc-gold);color:var(--uvgc-blue-deep);font-family:var(--F);font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-left:6px;vertical-align:middle;">Daftar</span></span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
-  <a href="#kontak" class="mobile-nav-cta">Hubungi Kami <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  <a href="uvgc-cara-pakai.html"><span data-i18n="nav.how">Cara Pakai</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="uvgc-cara-order.html"><span data-i18n="nav.order">Cara Order</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="uvgc-merchant.html"><span data-i18n="nav.merchant">List Merchant</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="uvgc-program.html"><span data-i18n="nav.program">Program</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="uvgc-jadi-merchant.html"><span style="display:inline-flex;align-items:center;gap:6px;"><span data-i18n="nav.become">Jadi Merchant</span><span data-i18n="nav.become.badge" style="display:inline-flex;align-items:center;background:var(--uvgc-gold);color:var(--uvgc-blue-deep);font-family:var(--F);font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-left:6px;vertical-align:middle;">Daftar</span></span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="#kontak" class="mobile-nav-cta"><span data-i18n="nav.contact">Hubungi Kami</span> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
 </div>
 
 <!-- MINI HERO -->
@@ -338,9 +359,9 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
   <div class="mini-hero-arc"></div>
   <div class="mini-hero-arc" style="width:180px;height:180px;top:auto;bottom:-60px;left:-60px;right:auto;"></div>
   <div class="mini-hero-inner">
-    <span class="mini-hero-eyebrow">Cara Pakai</span>
-    <h1>Panduan Penggunaan<br><span>Ultra Voucher Gift Card Fisik dan Digital</span></h1>
-    <p>Panduan lengkap cara redeem UVGC Fisik di kasir &amp; via apps dan UVGC Digital langsung dari smartphone.</p>
+    <span class="mini-hero-eyebrow" data-i18n="hero.eyebrow">Cara Pakai</span>
+    <h1><span data-i18n="hero.h1a" style="color:#fff;">Panduan Penggunaan</span><br><span data-i18n="hero.h1b">Ultra Voucher Gift Card Fisik dan Digital</span></h1>
+    <p data-i18n="hero.p">Panduan lengkap cara redeem UVGC Fisik di kasir &amp; via apps dan UVGC Digital langsung dari smartphone.</p>
   </div>
 </section>
 
@@ -351,9 +372,9 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
 <section class="section-white">
   <div class="section-inner">
     <div class="section-header">
-      <div style="display:inline-flex;align-items:center;gap:7px;background:var(--text-primary);color:#fff;font-family:var(--F);font-size:11px;font-weight:700;padding:5px 14px;border-radius:100px;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:12px;">UVGC Fisik · Offline</div>
-      <h2 class="sh">Redeem Langsung di Merchant</h2>
-      <p class="sh-sub">Tidak perlu aplikasi. Cukup bawa kartu UVGC ke kasir merchant partner; transaksi selesai dalam hitungan detik.</p>
+      <div data-i18n="s1.badge" style="display:inline-flex;align-items:center;gap:7px;background:var(--text-primary);color:#fff;font-family:var(--F);font-size:11px;font-weight:700;padding:5px 14px;border-radius:100px;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:12px;">UVGC Fisik · Offline</div>
+      <h2 class="sh" data-i18n="s1.h2">Redeem Langsung di Merchant</h2>
+      <p class="sh-sub" data-i18n="s1.sub">Tidak perlu aplikasi. Cukup bawa kartu UVGC ke kasir merchant partner; transaksi selesai dalam hitungan detik.</p>
     </div>
 
     <!-- 3 Steps — floating image treatment -->
@@ -365,10 +386,10 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
         <div style="width:100%;background:rgba(255,255,255,0.6);border:1px solid transparent;border-radius:18px;padding:32px 22px 22px;box-shadow:0 2px 20px rgba(0,0,0,0.06);backdrop-filter:blur(8px);">
           <div class="step-offline-num" style="margin-bottom:10px;">
             <div class="step-offline-n">1</div>
-            <span class="step-offline-label">Shop</span>
+            <span class="step-offline-label" data-i18n="s1.step1.label">Shop</span>
           </div>
-          <div class="step-offline-title">Transaksi di Toko</div>
-          <p class="step-offline-desc">Kumpulkan belanjaan dan bawa ke kasir. Kasir menginput item dan total tagihan.</p>
+          <div class="step-offline-title" data-i18n="s1.step1.title">Transaksi di Toko</div>
+          <p class="step-offline-desc" data-i18n="s1.step1.desc">Kumpulkan belanjaan dan bawa ke kasir. Kasir menginput item dan total tagihan.</p>
         </div>
       </div>
 
@@ -383,10 +404,10 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
         <div style="width:100%;background:rgba(255,255,255,0.6);border:1px solid transparent;border-radius:18px;padding:32px 22px 22px;box-shadow:0 2px 20px rgba(0,0,0,0.06);backdrop-filter:blur(8px);">
           <div class="step-offline-num" style="margin-bottom:10px;">
             <div class="step-offline-n">2</div>
-            <span class="step-offline-label">Scan</span>
+            <span class="step-offline-label" data-i18n="s1.step2.label">Scan</span>
           </div>
-          <div class="step-offline-title">Serahkan Kartu untuk Di-scan</div>
-          <p class="step-offline-desc">Serahkan kartu UVGC ke kasir. Kasir scan barcode di sisi belakang kartu menggunakan mesin EDC.</p>
+          <div class="step-offline-title" data-i18n="s1.step2.title">Serahkan Kartu untuk Di-scan</div>
+          <p class="step-offline-desc" data-i18n="s1.step2.desc">Serahkan kartu UVGC ke kasir. Kasir scan barcode di sisi belakang kartu menggunakan mesin EDC.</p>
         </div>
       </div>
 
@@ -401,10 +422,10 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
         <div style="width:100%;background:rgba(255,255,255,0.6);border:1px solid transparent;border-radius:18px;padding:32px 22px 22px;box-shadow:0 2px 20px rgba(0,0,0,0.06);backdrop-filter:blur(8px);">
           <div class="step-offline-num" style="margin-bottom:10px;">
             <div class="step-offline-n">3</div>
-            <span class="step-offline-label">Redeemed</span>
+            <span class="step-offline-label" data-i18n="s1.step3.label">Redeemed</span>
           </div>
-          <div class="step-offline-title">Transaksi Selesai</div>
-          <p class="step-offline-desc">Nilai UVGC terpakai. Voucher berhasil di-redeem dan belanjaan siap dibawa!</p>
+          <div class="step-offline-title" data-i18n="s1.step3.title">Transaksi Selesai</div>
+          <p class="step-offline-desc" data-i18n="s1.step3.desc">Nilai UVGC terpakai. Voucher berhasil di-redeem dan belanjaan siap dibawa!</p>
         </div>
       </div>
 
@@ -412,7 +433,7 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
 
     <div style="margin-top:36px;text-align:center;">
       <a href="uvgc-merchant.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--uv-green);color:#fff;font-family:var(--F);font-weight:600;font-size:14px;padding:0 28px;height:43px;border-radius:8px;text-decoration:none;box-shadow:0 4px 20px rgba(0,154,70,0.28);transition:all .22s;" onmouseover="this.style.background='var(--uv-green-deep)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--uv-green)';this.style.transform='translateY(0)'">
-        Lihat Daftar Merchant Offline
+        <span data-i18n="s1.btn">Lihat Daftar Merchant Offline</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -429,24 +450,24 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
 <section class="section-intro">
   <div class="section-inner">
     <div class="section-header">
-      <div style="display:inline-flex;align-items:center;gap:7px;background:var(--uvgc-blue);color:#fff;font-family:var(--F);font-size:11px;font-weight:700;padding:5px 14px;border-radius:100px;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:12px;">UVGC Fisik · Online</div>
-      <h2 class="sh">Redeem via Aplikasi &amp; Web Commerce Ultra Voucher</h2>
-      <p class="sh-sub">Scan QR Code UVGC untuk konversi nilai kartu menjadi saldo Ultra Value, lalu gunakan untuk belanja di ratusan merchant digital.</p>
+      <div data-i18n="s2.badge" style="display:inline-flex;align-items:center;gap:7px;background:var(--uvgc-blue);color:#fff;font-family:var(--F);font-size:11px;font-weight:700;padding:5px 14px;border-radius:100px;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:12px;">UVGC Fisik · Online</div>
+      <h2 class="sh" data-i18n="s2.h2">Redeem via Aplikasi &amp; Web Commerce Ultra Voucher</h2>
+      <p class="sh-sub" data-i18n="s2.sub">Scan QR Code UVGC untuk konversi nilai kartu menjadi saldo Ultra Value, lalu gunakan untuk belanja di ratusan merchant digital.</p>
     </div>
 
     <!-- Method tabs -->
     <div class="method-tabs">
       <button class="method-tab active" onclick="switchMethod(0)">
         <img src="https://img.mailinblue.com/1873598/images/content_library/original/6ac78eb081147d7a3d83324b.png" alt="UV App" style="height:20px;width:auto;">
-        Apps
+        <span data-i18n="s2.tab.apps">Apps</span>
       </button>
       <button class="method-tab" onclick="switchMethod(1)">
         <img src="https://img.mailinblue.com/1873598/images/content_library/original/6ac78eb081147d7a3d83324b.png" alt="Web Commerce" style="height:20px;width:auto;">
-        Web Commerce
+        <span data-i18n="s2.tab.web">Web Commerce</span>
       </button>
       <button class="method-tab" onclick="switchMethod(2)">
         <img src="https://ufood.co.id/wp-content/themes/ufood-temp/assets/img/LOGO%20UFOOD-UNGU.png" alt="UFood" style="height:20px;width:auto;object-fit:contain;">
-        UFood
+        <span data-i18n="s2.tab.ufood">UFood</span>
       </button>
     </div>
 
@@ -457,34 +478,34 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
       <!-- Top: steps kiri | gambar kanan -->
       <div class="app-layout">
         <div>
-          <p style="font-family:var(--F);font-size:12px;font-weight:700;color:var(--neutral-500);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">Langkah-langkah</p>
+          <p data-i18n="steps.label" style="font-family:var(--F);font-size:12px;font-weight:700;color:var(--neutral-500);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">Langkah-langkah</p>
           <div class="app-steps">
             <div class="app-step active-step" id="method-0-step-0" onmouseenter="setStep('method-0',0)" onclick="setStep('method-0',0)">
               <div class="app-step-num">1</div>
               <div class="app-step-content">
-                <div class="app-step-title">Gosok Lapisan Pelindung QR Code</div>
-                <div class="app-step-desc">Gosok pelan lapisan pelindung di sisi belakang kartu untuk membuka QR Code yang tersembunyi di bawahnya.</div>
+                <div class="app-step-title" data-i18n="m0.step1.title">Gosok Lapisan Pelindung QR Code</div>
+                <div class="app-step-desc" data-i18n="m0.step1.desc">Gosok pelan lapisan pelindung di sisi belakang kartu untuk membuka QR Code yang tersembunyi di bawahnya.</div>
               </div>
             </div>
             <div class="app-step" id="method-0-step-1" onmouseenter="setStep('method-0',1)" onclick="setStep('method-0',1)">
               <div class="app-step-num">2</div>
               <div class="app-step-content">
-                <div class="app-step-title">Buka UV App dan Pastikan Sudah Login</div>
-                <div class="app-step-desc">Unduh dan buka aplikasi Ultra Voucher. Pastikan sudah login dengan akun yang terdaftar sebelum melanjutkan.</div>
+                <div class="app-step-title" data-i18n="m0.step2.title">Buka UV App dan Pastikan Sudah Login</div>
+                <div class="app-step-desc" data-i18n="m0.step2.desc">Unduh dan buka aplikasi Ultra Voucher. Pastikan sudah login dengan akun yang terdaftar sebelum melanjutkan.</div>
               </div>
             </div>
             <div class="app-step" id="method-0-step-2" onmouseenter="setStep('method-0',2)" onclick="setStep('method-0',2)">
               <div class="app-step-num">3</div>
               <div class="app-step-content">
-                <div class="app-step-title">Klik Fitur Scan di Halaman Utama</div>
-                <div class="app-step-desc">Pilih ikon Scan yang tersedia di halaman utama UV App, lalu arahkan kamera ke QR Code UVGC.</div>
+                <div class="app-step-title" data-i18n="m0.step3.title">Klik Fitur Scan di Halaman Utama</div>
+                <div class="app-step-desc" data-i18n="m0.step3.desc">Pilih ikon Scan yang tersedia di halaman utama UV App, lalu arahkan kamera ke QR Code UVGC.</div>
               </div>
             </div>
             <div class="app-step" id="method-0-step-3" onmouseenter="setStep('method-0',3)" onclick="setStep('method-0',3)">
               <div class="app-step-num">4</div>
               <div class="app-step-content">
-                <div class="app-step-title">Saldo Masuk sebagai Ultra Value</div>
-                <div class="app-step-desc">Nilai kartu langsung dikreditkan sebagai saldo Ultra Value dan siap digunakan untuk belanja voucher digital.</div>
+                <div class="app-step-title" data-i18n="m0.step4.title">Saldo Masuk sebagai Ultra Value</div>
+                <div class="app-step-desc" data-i18n="m0.step4.desc">Nilai kartu langsung dikreditkan sebagai saldo Ultra Value dan siap digunakan untuk belanja voucher digital.</div>
               </div>
             </div>
           </div>
@@ -500,31 +521,31 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
       <!-- Bottom: statement kiri | checklist kanan -->
       <div style="margin-top:48px;padding-top:36px;border-top:1px solid var(--neutral-100);display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
         <div>
-          <p style="font-family:var(--F);font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.45;letter-spacing:-0.01em;">Satu scan di UV App, ratusan voucher digital siap digunakan.</p>
+          <p data-i18n="m0.statement" style="font-family:var(--F);font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.45;letter-spacing:-0.01em;">Satu scan di UV App, ratusan voucher digital siap digunakan.</p>
         </div>
         <div class="app-benefits-grid">
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Akses <strong>ratusan voucher digital</strong></div>
+            <div class="app-benefit-text-lg" data-i18n="m0.b1">Akses <strong>ratusan voucher digital</strong></div>
           </div>
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg"><strong>Redeem instan</strong> dan aman</div>
+            <div class="app-benefit-text-lg" data-i18n="m0.b2"><strong>Redeem instan</strong> dan aman</div>
           </div>
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Rekomendasi voucher <strong>personal</strong></div>
+            <div class="app-benefit-text-lg" data-i18n="m0.b3">Rekomendasi voucher <strong>personal</strong></div>
           </div>
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Katalog voucher <strong>terlengkap</strong></div>
+            <div class="app-benefit-text-lg" data-i18n="m0.b4">Katalog voucher <strong>terlengkap</strong></div>
           </div>
         </div>
       </div>
       <div class="video-placeholder" style="margin-top:48px;max-width:640px;margin-left:auto;margin-right:auto;" onclick="alert('Video akan diembed dari YouTube')">
         <div class="video-play"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <div class="video-label">Tutorial: Cara Redeem UVGC via UV App</div>
-        <div class="video-tag">Video akan diembed dari YouTube</div>
+        <div class="video-label" data-i18n="m0.video.label">Tutorial: Cara Redeem UVGC via UV App</div>
+        <div class="video-tag" data-i18n="m0.video.tag">Video akan diembed dari YouTube</div>
       </div>
     </div>
 
@@ -533,34 +554,34 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
       <!-- Top: steps kiri | gambar kanan -->
       <div class="app-layout">
         <div>
-          <p style="font-family:var(--F);font-size:12px;font-weight:700;color:var(--neutral-500);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">Langkah-langkah</p>
+          <p data-i18n="steps.label" style="font-family:var(--F);font-size:12px;font-weight:700;color:var(--neutral-500);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">Langkah-langkah</p>
           <div class="app-steps">
             <div class="app-step active-step" id="method-1-step-0" onmouseenter="setStep('method-1',0)" onclick="setStep('method-1',0)">
               <div class="app-step-num">1</div>
               <div class="app-step-content">
-                <div class="app-step-title">Gosok Lapisan Pelindung QR Code</div>
-                <div class="app-step-desc">Gosok pelan lapisan pelindung di sisi belakang kartu untuk membuka QR Code sebelum memulai proses scan.</div>
+                <div class="app-step-title" data-i18n="m1.step1.title">Gosok Lapisan Pelindung QR Code</div>
+                <div class="app-step-desc" data-i18n="m1.step1.desc">Gosok pelan lapisan pelindung di sisi belakang kartu untuk membuka QR Code sebelum memulai proses scan.</div>
               </div>
             </div>
             <div class="app-step" id="method-1-step-1" onmouseenter="setStep('method-1',1)" onclick="setStep('method-1',1)">
               <div class="app-step-num">2</div>
               <div class="app-step-content">
-                <div class="app-step-title">Buka Web Commerce dan Pastikan Sudah Login</div>
-                <div class="app-step-desc">Akses ultravoucher.co.id dari browser mana saja. Login menggunakan akun Google atau nomor HP dan verifikasi OTP.</div>
+                <div class="app-step-title" data-i18n="m1.step2.title">Buka Web Commerce dan Pastikan Sudah Login</div>
+                <div class="app-step-desc" data-i18n="m1.step2.desc">Akses ultravoucher.co.id dari browser mana saja. Login menggunakan akun Google atau nomor HP dan verifikasi OTP.</div>
               </div>
             </div>
             <div class="app-step" id="method-1-step-2" onmouseenter="setStep('method-1',2)" onclick="setStep('method-1',2)">
               <div class="app-step-num">3</div>
               <div class="app-step-content">
-                <div class="app-step-title">Klik Fitur UVGC & Pay Scan</div>
-                <div class="app-step-desc">Di halaman utama Web Commerce, pilih fitur UVGC & Pay Scan, lalu izinkan akses kamera dan arahkan ke QR Code.</div>
+                <div class="app-step-title" data-i18n="m1.step3.title">Klik Fitur UVGC &amp; Pay Scan</div>
+                <div class="app-step-desc" data-i18n="m1.step3.desc">Di halaman utama Web Commerce, pilih fitur UVGC &amp; Pay Scan, lalu izinkan akses kamera dan arahkan ke QR Code.</div>
               </div>
             </div>
             <div class="app-step" id="method-1-step-3" onmouseenter="setStep('method-1',3)" onclick="setStep('method-1',3)">
               <div class="app-step-num">4</div>
               <div class="app-step-content">
-                <div class="app-step-title">Saldo Masuk sebagai Ultra Value</div>
-                <div class="app-step-desc">Saldo Ultra Value langsung diperbarui setelah scan berhasil dan siap digunakan untuk belanja di Web Commerce.</div>
+                <div class="app-step-title" data-i18n="m1.step4.title">Saldo Masuk sebagai Ultra Value</div>
+                <div class="app-step-desc" data-i18n="m1.step4.desc">Saldo Ultra Value langsung diperbarui setelah scan berhasil dan siap digunakan untuk belanja di Web Commerce.</div>
               </div>
             </div>
           </div>
@@ -576,55 +597,55 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
       <!-- Bottom: statement kiri | checklist kanan -->
       <div style="margin-top:48px;padding-top:36px;border-top:1px solid var(--neutral-100);display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
         <div>
-          <p style="font-family:var(--F);font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.45;letter-spacing:-0.01em;">Tanpa aplikasi, langsung dari browser; saldo masuk seketika setelah scan.</p>
+          <p data-i18n="m1.statement" style="font-family:var(--F);font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.45;letter-spacing:-0.01em;">Tanpa aplikasi, langsung dari browser; saldo masuk seketika setelah scan.</p>
         </div>
         <div class="app-benefits-grid">
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Akses dari <strong>browser mana saja</strong></div>
+            <div class="app-benefit-text-lg" data-i18n="m1.b1">Akses dari <strong>browser mana saja</strong></div>
           </div>
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Tanpa perlu <strong>install aplikasi</strong></div>
+            <div class="app-benefit-text-lg" data-i18n="m1.b2">Tanpa perlu <strong>install aplikasi</strong></div>
           </div>
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Login mudah via <strong>Google</strong> atau nomor HP</div>
+            <div class="app-benefit-text-lg" data-i18n="m1.b3">Login mudah via <strong>Google</strong> atau nomor HP</div>
           </div>
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Saldo <strong>langsung diperbarui</strong> setelah scan</div>
+            <div class="app-benefit-text-lg" data-i18n="m1.b4">Saldo <strong>langsung diperbarui</strong> setelah scan</div>
           </div>
         </div>
       </div>
 
       <div class="video-placeholder" style="margin-top:48px;max-width:640px;margin-left:auto;margin-right:auto;" onclick="alert('Video akan diembed dari YouTube')">
         <div class="video-play"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <div class="video-label">Tutorial: Cara Redeem UVGC via Web Commerce</div>
-        <div class="video-tag">Video akan diembed dari YouTube</div>
+        <div class="video-label" data-i18n="m1.video.label">Tutorial: Cara Redeem UVGC via Web Commerce</div>
+        <div class="video-tag" data-i18n="m1.video.tag">Video akan diembed dari YouTube</div>
       </div>
     </div>
 
     <div class="method-panel" id="method-2">
       <div class="app-layout">
         <div>
-          <p style="font-family:var(--F);font-size:12px;font-weight:700;color:var(--neutral-500);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">Langkah-langkah</p>
+          <p data-i18n="steps.label" style="font-family:var(--F);font-size:12px;font-weight:700;color:var(--neutral-500);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">Langkah-langkah</p>
           <div class="app-steps">
             <div class="app-step active-step" id="method-2-step-0" onmouseenter="setStep('method-2',0)" onclick="setStep('method-2',0)">
               <div class="app-step-num">1</div>
-              <div class="app-step-content"><div class="app-step-title">Gosok Lapisan Pelindung QR Code</div><div class="app-step-desc">Gosok pelan lapisan pelindung di sisi belakang kartu untuk membuka QR Code sebelum memulai proses scan.</div></div>
+              <div class="app-step-content"><div class="app-step-title" data-i18n="m2.step1.title">Gosok Lapisan Pelindung QR Code</div><div class="app-step-desc" data-i18n="m2.step1.desc">Gosok pelan lapisan pelindung di sisi belakang kartu untuk membuka QR Code sebelum memulai proses scan.</div></div>
             </div>
             <div class="app-step" id="method-2-step-1" onmouseenter="setStep('method-2',1)" onclick="setStep('method-2',1)">
               <div class="app-step-num">2</div>
-              <div class="app-step-content"><div class="app-step-title">Buka UV App dan Scan QR Code UVGC</div><div class="app-step-desc">Buka aplikasi Ultra Voucher, pilih fitur Scan di halaman utama, lalu arahkan kamera ke QR Code UVGC. Saldo masuk sebagai Ultra Value.</div></div>
+              <div class="app-step-content"><div class="app-step-title" data-i18n="m2.step2.title">Buka UV App dan Scan QR Code UVGC</div><div class="app-step-desc" data-i18n="m2.step2.desc">Buka aplikasi Ultra Voucher, pilih fitur Scan di halaman utama, lalu arahkan kamera ke QR Code UVGC. Saldo masuk sebagai Ultra Value.</div></div>
             </div>
             <div class="app-step" id="method-2-step-2" onmouseenter="setStep('method-2',2)" onclick="setStep('method-2',2)">
               <div class="app-step-num">3</div>
-              <div class="app-step-content"><div class="app-step-title">Buka Menu UFood dan Pilih Makanan</div><div class="app-step-desc">Di halaman utama UV App, pilih menu UFood. Cari restoran atau makanan yang tersedia; pilih layanan Delivery atau Self Pick-Up sesuai kebutuhan.</div></div>
+              <div class="app-step-content"><div class="app-step-title" data-i18n="m2.step3.title">Buka Menu UFood dan Pilih Makanan</div><div class="app-step-desc" data-i18n="m2.step3.desc">Di halaman utama UV App, pilih menu UFood. Cari restoran atau makanan yang tersedia; pilih layanan Delivery atau Self Pick-Up sesuai kebutuhan.</div></div>
             </div>
             <div class="app-step" id="method-2-step-3" onmouseenter="setStep('method-2',3)" onclick="setStep('method-2',3)">
               <div class="app-step-num">4</div>
-              <div class="app-step-content"><div class="app-step-title">Bayar Menggunakan Saldo Ultra Value</div><div class="app-step-desc">Saat checkout, pilih Ultra Value sebagai metode pembayaran. Saldo dipotong otomatis dan pesanan langsung diproses.</div></div>
+              <div class="app-step-content"><div class="app-step-title" data-i18n="m2.step4.title">Bayar Menggunakan Saldo Ultra Value</div><div class="app-step-desc" data-i18n="m2.step4.desc">Saat checkout, pilih Ultra Value sebagai metode pembayaran. Saldo dipotong otomatis dan pesanan langsung diproses.</div></div>
             </div>
           </div>
         </div>
@@ -636,23 +657,23 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
         </div>
       </div>
       <div style="margin-top:48px;padding-top:36px;border-top:1px solid var(--neutral-100);display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
-        <p style="font-family:var(--F);font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.45;letter-spacing:-0.01em;">Dari kartu hadiah langsung ke meja makan; pesan makanan favorit pakai saldo Ultra Value.</p>
+        <p data-i18n="m2.statement" style="font-family:var(--F);font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.45;letter-spacing:-0.01em;">Dari kartu hadiah langsung ke meja makan; pesan makanan favorit pakai saldo Ultra Value.</p>
         <div class="app-benefits-grid">
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Tersedia layanan <strong>Delivery &amp; Self Pick-Up</strong></div>
+            <div class="app-benefit-text-lg" data-i18n="m2.b1">Tersedia layanan <strong>Delivery &amp; Self Pick-Up</strong></div>
           </div>
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Ratusan pilihan <strong>restoran dan kafe</strong></div>
+            <div class="app-benefit-text-lg" data-i18n="m2.b2">Ratusan pilihan <strong>restoran dan kafe</strong></div>
           </div>
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Bayar langsung dengan <strong>saldo Ultra Value</strong></div>
+            <div class="app-benefit-text-lg" data-i18n="m2.b3">Bayar langsung dengan <strong>saldo Ultra Value</strong></div>
           </div>
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Promo eksklusif <strong>khusus pengguna UFood</strong></div>
+            <div class="app-benefit-text-lg" data-i18n="m2.b4">Promo eksklusif <strong>khusus pengguna UFood</strong></div>
           </div>
         </div>
       </div>
@@ -670,67 +691,53 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
 <section class="section-white" id="uvgc-digital">
   <div class="section-inner">
     <div class="section-header">
-      <div style="display:inline-flex;align-items:center;gap:7px;background:var(--uvgc-blue);color:#fff;font-family:var(--F);font-size:11px;font-weight:700;padding:5px 14px;border-radius:100px;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:12px;">UVGC Digital</div>
-      <h2 class="sh">Redeem UVGC Digital Sesuai Keinginan</h2>
-      <p class="sh-sub">Dua cara mudah untuk menggunakan UVGC Digital. Pilih sesuai kebutuhanmu.</p>
+      <div data-i18n="d.badge" style="display:inline-flex;align-items:center;gap:7px;background:var(--uvgc-blue);color:#fff;font-family:var(--F);font-size:11px;font-weight:700;padding:5px 14px;border-radius:100px;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:12px;">UVGC Digital</div>
+      <h2 class="sh" data-i18n="d.h2">Redeem UVGC Digital Sesuai Keinginan</h2>
+      <p class="sh-sub" data-i18n="d.sub">Dua cara mudah untuk menggunakan UVGC Digital. Pilih sesuai kebutuhanmu.</p>
     </div>
 
     <!-- Digital method tabs -->
     <div class="method-tabs">
       <button class="method-tab active" onclick="switchDigital(0)">
-        Konversi Saldo Ultra Value
+        <span data-i18n="d.tab0">Konversi Saldo Ultra Value</span>
       </button>
       <button class="method-tab" onclick="switchDigital(1)">
-        Redeem Langsung di Kasir
+        <span data-i18n="d.tab1">Redeem Langsung di Kasir</span>
       </button>
     </div>
 
-    <!-- Tab 0: Konversi Saldo Ultra Value (6 steps) -->
+    <!-- Tab 0: Konversi Saldo Ultra Value (4 steps) -->
     <div class="method-panel active" id="digital-0">
       <div class="app-layout">
         <div>
-          <p style="font-family:var(--F);font-size:12px;font-weight:700;color:var(--neutral-500);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">Langkah-langkah</p>
+          <p data-i18n="steps.label" style="font-family:var(--F);font-size:12px;font-weight:700;color:var(--neutral-500);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">Langkah-langkah</p>
           <div class="app-steps">
             <div class="app-step active-step" id="digital-0-step-0" onmouseenter="setDigitalStep(0,0)" onclick="setDigitalStep(0,0)">
               <div class="app-step-num">1</div>
               <div class="app-step-content">
-                <div class="app-step-title">Buka Voucher &amp; Tap Redeem</div>
-                <div class="app-step-desc">Buka detail voucher, lalu tap tombol Redeem.</div>
+                <div class="app-step-title" data-i18n="d0.step1.title">Buka Voucher &amp; Tap Redeem</div>
+                <div class="app-step-desc" data-i18n="d0.step1.desc">Buka detail voucher, lalu tap tombol Redeem.</div>
               </div>
             </div>
             <div class="app-step" id="digital-0-step-1" onmouseenter="setDigitalStep(0,1)" onclick="setDigitalStep(0,1)">
               <div class="app-step-num">2</div>
               <div class="app-step-content">
-                <div class="app-step-title">Pilih Metode Redemption</div>
-                <div class="app-step-desc">Pilih Ultra Voucher App (jadi Ultra Value) atau Scan at Cashier.</div>
+                <div class="app-step-title" data-i18n="d0.step2.title">Pilih Metode &amp; Konfirmasi</div>
+                <div class="app-step-desc" data-i18n="d0.step2.desc">Pilih Redeem via Ultra Voucher Apps (jadi Ultra Value). Pilihan tidak dapat diubah setelah dikonfirmasi.</div>
               </div>
             </div>
             <div class="app-step" id="digital-0-step-2" onmouseenter="setDigitalStep(0,2)" onclick="setDigitalStep(0,2)">
               <div class="app-step-num">3</div>
               <div class="app-step-content">
-                <div class="app-step-title">Konfirmasi Pilihan</div>
-                <div class="app-step-desc">Metode redemption ini tidak bisa diubah lagi setelah dikonfirmasi.</div>
+                <div class="app-step-title" data-i18n="d0.step3.title">Masukkan No. HP / Email</div>
+                <div class="app-step-desc" data-i18n="d0.step3.desc">Login pakai nomor HP atau email akun Ultra Voucher. Cek data akun, lalu kirim voucher.</div>
               </div>
             </div>
             <div class="app-step" id="digital-0-step-3" onmouseenter="setDigitalStep(0,3)" onclick="setDigitalStep(0,3)">
               <div class="app-step-num">4</div>
               <div class="app-step-content">
-                <div class="app-step-title">Masukkan No. HP / Email</div>
-                <div class="app-step-desc">Login pakai nomor HP atau email akun Ultra Voucher.</div>
-              </div>
-            </div>
-            <div class="app-step" id="digital-0-step-4" onmouseenter="setDigitalStep(0,4)" onclick="setDigitalStep(0,4)">
-              <div class="app-step-num">5</div>
-              <div class="app-step-content">
-                <div class="app-step-title">Konfirmasi &amp; Kirim</div>
-                <div class="app-step-desc">Cek data akun yang ditemukan, lalu kirim voucher ke akun itu.</div>
-              </div>
-            </div>
-            <div class="app-step" id="digital-0-step-5" onmouseenter="setDigitalStep(0,5)" onclick="setDigitalStep(0,5)">
-              <div class="app-step-num">6</div>
-              <div class="app-step-content">
-                <div class="app-step-title">Saldo Siap Dipakai</div>
-                <div class="app-step-desc">Saldo Ultra Value langsung bisa dipakai belanja di berbagai merchant.</div>
+                <div class="app-step-title" data-i18n="d0.step4.title">Saldo Siap Dipakai</div>
+                <div class="app-step-desc" data-i18n="d0.step4.desc">Saldo Ultra Value langsung bisa dipakai belanja di berbagai merchant.</div>
               </div>
             </div>
           </div>
@@ -738,76 +745,67 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
         <div class="app-phone-mockup">
           <img src="https://img.mailinblue.com/1873598/images/content_library/original/6ac7844cf51c6e345fa9f5af.png" alt="Step 1" class="app-phone-img img-active" id="digital-0-img-0">
           <img src="https://img.mailinblue.com/1873598/images/content_library/original/6ac78c99ff393366ac72658e.png" alt="Step 2" class="app-phone-img" id="digital-0-img-1">
-          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6ac7844c2d186ee1e922deaf.png" alt="Step 3" class="app-phone-img" id="digital-0-img-2">
-          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6ac78945ff393366ac7263a5.png" alt="Step 4" class="app-phone-img" id="digital-0-img-3">
-          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6ac78722f51c6e345fa9f6ea.png" alt="Step 5" class="app-phone-img" id="digital-0-img-4">
-          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6ac78721f51c6e345fa9f6e9.png" alt="Step 6" class="app-phone-img" id="digital-0-img-5">
+          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6ac78945ff393366ac7263a5.png" alt="Step 3" class="app-phone-img" id="digital-0-img-2">
+          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6ac78721f51c6e345fa9f6e9.png" alt="Step 4" class="app-phone-img" id="digital-0-img-3">
         </div>
       </div>
       <div style="margin-top:48px;padding-top:36px;border-top:1px solid var(--neutral-100);display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
         <div>
-          <p style="font-family:var(--F);font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.45;letter-spacing:-0.01em;">Konversi voucher digital menjadi saldo dan belanja di ratusan merchant pilihan.</p>
+          <p data-i18n="d0.statement" style="font-family:var(--F);font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.45;letter-spacing:-0.01em;">Konversi voucher digital menjadi saldo dan belanja di ratusan merchant pilihan.</p>
         </div>
         <div class="app-benefits-grid">
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Saldo masuk <strong>instan</strong> setelah login</div>
+            <div class="app-benefit-text-lg" data-i18n="d0.b1">Saldo masuk <strong>instan</strong> setelah login</div>
           </div>
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Akses <strong>ratusan voucher digital</strong></div>
+            <div class="app-benefit-text-lg" data-i18n="d0.b2">Akses <strong>ratusan voucher digital</strong></div>
           </div>
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Bisa dipakai di <strong>UV App & Web Commerce</strong></div>
+            <div class="app-benefit-text-lg" data-i18n="d0.b3">Bisa dipakai di <strong>UV App &amp; Web Commerce</strong></div>
           </div>
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Proses <strong>mudah dan aman</strong></div>
+            <div class="app-benefit-text-lg" data-i18n="d0.b4">Proses <strong>mudah dan aman</strong></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Tab 1: Redeem Langsung di Kasir (5 steps) -->
+    <!-- Tab 1: Redeem Langsung di Kasir (4 steps) -->
     <div class="method-panel" id="digital-1">
       <div class="app-layout">
         <div>
-          <p style="font-family:var(--F);font-size:12px;font-weight:700;color:var(--neutral-500);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">Langkah-langkah</p>
+          <p data-i18n="steps.label" style="font-family:var(--F);font-size:12px;font-weight:700;color:var(--neutral-500);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">Langkah-langkah</p>
           <div class="app-steps">
             <div class="app-step active-step" id="digital-1-step-0" onmouseenter="setDigitalStep(1,0)" onclick="setDigitalStep(1,0)">
               <div class="app-step-num">1</div>
               <div class="app-step-content">
-                <div class="app-step-title">Buka Voucher &amp; Tap Redeem</div>
-                <div class="app-step-desc">Buka detail voucher, lalu tap tombol Redeem.</div>
+                <div class="app-step-title" data-i18n="d1.step1.title">Buka Voucher &amp; Tap Redeem</div>
+                <div class="app-step-desc" data-i18n="d1.step1.desc">Buka detail voucher, lalu tap tombol Redeem.</div>
               </div>
             </div>
             <div class="app-step" id="digital-1-step-1" onmouseenter="setDigitalStep(1,1)" onclick="setDigitalStep(1,1)">
               <div class="app-step-num">2</div>
               <div class="app-step-content">
-                <div class="app-step-title">Pilih Metode Redemption</div>
-                <div class="app-step-desc">Pilih Ultra Voucher App (jadi Ultra Value) atau Scan at Cashier.</div>
+                <div class="app-step-title" data-i18n="d1.step2.title">Pilih Scan at Cashier &amp; Konfirmasi</div>
+                <div class="app-step-desc" data-i18n="d1.step2.desc">Pilih Scan at Cashier &amp; Konfirmasi. Pilihan tidak dapat diubah setelah dikonfirmasi.</div>
               </div>
             </div>
             <div class="app-step" id="digital-1-step-2" onmouseenter="setDigitalStep(1,2)" onclick="setDigitalStep(1,2)">
               <div class="app-step-num">3</div>
               <div class="app-step-content">
-                <div class="app-step-title">Konfirmasi Pilihan</div>
-                <div class="app-step-desc">Metode redemption ini tidak bisa diubah lagi setelah dikonfirmasi.</div>
+                <div class="app-step-title" data-i18n="d1.step3.title">Kode Redemption Muncul</div>
+                <div class="app-step-desc" data-i18n="d1.step3.desc">Muncul Voucher Code, QR code, barcode, dan hitung mundur waktu.</div>
               </div>
             </div>
             <div class="app-step" id="digital-1-step-3" onmouseenter="setDigitalStep(1,3)" onclick="setDigitalStep(1,3)">
               <div class="app-step-num">4</div>
               <div class="app-step-content">
-                <div class="app-step-title">Kode Redemption Muncul</div>
-                <div class="app-step-desc">Muncul Voucher Code, QR code, barcode, dan hitung mundur waktu.</div>
-              </div>
-            </div>
-            <div class="app-step" id="digital-1-step-4" onmouseenter="setDigitalStep(1,4)" onclick="setDigitalStep(1,4)">
-              <div class="app-step-num">5</div>
-              <div class="app-step-content">
-                <div class="app-step-title">Scan di Kasir</div>
-                <div class="app-step-desc">Tap untuk zoom QR/barcode, lalu tunjukkan ke kasir untuk di-scan.</div>
+                <div class="app-step-title" data-i18n="d1.step4.title">Tunjukkan ke Kasir untuk Di-scan</div>
+                <div class="app-step-desc" data-i18n="d1.step4.desc">Tap untuk zoom QR/barcode, lalu tunjukkan ke kasir untuk di-scan.</div>
               </div>
             </div>
           </div>
@@ -815,31 +813,30 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
         <div class="app-phone-mockup">
           <img src="https://img.mailinblue.com/1873598/images/content_library/original/6ac7844cf51c6e345fa9f5af.png" alt="Step 1" class="app-phone-img img-active" id="digital-1-img-0">
           <img src="https://img.mailinblue.com/1873598/images/content_library/original/6ac7909b81147d7a3d83335b.png" alt="Step 2" class="app-phone-img" id="digital-1-img-1">
-          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6ac7844c2d186ee1e922deaf.png" alt="Step 3" class="app-phone-img" id="digital-1-img-2">
-          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6ac78b7ef51c6e345fa9f97c.png" alt="Step 4" class="app-phone-img" id="digital-1-img-3">
-          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6ac78b7ef51c6e345fa9f97d.png" alt="Step 5" class="app-phone-img" id="digital-1-img-4">
+          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6ac78b7ef51c6e345fa9f97c.png" alt="Step 3" class="app-phone-img" id="digital-1-img-2">
+          <img src="https://img.mailinblue.com/1873598/images/content_library/original/6ac78b7ef51c6e345fa9f97d.png" alt="Step 4" class="app-phone-img" id="digital-1-img-3">
         </div>
       </div>
       <div style="margin-top:48px;padding-top:36px;border-top:1px solid var(--neutral-100);display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
         <div>
-          <p style="font-family:var(--F);font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.45;letter-spacing:-0.01em;">Tanpa perlu konversi saldo; langsung tunjukkan kode dan scan di kasir merchant.</p>
+          <p data-i18n="d1.statement" style="font-family:var(--F);font-size:20px;font-weight:700;color:var(--text-primary);line-height:1.45;letter-spacing:-0.01em;">Tanpa perlu konversi saldo; langsung tunjukkan kode dan scan di kasir merchant.</p>
         </div>
         <div class="app-benefits-grid">
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Tidak perlu <strong>install aplikasi</strong></div>
+            <div class="app-benefit-text-lg" data-i18n="d1.b1">Tidak perlu <strong>install aplikasi</strong></div>
           </div>
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Transaksi selesai dalam <strong>hitungan detik</strong></div>
+            <div class="app-benefit-text-lg" data-i18n="d1.b2">Transaksi selesai dalam <strong>hitungan detik</strong></div>
           </div>
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Berlaku di <strong>1.000+ merchant partner</strong></div>
+            <div class="app-benefit-text-lg" data-i18n="d1.b3">Berlaku di <strong>1.000+ merchant partner</strong></div>
           </div>
           <div class="app-benefit-item-lg">
             <div class="app-benefit-icon-lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="app-benefit-text-lg">Proses <strong>mudah dan aman</strong></div>
+            <div class="app-benefit-text-lg" data-i18n="d1.b4">Proses <strong>mudah dan aman</strong></div>
           </div>
         </div>
       </div>
@@ -857,15 +854,15 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
   <div class="section-cta-glow"></div>
   <div class="cta-grid">
     <div class="cta-left">
-      <span class="eyebrow-blue" style="margin-bottom:14px;display:block;">Mulai Sekarang</span>
-      <h2>Hadiah yang Tepat,<br>untuk <span>Kebutuhan yang Tepat</span></h2>
-      <p>UVGC memastikan setiap penerima mendapatkan hadiah yang benar-benar mereka inginkan: Fleksibel, mudah dipakai, dan berkesan.</p>
+      <span class="eyebrow-blue" data-i18n="cta.eyebrow" style="margin-bottom:14px;display:block;">Mulai Sekarang</span>
+      <h2><span data-i18n="cta.h2a">Hadiah yang Tepat,</span><br><span data-i18n="cta.h2b">untuk <span>Kebutuhan yang Tepat</span></span></h2>
+      <p data-i18n="cta.p">UVGC memastikan setiap penerima mendapatkan hadiah yang benar-benar mereka inginkan: Fleksibel, mudah dipakai, dan berkesan.</p>
       <ul class="cta-trust">
-        <li><span class="cta-trust-dot"></span>Konsultasi gratis tanpa komitmen</li>
-        <li><span class="cta-trust-dot"></span>Respons dalam 1 hari kerja</li>
+        <li><span class="cta-trust-dot"></span><span data-i18n="cta.trust1">Konsultasi gratis tanpa komitmen</span></li>
+        <li><span class="cta-trust-dot"></span><span data-i18n="cta.trust2">Respons dalam 1 hari kerja</span></li>
       </ul>
       <div class="cta-clients">
-        <span style="display:block;margin-bottom:12px;font-family:var(--F);font-size:11px;font-weight:600;color:#c0c0c0;letter-spacing:0.12em;text-transform:uppercase;">Dipercaya oleh perusahaan terkemuka</span>
+        <span data-i18n="cta.trusted" style="display:block;margin-bottom:12px;font-family:var(--F);font-size:11px;font-weight:600;color:#c0c0c0;letter-spacing:0.12em;text-transform:uppercase;">Dipercaya oleh perusahaan terkemuka</span>
         <div class="cta-clients-logos">
           <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" alt="BCA">
           <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/BRI_2025.png" alt="BRI">
@@ -876,19 +873,19 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
     </div>
     <div>
       <div class="form-box">
-        <h3>Konsultasi Gratis &amp; Pesan UVGC</h3>
-        <p>Isi form di bawah; tim kami akan segera menghubungi Anda.</p>
+        <h3 data-i18n="form.h3">Konsultasi Gratis &amp; Pesan UVGC</h3>
+        <p data-i18n="form.p">Isi form di bawah; tim kami akan segera menghubungi Anda.</p>
         <div class="fg-row fg">
-          <div class="fg" style="margin-bottom:0;"><label>Nama Lengkap <span class="fg-req">*</span></label><input type="text" id="f-nama" placeholder="Budi Santoso"><div class="fg-err" id="err-nama">Nama lengkap wajib diisi</div></div>
-          <div class="fg" style="margin-bottom:0;"><label>Nama Perusahaan <span class="fg-req">*</span></label><input type="text" id="f-perusahaan" placeholder="PT Maju Bersama"><div class="fg-err" id="err-perusahaan">Nama perusahaan wajib diisi</div></div>
+          <div class="fg" style="margin-bottom:0;"><label data-i18n="form.lbl.nama">Nama Lengkap <span class="fg-req">*</span></label><input type="text" id="f-nama" data-i18n-placeholder="form.ph.nama" placeholder="Budi Santoso"><div class="fg-err" id="err-nama" data-i18n="form.err.nama">Nama lengkap wajib diisi</div></div>
+          <div class="fg" style="margin-bottom:0;"><label data-i18n="form.lbl.perusahaan">Nama Perusahaan <span class="fg-req">*</span></label><input type="text" id="f-perusahaan" data-i18n-placeholder="form.ph.perusahaan" placeholder="PT Maju Bersama"><div class="fg-err" id="err-perusahaan" data-i18n="form.err.perusahaan">Nama perusahaan wajib diisi</div></div>
         </div>
-        <div class="fg"><label>Email Kantor <span class="fg-req">*</span></label><input type="email" id="f-email" placeholder="budi@perusahaan.co.id"><div class="fg-err" id="err-email">Masukkan email yang valid</div></div>
+        <div class="fg"><label data-i18n="form.lbl.email">Email Kantor <span class="fg-req">*</span></label><input type="email" id="f-email" data-i18n-placeholder="form.ph.email" placeholder="budi@perusahaan.co.id"><div class="fg-err" id="err-email" data-i18n="form.err.email">Masukkan email yang valid</div></div>
         <div class="fg-row fg">
-          <div class="fg" style="margin-bottom:0;"><label>No. WhatsApp <span class="fg-req">*</span></label><input type="tel" id="f-wa" placeholder="08xx xxxx xxxx"><div class="fg-err" id="err-wa">Nomor WhatsApp wajib diisi</div></div>
-          <div class="fg" style="margin-bottom:0;"><label>Job Title</label><input type="text" id="f-jobtitle" placeholder="HR Manager"></div>
+          <div class="fg" style="margin-bottom:0;"><label data-i18n="form.lbl.wa">No. WhatsApp <span class="fg-req">*</span></label><input type="tel" id="f-wa" data-i18n-placeholder="form.ph.wa" placeholder="08xx xxxx xxxx"><div class="fg-err" id="err-wa" data-i18n="form.err.wa">Nomor WhatsApp wajib diisi</div></div>
+          <div class="fg" style="margin-bottom:0;"><label data-i18n="form.lbl.jobtitle">Job Title</label><input type="text" id="f-jobtitle" data-i18n-placeholder="form.ph.jobtitle" placeholder="HR Manager"></div>
         </div>
-        <div class="fg"><label>Industri</label><select id="f-industri"><option value="" disabled selected>Pilih industri</option><option>Agen Perjalanan, Travel</option><option>Asuransi Jiwa</option><option>Asuransi Kesehatan</option><option>Asuransi Umum</option><option>Bank Korporasi</option><option>Bank Retail</option><option>Bioskop</option><option>Brand, Groceries</option><option>Crowdfunding & P2P Investment</option><option>Cryptocurrency & Blockchain</option><option>Developer Real Estate</option><option>E-Commerce</option><option>EdTech</option><option>Energi Terbarukan</option><option>Esports</option><option>Farmasi</option><option>Fashion, Dept Store</option><option>Futsal</option><option>Golf</option><option>Infrastruktur</option><option>ISP (Internet Service Provider)</option><option>Klinik dan Laboratorium</option><option>Komunitas Belanja</option><option>Komunitas Bikers</option><option>Komunitas Runners</option><option>Leasing Elektronik</option><option>Leasing Kendaraan</option><option>Lembaga Kursus dan Pelatihan</option><option>Lembaga Pendidikan Formal</option><option>Lending (Pinjaman)</option><option>Listrik, Gas Alam, Air Bersih</option><option>Logistik dan Ekspedisi</option><option>Makanan & Minuman</option><option>Manufaktur Bahan Bangunan</option><option>Manufaktur Elektronik</option><option>Manufaktur Otomotif</option><option>Marketplace</option><option>Maskapai</option><option>Minyak dan Gas Bumi (Oil & Gas)</option><option>NGO (Non-Governmental Organization)</option><option>Operator Seluler</option><option>Pangan dan Pertanian</option><option>Payments (Pembayaran)</option><option>Pemerintah</option><option>Penerbitan</option><option>Peralatan Telekomunikasi</option><option>Perhotelan</option><option>Perusahaan Minyak dan Gas</option><option>Produk Kecantikan</option><option>Produk Rumah Tangga</option><option>Properti Komersial</option><option>Properti Perhotelan</option><option>Ride-Hailing</option><option>Rumah Sakit</option><option>SaaS (Software as a Service)</option><option>Streaming dan TV Berlangganan</option><option>Sumber Daya Alam</option><option>Tambang Batu Bara</option><option>Tambang Mineral Logam</option><option>Transportasi</option><option>Transportasi Darat</option><option>Transportasi Udara</option><option>WealthTech (Investasi)</option><option>Others</option></select></div><div class="fg"><label>Kebutuhan</label><select id="f-kebutuhan"><option value="" disabled selected>Pilih</option><option>Reward Karyawan</option><option>Insentif Mitra</option><option>Program Loyalitas</option><option>Lainnya</option></select></div>
-        <button class="btn-form-green" onclick="submitForm()">Kirim dan Mulai Konsultasi</button>
+        <div class="fg"><label data-i18n="form.lbl.industri">Industri</label><select id="f-industri"><option value="" disabled selected>Pilih industri</option><option>Agen Perjalanan, Travel</option><option>Asuransi Jiwa</option><option>Asuransi Kesehatan</option><option>Asuransi Umum</option><option>Bank Korporasi</option><option>Bank Retail</option><option>Bioskop</option><option>Brand, Groceries</option><option>Crowdfunding &amp; P2P Investment</option><option>Cryptocurrency &amp; Blockchain</option><option>Developer Real Estate</option><option>E-Commerce</option><option>EdTech</option><option>Energi Terbarukan</option><option>Esports</option><option>Farmasi</option><option>Fashion, Dept Store</option><option>Futsal</option><option>Golf</option><option>Infrastruktur</option><option>ISP (Internet Service Provider)</option><option>Klinik dan Laboratorium</option><option>Komunitas Belanja</option><option>Komunitas Bikers</option><option>Komunitas Runners</option><option>Leasing Elektronik</option><option>Leasing Kendaraan</option><option>Lembaga Kursus dan Pelatihan</option><option>Lembaga Pendidikan Formal</option><option>Lending (Pinjaman)</option><option>Listrik, Gas Alam, Air Bersih</option><option>Logistik dan Ekspedisi</option><option>Makanan &amp; Minuman</option><option>Manufaktur Bahan Bangunan</option><option>Manufaktur Elektronik</option><option>Manufaktur Otomotif</option><option>Marketplace</option><option>Maskapai</option><option>Minyak dan Gas Bumi (Oil &amp; Gas)</option><option>NGO (Non-Governmental Organization)</option><option>Operator Seluler</option><option>Pangan dan Pertanian</option><option>Payments (Pembayaran)</option><option>Pemerintah</option><option>Penerbitan</option><option>Peralatan Telekomunikasi</option><option>Perhotelan</option><option>Perusahaan Minyak dan Gas</option><option>Produk Kecantikan</option><option>Produk Rumah Tangga</option><option>Properti Komersial</option><option>Properti Perhotelan</option><option>Ride-Hailing</option><option>Rumah Sakit</option><option>SaaS (Software as a Service)</option><option>Streaming dan TV Berlangganan</option><option>Sumber Daya Alam</option><option>Tambang Batu Bara</option><option>Tambang Mineral Logam</option><option>Transportasi</option><option>Transportasi Darat</option><option>Transportasi Udara</option><option>WealthTech (Investasi)</option><option>Others</option></select></div><div class="fg"><label data-i18n="form.lbl.kebutuhan">Kebutuhan</label><select id="f-kebutuhan"><option value="" disabled selected>Pilih</option><option>Reward Karyawan</option><option>Insentif Mitra</option><option>Program Loyalitas</option><option>Lainnya</option></select></div>
+        <button class="btn-form-green" onclick="submitForm()"><span data-i18n="form.btn">Kirim dan Mulai Konsultasi</span></button>
       </div>
     </div>
   </div>
@@ -902,51 +899,51 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
 <section class="section-white" style="padding-top:72px;padding-bottom:80px;">
   <div class="section-inner">
     <div class="section-header" style="margin-bottom:40px;">
-      <span class="eyebrow-blue">FAQ</span>
-      <h2 class="sh">Pertanyaan yang Sering Diajukan</h2>
+      <span class="eyebrow-blue" data-i18n="faq.eyebrow">FAQ</span>
+      <h2 class="sh" data-i18n="faq.h2">Pertanyaan yang Sering Diajukan</h2>
     </div>
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          Berapa lama masa berlaku Ultra Voucher Gift Card?
+          <span data-i18n="faq.q1">Berapa lama masa berlaku Ultra Voucher Gift Card?</span>
           <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">UVGC berlaku selama <strong>1 tahun</strong> sejak tanggal penerbitan. Tanggal kedaluwarsa tertera di sisi belakang kartu. Pastikan untuk menggunakannya sebelum batas waktu tersebut.</div></div>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq.a1">UVGC berlaku selama <strong>1 tahun</strong> sejak tanggal penerbitan. Tanggal kedaluwarsa tertera di sisi belakang kartu. Pastikan untuk menggunakannya sebelum batas waktu tersebut.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          Apakah UVGC bisa digunakan sebagian (partial redemption)?
+          <span data-i18n="faq.q2">Apakah UVGC bisa digunakan sebagian (partial redemption)?</span>
           <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Tergantung metode redeem. Untuk <strong>redeem online</strong> via UV App atau Web Commerce, nilai UVGC dikonversi menjadi saldo Ultra Value yang bisa digunakan bertahap. Untuk <strong>redeem offline</strong> di kasir, kebijakan partial redemption mengikuti aturan masing-masing merchant.</div></div>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq.a2">Tergantung metode redeem. Untuk <strong>redeem online</strong> via UV App atau Web Commerce, nilai UVGC dikonversi menjadi saldo Ultra Value yang bisa digunakan bertahap. Untuk <strong>redeem offline</strong> di kasir, kebijakan partial redemption mengikuti aturan masing-masing merchant.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          Bagaimana jika QR Code rusak atau tidak bisa di-scan?
+          <span data-i18n="faq.q3">Bagaimana jika QR Code rusak atau tidak bisa di-scan?</span>
           <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Jika QR Code tidak bisa di-scan, Anda masih bisa menggunakan <strong>Voucher ID</strong> yang tertera di sisi belakang kartu untuk proses redeem manual. Hubungi tim CS Ultra Voucher melalui live chat atau WhatsApp untuk bantuan lebih lanjut.</div></div>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq.a3">Jika QR Code tidak bisa di-scan, Anda masih bisa menggunakan <strong>Voucher ID</strong> yang tertera di sisi belakang kartu untuk proses redeem manual. Hubungi tim CS Ultra Voucher melalui live chat atau WhatsApp untuk bantuan lebih lanjut.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          Apakah UVGC bisa digabungkan dengan metode pembayaran lain?
+          <span data-i18n="faq.q4">Apakah UVGC bisa digabungkan dengan metode pembayaran lain?</span>
           <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Untuk redeem online, saldo Ultra Value yang diperoleh dari UVGC bisa dikombinasikan dengan saldo UV lainnya. Untuk redeem offline, kebijakan kombinasi pembayaran mengikuti aturan merchant masing-masing.</div></div>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq.a4">Untuk redeem online, saldo Ultra Value yang diperoleh dari UVGC bisa dikombinasikan dengan saldo UV lainnya. Untuk redeem offline, kebijakan kombinasi pembayaran mengikuti aturan merchant masing-masing.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          Apakah saldo Ultra Value bisa diuangkan kembali (cashout)?
+          <span data-i18n="faq.q5">Apakah saldo Ultra Value bisa diuangkan kembali (cashout)?</span>
           <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Saldo Ultra Value tidak dapat diuangkan kembali (non-refundable). Namun, saldo dapat digunakan untuk membeli berbagai voucher digital di ekosistem Ultra Voucher selama masih dalam masa berlaku.</div></div>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq.a5">Saldo Ultra Value tidak dapat diuangkan kembali (non-refundable). Namun, saldo dapat digunakan untuk membeli berbagai voucher digital di ekosistem Ultra Voucher selama masih dalam masa berlaku.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          Bagaimana cara mengetahui daftar merchant yang menerima UVGC?
+          <span data-i18n="faq.q6">Bagaimana cara mengetahui daftar merchant yang menerima UVGC?</span>
           <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Daftar lengkap merchant partner tersedia di halaman <a href="uvgc-merchant.html" style="color:var(--uvgc-blue);font-weight:600;">Merchant</a> di website ini, serta di dalam aplikasi Ultra Voucher pada menu "Around You". Merchant mencakup lebih dari 20.000 outlet di seluruh Indonesia.</div></div>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq.a6">Daftar lengkap merchant partner tersedia di halaman <a href="uvgc-merchant.html" style="color:var(--uvgc-blue);font-weight:600;">Merchant</a> di website ini, serta di dalam aplikasi Ultra Voucher pada menu "Around You". Merchant mencakup lebih dari 20.000 outlet di seluruh Indonesia.</div></div>
       </div>
     </div>
   </div>
@@ -957,7 +954,7 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
   <div class="footer-top">
     <div>
       <div class="footer-logo"><img src="https://img.mailinblue.com/1873598/images/content_library/original/6a72f916a777b4dd48714d03.png" alt="UVGC"></div>
-      <p class="footer-desc">Solusi gifting dan reward korporat yang fleksibel untuk berbagai macam kebutuhan.</p>
+      <p class="footer-desc" data-i18n="footer.desc">Solusi gifting dan reward korporat yang fleksibel untuk berbagai macam kebutuhan.</p>
       <p class="footer-addr">Jl. Tebet Barat IX No.35BB, RT4/RW4, Tebet Barat, Kecamatan Tebet, Kota Jakarta Selatan, DKI Jakarta 12810</p>
       <div class="footer-socials">
         <a href="#" class="footer-social" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
@@ -966,12 +963,12 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
         <a href="#" class="footer-social" aria-label="X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
       </div>
     </div>
-    <div class="f-col"><h4>Informasi</h4><ul class="f-links"><li><a href="uvgc-cara-pakai.html">Cara Pakai</a></li><li><a href="uvgc-cara-order.html">Cara Order</a></li><li><a href="uvgc-merchant.html">List Merchant</a></li><li><a href="uvgc-jadi-merchant.html">Jadi Merchant</a></li><li><a href="uvgc-program.html">Program</a></li><li><a href="uvgc-artikel.html">Artikel</a></li></ul></div>
-    <div class="f-col"><h4>Perusahaan</h4><ul class="f-links"><li><a href="#">Ultra Corporation</a></li><li><a href="#">Tentang Kami</a></li></ul></div>
+    <div class="f-col"><h4 data-i18n="footer.col1.h">Informasi</h4><ul class="f-links"><li><a href="uvgc-cara-pakai.html" data-i18n="nav.how">Cara Pakai</a></li><li><a href="uvgc-cara-order.html" data-i18n="nav.order">Cara Order</a></li><li><a href="uvgc-merchant.html" data-i18n="nav.merchant">List Merchant</a></li><li><a href="uvgc-jadi-merchant.html" data-i18n="nav.become">Jadi Merchant</a></li><li><a href="uvgc-program.html" data-i18n="nav.program">Program</a></li><li><a href="uvgc-artikel.html" data-i18n="footer.link.artikel">Artikel</a></li></ul></div>
+    <div class="f-col"><h4 data-i18n="footer.col2.h">Perusahaan</h4><ul class="f-links"><li><a href="#">Ultra Corporation</a></li><li><a href="#" data-i18n="footer.link.about">Tentang Kami</a></li></ul></div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Ultra Voucher Gift Card. Bagian dari Ultra Corporation.</span>
-    <div class="fb-links"><a href="#">Kebijakan Privasi</a><a href="#">Syarat dan Ketentuan</a></div>
+    <span data-i18n="footer.copy">© 2026 Ultra Voucher Gift Card. Bagian dari Ultra Corporation.</span>
+    <div class="fb-links"><a href="#" data-i18n="footer.privacy">Kebijakan Privasi</a><a href="#" data-i18n="footer.terms">Syarat dan Ketentuan</a></div>
   </div>
 </footer>
 
@@ -1008,13 +1005,13 @@ footer { background: var(--uvgc-blue-deep); padding: 60px 6% 28px; }
   <div class="chat-greeting" id="chatGreeting">
     <div class="chat-greeting-header">
       <div class="chat-agent-avatar">UV</div>
-      <div><div class="chat-agent-name">Tim Ultra Voucher</div><div class="chat-agent-status"><span class="chat-status-dot"></span>Online sekarang</div></div>
+      <div><div class="chat-agent-name" data-i18n="chat.agent">Tim Ultra Voucher</div><div class="chat-agent-status"><span class="chat-status-dot"></span><span data-i18n="chat.status">Online sekarang</span></div></div>
       <button class="chat-close-btn" onclick="toggleChat()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
     </div>
     <div class="chat-greeting-body">
-      <div class="chat-bubble-msg">👋 <strong>Halo! Selamat datang di Ultra Voucher Gift Card.</strong></div>
-      <div class="chat-bubble-msg-2">Ada pertanyaan seputar cara pakai UVGC? Tim kami siap membantu! 🎁</div>
-      <button class="chat-start-btn" onclick="startChat()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Mulai Chat dengan CS</button>
+      <div class="chat-bubble-msg" data-i18n="chat.msg1">👋 <strong>Halo! Selamat datang di Ultra Voucher Gift Card.</strong></div>
+      <div class="chat-bubble-msg-2" data-i18n="chat.msg2">Ada pertanyaan seputar cara pakai UVGC? Tim kami siap membantu! 🎁</div>
+      <button class="chat-start-btn" onclick="startChat()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span data-i18n="chat.btn">Mulai Chat dengan CS</span></button>
       <div class="chat-powered">Powered by Tawk.to</div>
     </div>
   </div>
@@ -1069,7 +1066,7 @@ function switchDigital(idx) {
 }
 
 function setDigitalStep(tabIdx, stepIdx) {
-  const maxSteps = tabIdx === 0 ? 6 : 5;
+  const maxSteps = 4;
   for (let s = 0; s < maxSteps; s++) {
     const step = document.getElementById('digital-'+tabIdx+'-step-'+s);
     const img  = document.getElementById('digital-'+tabIdx+'-img-'+s);
@@ -1106,7 +1103,7 @@ function submitForm() {
   });
   if (valid) {
     const btn = document.querySelector('.btn-form-green');
-    btn.textContent = '✓ Pesan Terkirim!';
+    btn.querySelector('[data-i18n="form.btn"]').textContent = t[currentLang]['form.btn.success'];
     btn.style.background = 'var(--uv-green-deep)';
     btn.disabled = true;
   }
@@ -1167,6 +1164,388 @@ function startChat() {
   document.getElementById('chatGreeting').classList.remove('visible');
   document.getElementById('chatBtn').classList.remove('open');
 }
+
+// ── i18n ──────────────────────────────────────────────
+var currentLang = localStorage.getItem('uvgc_lang') || 'id';
+var t = {
+  id: {
+    'nav.how': 'Cara Pakai',
+    'nav.order': 'Cara Order',
+    'nav.merchant': 'List Merchant',
+    'nav.program': 'Program',
+    'nav.become': 'Jadi Merchant',
+    'nav.become.badge': 'Daftar',
+    'nav.contact': 'Hubungi Kami',
+    'hero.eyebrow': 'Cara Pakai',
+    'hero.h1a': 'Panduan Penggunaan',
+    'hero.h1b': 'Ultra Voucher Gift Card Fisik dan Digital',
+    'hero.p': 'Panduan lengkap cara redeem UVGC Fisik di kasir, via apps, dan UVGC Digital langsung dari smartphone.',
+    's1.badge': 'UVGC Fisik · Offline',
+    's1.h2': 'Redeem Langsung di Merchant',
+    's1.sub': 'Tidak perlu aplikasi. Cukup bawa kartu UVGC ke kasir merchant partner; transaksi selesai dalam hitungan detik.',
+    's1.step1.label': 'Shop',
+    's1.step1.title': 'Transaksi di Toko',
+    's1.step1.desc': 'Kumpulkan belanjaan dan bawa ke kasir. Kasir menginput item dan total tagihan.',
+    's1.step2.label': 'Scan',
+    's1.step2.title': 'Serahkan Kartu untuk Di-scan',
+    's1.step2.desc': 'Serahkan kartu UVGC ke kasir. Kasir scan barcode di sisi belakang kartu menggunakan mesin EDC.',
+    's1.step3.label': 'Redeemed',
+    's1.step3.title': 'Transaksi Selesai',
+    's1.step3.desc': 'Nilai UVGC terpakai. Voucher berhasil di-redeem dan belanjaan siap dibawa!',
+    's1.btn': 'Lihat Daftar Merchant Offline',
+    's2.badge': 'UVGC Fisik · Online',
+    's2.h2': 'Redeem via Aplikasi &amp; Web Commerce Ultra Voucher',
+    's2.sub': 'Scan QR Code UVGC untuk konversi nilai kartu menjadi saldo Ultra Value, lalu gunakan untuk belanja di ratusan merchant digital.',
+    's2.tab.apps': 'Apps',
+    's2.tab.web': 'Web Commerce',
+    's2.tab.ufood': 'UFood',
+    'steps.label': 'Langkah-langkah',
+    'm0.step1.title': 'Gosok Lapisan Pelindung QR Code',
+    'm0.step1.desc': 'Gosok pelan lapisan pelindung di sisi belakang kartu untuk membuka QR Code yang tersembunyi di bawahnya.',
+    'm0.step2.title': 'Buka UV App dan Pastikan Sudah Login',
+    'm0.step2.desc': 'Unduh dan buka aplikasi Ultra Voucher. Pastikan sudah login dengan akun yang terdaftar sebelum melanjutkan.',
+    'm0.step3.title': 'Klik Fitur Scan di Halaman Utama',
+    'm0.step3.desc': 'Pilih ikon Scan yang tersedia di halaman utama UV App, lalu arahkan kamera ke QR Code UVGC.',
+    'm0.step4.title': 'Saldo Masuk sebagai Ultra Value',
+    'm0.step4.desc': 'Nilai kartu langsung dikreditkan sebagai saldo Ultra Value dan siap digunakan untuk belanja voucher digital.',
+    'm0.statement': 'Satu scan di UV App, ratusan voucher digital siap digunakan.',
+    'm0.b1': 'Akses <strong>ratusan voucher digital</strong>',
+    'm0.b2': '<strong>Redeem instan</strong> dan aman',
+    'm0.b3': 'Rekomendasi voucher <strong>personal</strong>',
+    'm0.b4': 'Katalog voucher <strong>terlengkap</strong>',
+    'm0.video.label': 'Tutorial: Cara Redeem UVGC via UV App',
+    'm0.video.tag': 'Video akan diembed dari YouTube',
+    'm1.step1.title': 'Gosok Lapisan Pelindung QR Code',
+    'm1.step1.desc': 'Gosok pelan lapisan pelindung di sisi belakang kartu untuk membuka QR Code sebelum memulai proses scan.',
+    'm1.step2.title': 'Buka Web Commerce dan Pastikan Sudah Login',
+    'm1.step2.desc': 'Akses ultravoucher.co.id dari browser mana saja. Login menggunakan akun Google atau nomor HP dan verifikasi OTP.',
+    'm1.step3.title': 'Klik Fitur UVGC &amp; Pay Scan',
+    'm1.step3.desc': 'Di halaman utama Web Commerce, pilih fitur UVGC &amp; Pay Scan, lalu izinkan akses kamera dan arahkan ke QR Code.',
+    'm1.step4.title': 'Saldo Masuk sebagai Ultra Value',
+    'm1.step4.desc': 'Saldo Ultra Value langsung diperbarui setelah scan berhasil dan siap digunakan untuk belanja di Web Commerce.',
+    'm1.statement': 'Tanpa aplikasi, langsung dari browser; saldo masuk seketika setelah scan.',
+    'm1.b1': 'Akses dari <strong>browser mana saja</strong>',
+    'm1.b2': 'Tanpa perlu <strong>install aplikasi</strong>',
+    'm1.b3': 'Login mudah via <strong>Google</strong> atau nomor HP',
+    'm1.b4': 'Saldo <strong>langsung diperbarui</strong> setelah scan',
+    'm1.video.label': 'Tutorial: Cara Redeem UVGC via Web Commerce',
+    'm1.video.tag': 'Video akan diembed dari YouTube',
+    'm2.step1.title': 'Gosok Lapisan Pelindung QR Code',
+    'm2.step1.desc': 'Gosok pelan lapisan pelindung di sisi belakang kartu untuk membuka QR Code sebelum memulai proses scan.',
+    'm2.step2.title': 'Buka UV App dan Scan QR Code UVGC',
+    'm2.step2.desc': 'Buka aplikasi Ultra Voucher, pilih fitur Scan di halaman utama, lalu arahkan kamera ke QR Code UVGC. Saldo masuk sebagai Ultra Value.',
+    'm2.step3.title': 'Buka Menu UFood dan Pilih Makanan',
+    'm2.step3.desc': 'Di halaman utama UV App, pilih menu UFood. Cari restoran atau makanan yang tersedia; pilih layanan Delivery atau Self Pick-Up sesuai kebutuhan.',
+    'm2.step4.title': 'Bayar Menggunakan Saldo Ultra Value',
+    'm2.step4.desc': 'Saat checkout, pilih Ultra Value sebagai metode pembayaran. Saldo dipotong otomatis dan pesanan langsung diproses.',
+    'm2.statement': 'Dari kartu hadiah langsung ke meja makan; pesan makanan favorit pakai saldo Ultra Value.',
+    'm2.b1': 'Tersedia layanan <strong>Delivery &amp; Self Pick-Up</strong>',
+    'm2.b2': 'Ratusan pilihan <strong>restoran dan kafe</strong>',
+    'm2.b3': 'Bayar langsung dengan <strong>saldo Ultra Value</strong>',
+    'm2.b4': 'Promo eksklusif <strong>khusus pengguna UFood</strong>',
+    'd.badge': 'UVGC Digital',
+    'd.h2': 'Redeem UVGC Digital Sesuai Keinginan',
+    'd.sub': 'Dua cara mudah untuk menggunakan UVGC Digital. Pilih sesuai kebutuhanmu.',
+    'd.tab0': 'Konversi Saldo Ultra Value',
+    'd.tab1': 'Redeem Langsung di Kasir',
+    'd0.step1.title': 'Buka Voucher &amp; Tap Redeem',
+    'd0.step1.desc': 'Buka detail voucher, lalu tap tombol Redeem.',
+    'd0.step2.title': 'Pilih Metode &amp; Konfirmasi',
+    'd0.step2.desc': 'Pilih Redeem via Ultra Voucher Apps (jadi Ultra Value). Pilihan tidak dapat diubah setelah dikonfirmasi.',
+    'd0.step3.title': 'Masukkan No. HP / Email',
+    'd0.step3.desc': 'Login pakai nomor HP atau email akun Ultra Voucher. Cek data akun, lalu kirim voucher.',
+    'd0.step4.title': 'Saldo Siap Dipakai',
+    'd0.step4.desc': 'Saldo Ultra Value langsung bisa dipakai belanja di berbagai merchant.',
+    'd0.statement': 'Konversi voucher digital menjadi saldo dan belanja di ratusan merchant pilihan.',
+    'd0.b1': 'Saldo masuk <strong>instan</strong> setelah login',
+    'd0.b2': 'Akses <strong>ratusan voucher digital</strong>',
+    'd0.b3': 'Bisa dipakai di <strong>UV App &amp; Web Commerce</strong>',
+    'd0.b4': 'Proses <strong>mudah dan aman</strong>',
+    'd1.step1.title': 'Buka Voucher &amp; Tap Redeem',
+    'd1.step1.desc': 'Buka detail voucher, lalu tap tombol Redeem.',
+    'd1.step2.title': 'Pilih Scan at Cashier &amp; Konfirmasi',
+    'd1.step2.desc': 'Pilih Scan at Cashier &amp; Konfirmasi. Pilihan tidak dapat diubah setelah dikonfirmasi.',
+    'd1.step3.title': 'Kode Redemption Muncul',
+    'd1.step3.desc': 'Muncul Voucher Code, QR code, barcode, dan hitung mundur waktu.',
+    'd1.step4.title': 'Tunjukkan ke Kasir untuk Di-scan',
+    'd1.step4.desc': 'Tap untuk zoom QR/barcode, lalu tunjukkan ke kasir untuk di-scan.',
+    'd1.statement': 'Tanpa perlu konversi saldo; langsung tunjukkan kode dan scan di kasir merchant.',
+    'd1.b1': 'Tidak perlu <strong>install aplikasi</strong>',
+    'd1.b2': 'Transaksi selesai dalam <strong>hitungan detik</strong>',
+    'd1.b3': 'Berlaku di <strong>1.000+ merchant partner</strong>',
+    'd1.b4': 'Proses <strong>mudah dan aman</strong>',
+    'cta.eyebrow': 'Mulai Sekarang',
+    'cta.h2a': 'Hadiah yang Tepat,',
+    'cta.h2b': 'untuk <span>Kebutuhan yang Tepat</span>',
+    'cta.p': 'UVGC memastikan setiap penerima mendapatkan hadiah yang benar-benar mereka inginkan: Fleksibel, mudah dipakai, dan berkesan.',
+    'cta.trust1': 'Konsultasi gratis tanpa komitmen',
+    'cta.trust2': 'Respons dalam 1 hari kerja',
+    'cta.trusted': 'Dipercaya oleh perusahaan terkemuka',
+    'form.h3': 'Konsultasi Gratis &amp; Pesan UVGC',
+    'form.p': 'Isi form di bawah; tim kami akan segera menghubungi Anda.',
+    'form.lbl.nama': 'Nama Lengkap <span class="fg-req">*</span>',
+    'form.lbl.perusahaan': 'Nama Perusahaan <span class="fg-req">*</span>',
+    'form.lbl.email': 'Email Kantor <span class="fg-req">*</span>',
+    'form.lbl.wa': 'No. WhatsApp <span class="fg-req">*</span>',
+    'form.lbl.jobtitle': 'Job Title',
+    'form.lbl.industri': 'Industri',
+    'form.lbl.kebutuhan': 'Kebutuhan',
+    'form.ph.nama': 'Budi Santoso',
+    'form.ph.perusahaan': 'PT Maju Bersama',
+    'form.ph.email': 'budi@perusahaan.co.id',
+    'form.ph.wa': '08xx xxxx xxxx',
+    'form.ph.jobtitle': 'HR Manager',
+    'form.err.nama': 'Nama lengkap wajib diisi',
+    'form.err.perusahaan': 'Nama perusahaan wajib diisi',
+    'form.err.email': 'Masukkan email yang valid',
+    'form.err.wa': 'Nomor WhatsApp wajib diisi',
+    'form.btn': 'Kirim dan Mulai Konsultasi',
+    'form.btn.success': '✓ Pesan Terkirim!',
+    'sel.kebutuhan.p': 'Pilih',
+    'sel.kebutuhan.1': 'Reward Karyawan',
+    'sel.kebutuhan.2': 'Insentif Mitra',
+    'sel.kebutuhan.3': 'Program Loyalitas',
+    'sel.kebutuhan.4': 'Lainnya',
+    'faq.eyebrow': 'FAQ',
+    'faq.h2': 'Pertanyaan yang Sering Diajukan',
+    'faq.q1': 'Berapa lama masa berlaku Ultra Voucher Gift Card?',
+    'faq.a1': 'UVGC berlaku selama <strong>1 tahun</strong> sejak tanggal penerbitan. Tanggal kedaluwarsa tertera di sisi belakang kartu. Pastikan untuk menggunakannya sebelum batas waktu tersebut.',
+    'faq.q2': 'Apakah UVGC bisa digunakan sebagian (partial redemption)?',
+    'faq.a2': 'Tergantung metode redeem. Untuk <strong>redeem online</strong> via UV App atau Web Commerce, nilai UVGC dikonversi menjadi saldo Ultra Value yang bisa digunakan bertahap. Untuk <strong>redeem offline</strong> di kasir, kebijakan partial redemption mengikuti aturan masing-masing merchant.',
+    'faq.q3': 'Bagaimana jika QR Code rusak atau tidak bisa di-scan?',
+    'faq.a3': 'Jika QR Code tidak bisa di-scan, Anda masih bisa menggunakan <strong>Voucher ID</strong> yang tertera di sisi belakang kartu untuk proses redeem manual. Hubungi tim CS Ultra Voucher melalui live chat atau WhatsApp untuk bantuan lebih lanjut.',
+    'faq.q4': 'Apakah UVGC bisa digabungkan dengan metode pembayaran lain?',
+    'faq.a4': 'Untuk redeem online, saldo Ultra Value yang diperoleh dari UVGC bisa dikombinasikan dengan saldo UV lainnya. Untuk redeem offline, kebijakan kombinasi pembayaran mengikuti aturan merchant masing-masing.',
+    'faq.q5': 'Apakah saldo Ultra Value bisa diuangkan kembali (cashout)?',
+    'faq.a5': 'Saldo Ultra Value tidak dapat diuangkan kembali (non-refundable). Namun, saldo dapat digunakan untuk membeli berbagai voucher digital di ekosistem Ultra Voucher selama masih dalam masa berlaku.',
+    'faq.q6': 'Bagaimana cara mengetahui daftar merchant yang menerima UVGC?',
+    'faq.a6': 'Daftar lengkap merchant partner tersedia di halaman <a href="uvgc-merchant.html" style="color:var(--uvgc-blue);font-weight:600;">Merchant</a> di website ini, serta di dalam aplikasi Ultra Voucher pada menu "Around You". Merchant mencakup lebih dari 20.000 outlet di seluruh Indonesia.',
+    'footer.desc': 'Solusi gifting dan reward korporat yang fleksibel untuk berbagai macam kebutuhan.',
+    'footer.col1.h': 'Informasi',
+    'footer.col2.h': 'Perusahaan',
+    'footer.link.artikel': 'Artikel',
+    'footer.link.about': 'Tentang Kami',
+    'footer.copy': '© 2026 Ultra Voucher Gift Card. Bagian dari Ultra Corporation.',
+    'footer.privacy': 'Kebijakan Privasi',
+    'footer.terms': 'Syarat dan Ketentuan',
+    'chat.agent': 'Tim Ultra Voucher',
+    'chat.status': 'Online sekarang',
+    'chat.msg1': '👋 <strong>Halo! Selamat datang di Ultra Voucher Gift Card.</strong>',
+    'chat.msg2': 'Ada pertanyaan seputar cara pakai UVGC? Tim kami siap membantu! 🎁',
+    'chat.btn': 'Mulai Chat dengan CS'
+  },
+  en: {
+    'nav.how': 'How to Use',
+    'nav.order': 'How to Order',
+    'nav.merchant': 'Merchant List',
+    'nav.program': 'Program',
+    'nav.become': 'Become a Merchant',
+    'nav.become.badge': 'Register',
+    'nav.contact': 'Contact Us',
+    'hero.eyebrow': 'How to Use',
+    'hero.h1a': 'Usage Guide',
+    'hero.h1b': 'Physical and Digital Ultra Voucher Gift Card',
+    'hero.p': 'Complete guide on how to redeem Physical UVGC at the cashier, via apps, and Digital UVGC directly from your smartphone.',
+    's1.badge': 'Physical UVGC · Offline',
+    's1.h2': 'Redeem Directly at the Merchant',
+    's1.sub': 'No app required. Simply bring your UVGC card to the partner merchant cashier; the transaction is completed in seconds.',
+    's1.step1.label': 'Shop',
+    's1.step1.title': 'Shop at the Store',
+    's1.step1.desc': 'Collect your items and bring them to the cashier. The cashier inputs the items and total amount.',
+    's1.step2.label': 'Scan',
+    's1.step2.title': 'Present Your Card for Scanning',
+    's1.step2.desc': 'Hand your UVGC card to the cashier. The cashier scans the barcode on the back of the card using the EDC machine.',
+    's1.step3.label': 'Redeemed',
+    's1.step3.title': 'Transaction Complete',
+    's1.step3.desc': 'The UVGC value is used. The voucher has been redeemed and your items are ready to take!',
+    's1.btn': 'View Offline Merchant List',
+    's2.badge': 'Physical UVGC · Online',
+    's2.h2': 'Redeem via Ultra Voucher App &amp; Web Commerce',
+    's2.sub': 'Scan your UVGC QR Code to convert the card value into Ultra Value balance, then use it to shop at hundreds of digital merchants.',
+    's2.tab.apps': 'Apps',
+    's2.tab.web': 'Web Commerce',
+    's2.tab.ufood': 'UFood',
+    'steps.label': 'Steps',
+    'm0.step1.title': 'Scratch the QR Code Protective Layer',
+    'm0.step1.desc': 'Gently scratch the protective layer on the back of the card to reveal the QR Code hidden beneath.',
+    'm0.step2.title': 'Open the UV App and Make Sure You\'re Logged In',
+    'm0.step2.desc': 'Download and open the Ultra Voucher app. Make sure you\'re logged in with your registered account before proceeding.',
+    'm0.step3.title': 'Tap the Scan Feature on the Home Screen',
+    'm0.step3.desc': 'Select the Scan icon on the UV App home screen, then point your camera at the UVGC QR Code.',
+    'm0.step4.title': 'Balance Added as Ultra Value',
+    'm0.step4.desc': 'The card value is instantly credited as Ultra Value balance, ready to use for purchasing digital vouchers.',
+    'm0.statement': 'One scan in the UV App, hundreds of digital vouchers ready to use.',
+    'm0.b1': 'Access <strong>hundreds of digital vouchers</strong>',
+    'm0.b2': '<strong>Instant redeem</strong>, safe and secure',
+    'm0.b3': '<strong>Personalized</strong> voucher recommendations',
+    'm0.b4': 'The <strong>most complete</strong> voucher catalog',
+    'm0.video.label': 'Tutorial: How to Redeem UVGC via UV App',
+    'm0.video.tag': 'Video will be embedded from YouTube',
+    'm1.step1.title': 'Scratch the QR Code Protective Layer',
+    'm1.step1.desc': 'Gently scratch the protective layer on the back of the card to reveal the QR Code before starting the scan process.',
+    'm1.step2.title': 'Open Web Commerce and Make Sure You\'re Logged In',
+    'm1.step2.desc': 'Access ultravoucher.co.id from any browser. Log in using your Google account or phone number and verify with OTP.',
+    'm1.step3.title': 'Tap the UVGC &amp; Pay Scan Feature',
+    'm1.step3.desc': 'On the Web Commerce home page, select the UVGC &amp; Pay Scan feature, then allow camera access and point it at the QR Code.',
+    'm1.step4.title': 'Balance Added as Ultra Value',
+    'm1.step4.desc': 'Your Ultra Value balance is instantly updated after a successful scan, ready to use for shopping on Web Commerce.',
+    'm1.statement': 'No app needed, straight from your browser; balance added instantly after scanning.',
+    'm1.b1': 'Access from <strong>any browser</strong>',
+    'm1.b2': 'No need to <strong>install an app</strong>',
+    'm1.b3': 'Easy login via <strong>Google</strong> or phone number',
+    'm1.b4': 'Balance <strong>instantly updated</strong> after scanning',
+    'm1.video.label': 'Tutorial: How to Redeem UVGC via Web Commerce',
+    'm1.video.tag': 'Video will be embedded from YouTube',
+    'm2.step1.title': 'Scratch the QR Code Protective Layer',
+    'm2.step1.desc': 'Gently scratch the protective layer on the back of the card to reveal the QR Code before starting the scan process.',
+    'm2.step2.title': 'Open the UV App and Scan the UVGC QR Code',
+    'm2.step2.desc': 'Open the Ultra Voucher app, select the Scan feature on the home screen, then point your camera at the UVGC QR Code. Balance is added as Ultra Value.',
+    'm2.step3.title': 'Open the UFood Menu and Choose Your Food',
+    'm2.step3.desc': 'On the UV App home screen, select the UFood menu. Find available restaurants or food; choose Delivery or Self Pick-Up as needed.',
+    'm2.step4.title': 'Pay Using Your Ultra Value Balance',
+    'm2.step4.desc': 'At checkout, select Ultra Value as the payment method. Balance is deducted automatically and your order is processed immediately.',
+    'm2.statement': 'From gift card straight to your dining table; order your favorite food using Ultra Value balance.',
+    'm2.b1': 'Available: <strong>Delivery &amp; Self Pick-Up</strong>',
+    'm2.b2': 'Hundreds of <strong>restaurant and café</strong> options',
+    'm2.b3': 'Pay directly with <strong>Ultra Value balance</strong>',
+    'm2.b4': 'Exclusive promos <strong>for UFood users</strong>',
+    'd.badge': 'Digital UVGC',
+    'd.h2': 'Redeem Your Digital UVGC Your Way',
+    'd.sub': 'Two easy ways to use Digital UVGC. Choose the one that suits you.',
+    'd.tab0': 'Convert to Ultra Value Balance',
+    'd.tab1': 'Redeem Directly at the Cashier',
+    'd0.step1.title': 'Open Voucher &amp; Tap Redeem',
+    'd0.step1.desc': 'Open the voucher details, then tap the Redeem button.',
+    'd0.step2.title': 'Choose Method &amp; Confirm',
+    'd0.step2.desc': 'Select Redeem via Ultra Voucher Apps (becomes Ultra Value). This choice cannot be changed after confirmation.',
+    'd0.step3.title': 'Enter Phone No. / Email',
+    'd0.step3.desc': 'Log in with your phone number or Ultra Voucher account email. Verify your account details, then send the voucher.',
+    'd0.step4.title': 'Balance Ready to Use',
+    'd0.step4.desc': 'Your Ultra Value balance can be used immediately to shop at various merchants.',
+    'd0.statement': 'Convert your digital voucher into balance and shop at hundreds of partner merchants.',
+    'd0.b1': 'Balance added <strong>instantly</strong> after login',
+    'd0.b2': 'Access <strong>hundreds of digital vouchers</strong>',
+    'd0.b3': 'Usable on <strong>UV App &amp; Web Commerce</strong>',
+    'd0.b4': 'Process is <strong>simple and secure</strong>',
+    'd1.step1.title': 'Open Voucher &amp; Tap Redeem',
+    'd1.step1.desc': 'Open the voucher details, then tap the Redeem button.',
+    'd1.step2.title': 'Select Scan at Cashier &amp; Confirm',
+    'd1.step2.desc': 'Select Scan at Cashier &amp; Confirm. This choice cannot be changed after confirmation.',
+    'd1.step3.title': 'Redemption Code Appears',
+    'd1.step3.desc': 'A Voucher Code, QR code, barcode, and countdown timer will appear.',
+    'd1.step4.title': 'Show to Cashier for Scanning',
+    'd1.step4.desc': 'Tap to zoom the QR/barcode, then show it to the cashier to be scanned.',
+    'd1.statement': 'No balance conversion needed; just show the code and scan it at the merchant\'s cashier.',
+    'd1.b1': 'No need to <strong>install an app</strong>',
+    'd1.b2': 'Transaction completed in <strong>seconds</strong>',
+    'd1.b3': 'Valid at <strong>1,000+ partner merchants</strong>',
+    'd1.b4': 'Process is <strong>simple and secure</strong>',
+    'cta.eyebrow': 'Get Started',
+    'cta.h2a': 'The Right Gift,',
+    'cta.h2b': 'for <span>the Right Need</span>',
+    'cta.p': 'UVGC ensures every recipient gets a gift they truly want: flexible, easy to use, and memorable.',
+    'cta.trust1': 'Free consultation with no commitment',
+    'cta.trust2': 'Response within 1 business day',
+    'cta.trusted': 'Trusted by leading companies',
+    'form.h3': 'Free Consultation &amp; Order UVGC',
+    'form.p': 'Fill in the form below; our team will contact you shortly.',
+    'form.lbl.nama': 'Full Name <span class="fg-req">*</span>',
+    'form.lbl.perusahaan': 'Company Name <span class="fg-req">*</span>',
+    'form.lbl.email': 'Office Email <span class="fg-req">*</span>',
+    'form.lbl.wa': 'WhatsApp No. <span class="fg-req">*</span>',
+    'form.lbl.jobtitle': 'Job Title',
+    'form.lbl.industri': 'Industry',
+    'form.lbl.kebutuhan': 'Need',
+    'form.ph.nama': 'John Smith',
+    'form.ph.perusahaan': 'Acme Corporation',
+    'form.ph.email': 'john@company.com',
+    'form.ph.wa': '08xx xxxx xxxx',
+    'form.ph.jobtitle': 'HR Manager',
+    'form.err.nama': 'Full name is required',
+    'form.err.perusahaan': 'Company name is required',
+    'form.err.email': 'Please enter a valid email',
+    'form.err.wa': 'WhatsApp number is required',
+    'form.btn': 'Send and Start Consultation',
+    'form.btn.success': '✓ Message Sent!',
+    'sel.kebutuhan.p': 'Select',
+    'sel.kebutuhan.1': 'Employee Reward',
+    'sel.kebutuhan.2': 'Partner Incentive',
+    'sel.kebutuhan.3': 'Loyalty Program',
+    'sel.kebutuhan.4': 'Other',
+    'faq.eyebrow': 'FAQ',
+    'faq.h2': 'Frequently Asked Questions',
+    'faq.q1': 'How long is the Ultra Voucher Gift Card valid?',
+    'faq.a1': 'The UVGC is valid for <strong>1 year</strong> from the date of issuance. The expiry date is printed on the back of the card. Make sure to use it before that date.',
+    'faq.q2': 'Can UVGC be used partially (partial redemption)?',
+    'faq.a2': 'It depends on the redemption method. For <strong>online redemption</strong> via UV App or Web Commerce, the UVGC value is converted to Ultra Value balance that can be used incrementally. For <strong>offline redemption</strong> at the cashier, partial redemption policy follows each merchant\'s own rules.',
+    'faq.q3': 'What if the QR Code is damaged or cannot be scanned?',
+    'faq.a3': 'If the QR Code cannot be scanned, you can still use the <strong>Voucher ID</strong> printed on the back of the card for a manual redemption process. Contact the Ultra Voucher CS team via live chat or WhatsApp for further assistance.',
+    'faq.q4': 'Can UVGC be combined with other payment methods?',
+    'faq.a4': 'For online redemption, the Ultra Value balance obtained from UVGC can be combined with other UV balances. For offline redemption, the payment combination policy follows each merchant\'s rules.',
+    'faq.q5': 'Can Ultra Value balance be cashed out?',
+    'faq.a5': 'Ultra Value balance cannot be cashed out (non-refundable). However, the balance can be used to purchase various digital vouchers in the Ultra Voucher ecosystem as long as it is within the validity period.',
+    'faq.q6': 'How can I find the list of merchants that accept UVGC?',
+    'faq.a6': 'The complete list of partner merchants is available on the <a href="uvgc-merchant.html" style="color:var(--uvgc-blue);font-weight:600;">Merchant</a> page on this website, and inside the Ultra Voucher app under the "Around You" menu. Merchants include more than 20,000 outlets across Indonesia.',
+    'footer.desc': 'A flexible corporate gifting and reward solution for various needs.',
+    'footer.col1.h': 'Information',
+    'footer.col2.h': 'Company',
+    'footer.link.artikel': 'Articles',
+    'footer.link.about': 'About Us',
+    'footer.copy': '© 2026 Ultra Voucher Gift Card. Part of Ultra Corporation.',
+    'footer.privacy': 'Privacy Policy',
+    'footer.terms': 'Terms and Conditions',
+    'chat.agent': 'Ultra Voucher Team',
+    'chat.status': 'Online now',
+    'chat.msg1': '👋 <strong>Hello! Welcome to Ultra Voucher Gift Card.</strong>',
+    'chat.msg2': 'Have questions about how to use UVGC? Our team is ready to help! 🎁',
+    'chat.btn': 'Start Chat with CS'
+  }
+};
+
+function applyLang(lang) {
+  var dict = t[lang];
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) { el.innerHTML = dict[key]; }
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n-placeholder');
+    if (dict[key] !== undefined) { el.placeholder = dict[key]; }
+  });
+  // Rebuild industri select
+  var industri = document.getElementById('f-industri');
+  if (industri) {
+    var ph = lang === 'id' ? 'Pilih industri' : 'Select industry';
+    industri.innerHTML = '<option value="" disabled selected>' + ph + '</option>' +
+      ['Agen Perjalanan, Travel','Asuransi Jiwa','Asuransi Kesehatan','Asuransi Umum','Bank Korporasi','Bank Retail','Bioskop','Brand, Groceries','Crowdfunding & P2P Investment','Cryptocurrency & Blockchain','Developer Real Estate','E-Commerce','EdTech','Energi Terbarukan','Esports','Farmasi','Fashion, Dept Store','Futsal','Golf','Infrastruktur','ISP (Internet Service Provider)','Klinik dan Laboratorium','Komunitas Belanja','Komunitas Bikers','Komunitas Runners','Leasing Elektronik','Leasing Kendaraan','Lembaga Kursus dan Pelatihan','Lembaga Pendidikan Formal','Lending (Pinjaman)','Listrik, Gas Alam, Air Bersih','Logistik dan Ekspedisi','Makanan & Minuman','Manufaktur Bahan Bangunan','Manufaktur Elektronik','Manufaktur Otomotif','Marketplace','Maskapai','Minyak dan Gas Bumi (Oil & Gas)','NGO (Non-Governmental Organization)','Operator Seluler','Pangan dan Pertanian','Payments (Pembayaran)','Pemerintah','Penerbitan','Peralatan Telekomunikasi','Perhotelan','Perusahaan Minyak dan Gas','Produk Kecantikan','Produk Rumah Tangga','Properti Komersial','Properti Perhotelan','Ride-Hailing','Rumah Sakit','SaaS (Software as a Service)','Streaming dan TV Berlangganan','Sumber Daya Alam','Tambang Batu Bara','Tambang Mineral Logam','Transportasi','Transportasi Darat','Transportasi Udara','WealthTech (Investasi)','Others']
+      .map(function(o){ return '<option>' + o + '</option>'; }).join('');
+  }
+  // Rebuild kebutuhan select
+  var kebutuhan = document.getElementById('f-kebutuhan');
+  if (kebutuhan) {
+    kebutuhan.innerHTML =
+      '<option value="" disabled selected>' + dict['sel.kebutuhan.p'] + '</option>' +
+      '<option>' + dict['sel.kebutuhan.1'] + '</option>' +
+      '<option>' + dict['sel.kebutuhan.2'] + '</option>' +
+      '<option>' + dict['sel.kebutuhan.3'] + '</option>' +
+      '<option>' + dict['sel.kebutuhan.4'] + '</option>';
+  }
+  // Update toggle UI
+  var toggle = document.getElementById('langToggle');
+  if (toggle) toggle.setAttribute('data-lang', lang);
+  var flagId = document.getElementById('flag-id');
+  var flagEn = document.getElementById('flag-en');
+  if (flagId) { flagId.classList.toggle('active', lang === 'id'); flagId.classList.toggle('inactive', lang !== 'id'); }
+  if (flagEn) { flagEn.classList.toggle('active', lang === 'en'); flagEn.classList.toggle('inactive', lang !== 'en'); }
+}
+
+function switchLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('uvgc_lang', lang);
+  applyLang(lang);
+}
+
+applyLang(currentLang);
 </script>
 
 <!--Start of Tawk.to Script-->
